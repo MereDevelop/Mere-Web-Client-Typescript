@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useToggle } from 'react-use';
 import { Form } from 'react-router-dom';
 
+import SaveCheck from '@assets/svg/saveCheck.svg';
 import '@styles/auth/login/LoginForm.scss';
 
 const LoginForm: React.FC<{ mode: string }> = ({ mode }) => {
@@ -37,22 +38,7 @@ const LoginForm: React.FC<{ mode: string }> = ({ mode }) => {
           className={`id-save-btn ${isSave && 'id-save-btn__active'}`}
           onClick={toggle}
         >
-          {isSave && (
-            <svg
-              className='save__active'
-              width='13'
-              height='13'
-              viewBox='0 0 13 13'
-              fill='none'
-              xmlns='http://www.w3.org/2000/svg'
-            >
-              <path
-                d='M0.773438 5.52287L5.00052 11.2129L12.154 1.13281'
-                stroke='white'
-                strokeWidth='1.5'
-              />
-            </svg>
-          )}
+          {isSave && <SaveCheck />}
         </button>
         <p className='id-save-message'>
           {mode === 'admin' ? '관리자번호 저장' : '아이디 저장'}
