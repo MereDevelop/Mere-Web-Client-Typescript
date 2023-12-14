@@ -1,8 +1,8 @@
 import { LOGIN_MODE } from '@constants/auth/login';
 import '@styles/auth/login/Login.scss';
 
+import LoginHeader from './LoginHeader';
 import LoginForm from './LoginForm';
-import LoginLayout from './LoginLayout';
 import LoginNavigation from './LoginNavigation';
 
 const Login: React.FC<{ mode: string }> = ({ mode }) => {
@@ -13,7 +13,7 @@ const Login: React.FC<{ mode: string }> = ({ mode }) => {
 
   return (
     <div className={loginView}>
-      <LoginLayout mode={mode} />
+      <LoginHeader mode={mode} />
       <LoginForm mode={mode} />
       {mode === '' && <LoginNavigation />}
     </div>

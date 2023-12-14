@@ -5,7 +5,7 @@ import '@styles/auth/login/LoginLayout.scss';
 
 import ModeToggle from './ModeToggle';
 
-const LoginLayout: React.FC<{ mode: string }> = ({ mode }) => {
+const LoginHeader: React.FC<{ mode: string }> = ({ mode }) => {
   return (
     <>
       <div className='login-logo-container'>
@@ -21,4 +21,4 @@ const LoginLayout: React.FC<{ mode: string }> = ({ mode }) => {
   );
 };
 
-export default LoginLayout;
+export default LoginHeader;
