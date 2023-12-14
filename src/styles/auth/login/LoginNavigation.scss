@@ -1,0 +1,48 @@
+@import '@styles/media/mixin';
+
+// desktop (1920px ~
+.login-navigation-container {
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+
+  margin-top: 24px;
+
+  .signup-navigation,
+  .account-navigation {
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 26.25px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+// pos (1024 ~ 1919px)
+@include pos {
+  .login-navigation-container {
+    margin-top: 14px;
+
+    .signup-navigation,
+    .account-navigation {
+      font-size: 15px;
+      line-height: 18px;
+    }
+  }
+}
+
+// tablet (768 ~ 1023px)
+@include tablet {
+  .login-navigation-container {
+    margin-top: 14px;
+
+    .signup-navigation,
+    .account-navigation {
+      font-size: 15px;
+      line-height: 18px;
+    }
+  }
+}

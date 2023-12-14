@@ -1,0 +1,112 @@
+@import '@styles/media/mixin';
+
+// desktop (1920px ~
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 458px;
+
+  margin: 0 auto;
+  padding-top: 221.5px;
+}
+
+.admin-view {
+  padding-top: 234px;
+
+  .login-logo-container {
+    height: 92px;
+  }
+
+  .id-save-container {
+    .id-save-btn__active {
+      background-color: #2fcaae !important;
+    }
+    .id-save-message {
+      color: #d3d5de !important;
+    }
+  }
+
+  .toggle-btn {
+    .toggle-text {
+      color: #f3f4f6;
+    }
+
+    .switch {
+      border-color: #2fcaae;
+
+      .switch-label {
+        background: #2fcaae;
+
+        &:before {
+          content: attr(data-on);
+          left: 4px;
+          color: #ffffff;
+          opacity: 1;
+        }
+      }
+
+      .switch-handle {
+        left: 30px;
+        background-color: #ffffff;
+      }
+    }
+  }
+}
+
+// pos (1024 ~ 1919px)
+@include pos {
+  .login-container {
+    width: 290px;
+
+    padding-top: 202px;
+  }
+
+  .admin-view {
+    padding-top: 171px;
+
+    .login-logo-container {
+      height: 58px;
+    }
+
+    .toggle-btn {
+      .switch {
+        .switch-handle {
+          left: 28px;
+        }
+      }
+    }
+  }
+}
+
+// tablet (768 ~ 1023px)
+@include tablet {
+  .login-container {
+    width: 290px;
+
+    padding-top: 243.7px;
+  }
+
+  .admin-view {
+    padding-top: 209px;
+
+    .login-logo-container {
+      height: 58px;
+    }
+
+    .toggle-btn {
+      .switch {
+        .switch-label {
+          &:before {
+            left: 2px;
+          }
+        }
+
+        .switch-handle {
+          left: 24px;
+        }
+      }
+    }
+  }
+}

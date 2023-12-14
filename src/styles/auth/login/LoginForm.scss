@@ -1,0 +1,212 @@
+@import '@styles/media/mixin';
+
+// desktop (1920px ~
+.login-form {
+  width: 100%;
+
+  margin-top: 72px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .store-id-container,
+  .store-password-container {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+
+    .label-inivisible {
+      display: none;
+    }
+
+    input[id='storeID'],
+    input[id='password'] {
+      height: 77px;
+      background-color: #ffffff;
+
+      border-width: 1.5px;
+      border-style: solid;
+      border-color: #e6e9ee;
+      border-radius: 10px;
+
+      padding-inline-start: 20px;
+      font-size: 25px;
+
+      &:focus {
+        outline: none;
+        border-color: #4162ff;
+      }
+
+      &::placeholder {
+        color: #898c9a;
+      }
+    }
+  }
+
+  .id-save-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    .id-save-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      margin: 0;
+      padding: 0;
+      width: 23px;
+      height: 23px;
+
+      background-color: #ffffff;
+      border: 1px solid #898c9a;
+      border-radius: 100%;
+
+      cursor: pointer;
+    }
+
+    .id-save-btn__active {
+      background-color: #4162ff;
+      border: none;
+
+      .save__active {
+        width: 11px;
+        height: 10px;
+      }
+    }
+
+    .id-save-message {
+      font-size: 22px;
+      line-height: 26px;
+
+      color: #898c9a;
+    }
+  }
+
+  .login-submit-btn {
+    margin-top: 54px;
+
+    width: 100%;
+    height: 77px;
+
+    background-color: #4162ff;
+    color: #ffffff;
+
+    border-radius: 10px;
+
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 36px;
+
+    cursor: pointer;
+  }
+}
+
+// pos (1024 ~ 1919px)
+@include pos {
+  .login-form {
+    margin-top: 48px;
+
+    gap: 12px;
+
+    .store-id-container,
+    .store-password-container {
+      input[id='storeID'],
+      input[id='password'] {
+        height: 49px;
+        border-radius: 7px;
+
+        font-size: 18px;
+        line-height: 21.5px;
+      }
+    }
+
+    .id-save-container {
+      gap: 10px;
+
+      .id-save-btn {
+        width: 14px;
+        height: 14px;
+      }
+
+      .id-save-btn__active {
+        .save__active {
+          width: 7.5px;
+          height: 6.7px;
+        }
+      }
+
+      .id-save-message {
+        font-size: 15px;
+        line-height: 18px;
+      }
+    }
+
+    .login-submit-btn {
+      margin-top: 54px;
+
+      height: 49px;
+
+      border-radius: 7px;
+
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 21.5px;
+    }
+  }
+}
+
+// tablet (768 ~ 1023px)
+@include tablet {
+  .login-form {
+    margin-top: 48px;
+
+    gap: 12px;
+
+    .store-id-container,
+    .store-password-container {
+      input[id='storeID'],
+      input[id='password'] {
+        height: 49px;
+        border-radius: 7px;
+
+        font-size: 18px;
+        line-height: 21.5px;
+      }
+    }
+
+    .id-save-container {
+      gap: 10px;
+
+      .id-save-btn {
+        width: 14px;
+        height: 14px;
+      }
+
+      .id-save-btn__active {
+        .save__active {
+          width: 7.5px;
+          height: 6.7px;
+        }
+      }
+
+      .id-save-message {
+        font-size: 15px;
+        line-height: 18px;
+      }
+    }
+
+    .login-submit-btn {
+      margin-top: 54px;
+      height: 49px;
+
+      border-radius: 7px;
+
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 21.5px;
+    }
+  }
+}
