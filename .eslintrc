@@ -37,6 +37,12 @@
       2,
       { "namedComponents": ["arrow-function", "function-declaration"] }
     ],
+    "jsx-a11y/label-has-associated-control": [
+      2,
+      {
+        "labelAttributes": ["htmlFor"]
+      }
+    ],
     "react/react-in-jsx-scope": 0,
     "react/prefer-stateless-function": 0,
     "react/jsx-one-expression-per-line": 0,
