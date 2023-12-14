@@ -1,46 +1,18 @@
-# Getting Started with Create React App
+# Mere
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+| 구분자                 | 작업 유형                                                        | 예시                                               |
+| :--------------------: | ---------------------------------------------------------------- | -------------------------------------------------- |
+| **feat**               | 새로운 기능 구현                                                  | feat: 로그인 화면 UI 생성                           |
+| **modify**             | 기존 기능 수정 또는 보완                                          | modify: Login 실패 시, 에러 메시지 표시             |
+| **fix**                | 버그 수정                                                         | fix: 로그인 실패 시 발생하는 Exception 에러 핸들링  |
+| **design**             | 사용자 UI 디자인 변경                                             | design: 로그인 화면 Container 크기 10px 조정        |
+| **breaking_change**    | 커다란 API 변경                                                   | breaking_change: ContextAPI → RTK 변경             |
+| **style**              | 코드 포맷 변경, 세미 콜론 누락, 코드 수정이 없는 경우, 오타 수정    | style: 세미 콜론 누락 수정                          |
+| **refactor**           | 코드 리팩토링                                                     | refactor: 유효성 검사 커스텀 훅으로 분리            |
+| **docs**               | 문서 (또는 주석) 관련 작업                                        | docs: 로그인 API 주석 추가                          |
+| **chore**              | 기타 작업                                                         | chore: useHooks 라이브러리 추가                    |
+| **rename**             | 파일 혹은 폴더명을 수정하거나 옮긴 경우                            | rename: ItemList 컴포넌트 Basket으로 변경           |
+| **remove**             | 파일을 삭제하는 경우                                              | remove: 아이디 찾기 컴포넌트 삭제                   |
+| **test**               | 테스트 코드 추가 및 수정                                          | test: 로그인 테스트 코드 추가                       |
+| **release**            | 버전 릴리즈                                                       | release: 1.0.0 배포                                |
+| **branch**             | 브랜치 추가 및 병합                                               | branch: 로그인 UI 브런치 추가 (#branchID)           |
