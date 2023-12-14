@@ -3,19 +3,21 @@ import { LoaderData } from 'react-router-typesafe';
 
 import Login from '@components/auth/login/Login';
 import { LOGIN_MODE } from '@constants/auth/login';
+import { getDataInCookie } from '@utils/cookie';
 
 const LoginPage = () => {
-  const mode = useLoaderData() as LoaderData<typeof loader>;
+  const { mode, loggedId } = useLoaderData() as LoaderData<typeof loader>;
 
-  return <Login mode={mode} />;
+  return <Login mode={mode} loggedId={loggedId} />;
 };
 
 export default LoginPage;
 
-export function loader({ request }: { request: Request }): string {
+export function loader({ request }: { request: Request }) {
   const params = new URL(request.url);
   const { searchParams } = params;
-  const mode = searchParams.get('mode') || LOGIN_MODE.owner;
+  const mode: string = searchParams.get('mode') || LOGIN_MODE.owner;
+  const loggedId = getDataInCookie(`${mode}loggedId`);
 
-  return mode;
+  return { mode, loggedId };
 }

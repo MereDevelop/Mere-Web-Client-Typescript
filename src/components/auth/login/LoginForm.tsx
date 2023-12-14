@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useToggle } from 'react-use';
 import { Form } from 'react-router-dom';
 
@@ -6,12 +5,11 @@ import SaveCheck from '@assets/svg/saveCheck.svg';
 import { FORM_PLACEHOLDERS } from '@constants/auth/login';
 import '@styles/auth/login/LoginForm.scss';
 
-const LoginForm: React.FC<{ mode: string }> = ({ mode }) => {
-  const [isSave, toggle] = useToggle(false);
-
-  useEffect(() => {
-    toggle(false);
-  }, [mode, toggle]);
+const LoginForm: React.FC<{ mode: string; loggedId: string }> = ({
+  mode,
+  loggedId,
+}) => {
+  const [isSave, isSaveToggle] = useToggle(!!loggedId);
 
   return (
     <Form className='login-form' method='post'>
@@ -22,6 +20,7 @@ const LoginForm: React.FC<{ mode: string }> = ({ mode }) => {
           id='storeID'
           type='text'
           placeholder={FORM_PLACEHOLDERS[mode].id}
+          defaultValue={loggedId}
         />
       </div>
       <div className='store-password-container'>
@@ -37,7 +36,7 @@ const LoginForm: React.FC<{ mode: string }> = ({ mode }) => {
         <button
           type='button'
           className={`id-save-btn ${isSave && 'id-save-btn__active'}`}
-          onClick={toggle}
+          onClick={isSaveToggle}
         >
           {isSave && <SaveCheck />}
         </button>
