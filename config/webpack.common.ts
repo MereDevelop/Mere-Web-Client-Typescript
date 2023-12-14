@@ -32,7 +32,7 @@ const configuration: webpack.Configuration = {
   module: {
     rules: [
       {
-        test: /\.(png|jpe?g|gif|svg)$/i,
+        test: /\.(png|jpe?g|gif)$/i,
         type: 'asset/resource',
       },
       {
@@ -43,6 +43,10 @@ const configuration: webpack.Configuration = {
       {
         test: /\.(scss|css)$/,
         use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
+      {
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
       },
     ],
   },
