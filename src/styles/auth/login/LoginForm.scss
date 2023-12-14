@@ -71,9 +71,9 @@
       background-color: #4162ff;
       border: none;
 
-      .save__active {
-        width: 11px;
-        height: 10px;
+      svg {
+        width: 13px;
+        height: 13px;
       }
     }
 
@@ -132,7 +132,7 @@
       }
 
       .id-save-btn__active {
-        .save__active {
+        svg {
           width: 7.5px;
           height: 6.7px;
         }
@@ -186,7 +186,7 @@
       }
 
       .id-save-btn__active {
-        .save__active {
+        svg {
           width: 7.5px;
           height: 6.7px;
         }
