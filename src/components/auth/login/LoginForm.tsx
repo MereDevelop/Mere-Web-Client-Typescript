@@ -3,6 +3,7 @@ import { useToggle } from 'react-use';
 import { Form } from 'react-router-dom';
 
 import SaveCheck from '@assets/svg/saveCheck.svg';
+import { FORM_PLACEHOLDERS } from '@constants/auth/login';
 import '@styles/auth/login/LoginForm.scss';
 
 const LoginForm: React.FC<{ mode: string }> = ({ mode }) => {
@@ -20,7 +21,7 @@ const LoginForm: React.FC<{ mode: string }> = ({ mode }) => {
           name='storeID'
           id='storeID'
           type='text'
-          placeholder={`${mode === 'admin' ? '관리자번호' : '아이디'}`}
+          placeholder={FORM_PLACEHOLDERS[mode].id}
         />
       </div>
       <div className='store-password-container'>
@@ -40,9 +41,7 @@ const LoginForm: React.FC<{ mode: string }> = ({ mode }) => {
         >
           {isSave && <SaveCheck />}
         </button>
-        <p className='id-save-message'>
-          {mode === 'admin' ? '관리자번호 저장' : '아이디 저장'}
-        </p>
+        <p className='id-save-message'>{FORM_PLACEHOLDERS[mode].save}</p>
       </div>
       <button type='submit' className='login-submit-btn'>
         로그인
