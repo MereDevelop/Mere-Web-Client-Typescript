@@ -21,6 +21,7 @@ const configuration: webpack.Configuration = {
       '@styles': path.resolve(__dirname, '../src/styles'),
       '@custom/types': path.resolve(__dirname, '../src/custom/types'),
       '@utils': path.resolve(__dirname, '../src/utils'),
+      '@routes': path.resolve(__dirname, '../src/routes'),
     },
   },
 
