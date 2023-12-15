@@ -27,14 +27,14 @@ const configuration: webpack.Configuration = {
   plugins: [
     new MiniCssExtractPlugin(),
     new webpack.DefinePlugin({
-      'process.env.REACT_APP_KAKAO_REST_API': JSON.stringify(
-        process.env.REACT_APP_KAKAO_REST_API,
+      'process.env.REACT_APP_KAKAO_REST_TOKEN': JSON.stringify(
+        process.env.REACT_APP_KAKAO_REST_TOKEN,
       ),
-      'process.env.REACT_APP_KAKAO_MAP_API': JSON.stringify(
-        process.env.REACT_APP_KAKAO_MAP_API,
+      'process.env.REACT_APP_KAKAO_MAP_TOKEN': JSON.stringify(
+        process.env.REACT_APP_KAKAO_MAP_TOKEN,
       ),
-      'process.env.REACT_APP_SERVER_API': JSON.stringify(
-        process.env.REACT_APP_SERVER_API,
+      'process.env.REACT_APP_SERVER_URL': JSON.stringify(
+        process.env.REACT_APP_SERVER_URL,
       ),
     }),
   ],
