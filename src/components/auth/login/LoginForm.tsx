@@ -1,26 +1,41 @@
+import { useState } from 'react';
 import { useToggle } from 'react-use';
-import { Form } from 'react-router-dom';
+import { useSubmit } from 'react-router-dom';
 
 import SaveCheck from '@assets/svg/saveCheck.svg';
 import { FORM_PLACEHOLDERS } from '@constants/auth/login';
+import { removeDataInCookie, setDataInCookie } from '@utils/cookie';
 import '@styles/auth/login/LoginForm.scss';
 
 const LoginForm: React.FC<{ mode: string; loggedId: string }> = ({
   mode,
   loggedId,
 }) => {
+  const [id, setId] = useState(loggedId);
   const [isSave, isSaveToggle] = useToggle(!!loggedId);
+  const submit = useSubmit();
+
+  const onLogin: React.FormEventHandler<HTMLFormElement> = (event) => {
+    event.preventDefault();
+
+    if (isSave) setDataInCookie(`${mode}LoggedId`, id);
+    else removeDataInCookie(`${mode}LoggedId`);
+
+    submit(event.currentTarget);
+  };
 
   return (
-    <Form className='login-form' method='post'>
+    <form className='login-form' method='post' onSubmit={onLogin}>
+      <input type='hidden' name='mode' defaultValue={mode} />
       <div className='store-id-container'>
-        <label className='label-invisible' htmlFor='storeID' />
+        <label className='label-invisible' htmlFor='id' />
         <input
-          name='storeID'
-          id='storeID'
+          name='id'
+          id='id'
           type='text'
           placeholder={FORM_PLACEHOLDERS[mode].id}
-          defaultValue={loggedId}
+          value={id}
+          onChange={(e) => setId(e.target.value)}
         />
       </div>
       <div className='store-password-container'>
@@ -45,7 +60,7 @@ const LoginForm: React.FC<{ mode: string; loggedId: string }> = ({
       <button type='submit' className='login-submit-btn'>
         로그인
       </button>
-    </Form>
+    </form>
   );
 };
 

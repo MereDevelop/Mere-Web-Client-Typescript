@@ -10,7 +10,7 @@ const ModeToggle: React.FC<{ mode: string }> = ({ mode }) => {
   // const { isConfirm, confirmPrompt, onClickYes, openConfirm, closeConfirm } =
   //   useModal();
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const isAdminView = mode === 'admin';
 
