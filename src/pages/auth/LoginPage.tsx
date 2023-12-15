@@ -1,9 +1,9 @@
-import { json, redirect, useLoaderData } from 'react-router-dom';
+import { redirect, useLoaderData } from 'react-router-dom';
 import { LoaderData, useActionData } from 'react-router-typesafe';
 
 import Login from '@components/auth/login/Login';
 import { LOGIN_MODE } from '@constants/auth/login';
-import { LoginForm } from '@custom/types/login/Login';
+import { LoginFormData } from '@custom/types/login/Login';
 import { getDataInCookie } from '@utils/cookie';
 import { EMPTY_DATA } from '@constants/global';
 import { ErrorType } from '@custom/types/global';
@@ -29,7 +29,7 @@ export function loader({ request }: { request: Request }) {
 export async function action({ request }: { request: Request }) {
   const data = await request.formData();
 
-  const authForm: LoginForm = {
+  const authForm: LoginFormData = {
     id: data.get('id'),
     password: data.get('password'),
   };
@@ -44,6 +44,6 @@ export async function action({ request }: { request: Request }) {
   return redirect('/');
 }
 
-function isEmptyForm(authForm: LoginForm): boolean {
+function isEmptyForm(authForm: LoginFormData): boolean {
   return Object.values(authForm).every((authData) => authData === EMPTY_DATA);
 }

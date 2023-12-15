@@ -9,7 +9,7 @@ export interface FormPlaceHolders {
   owner: LoginPlaceHolders;
 }
 
-export interface LoginForm {
+export interface LoginFormData {
   [key: string]: FormDataEntryValue | null;
   id: FormDataEntryValue | null;
   password: FormDataEntryValue | null;
