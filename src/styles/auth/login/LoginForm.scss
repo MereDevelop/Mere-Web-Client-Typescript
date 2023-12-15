@@ -21,7 +21,7 @@
       display: none;
     }
 
-    input[id='storeID'],
+    input[id='id'],
     input[id='password'] {
       height: 77px;
       background-color: #ffffff;
@@ -113,7 +113,7 @@
 
     .store-id-container,
     .store-password-container {
-      input[id='storeID'],
+      input[id='id'],
       input[id='password'] {
         height: 49px;
         border-radius: 7px;
@@ -167,7 +167,7 @@
 
     .store-id-container,
     .store-password-container {
-      input[id='storeID'],
+      input[id='id'],
       input[id='password'] {
         height: 49px;
         border-radius: 7px;
