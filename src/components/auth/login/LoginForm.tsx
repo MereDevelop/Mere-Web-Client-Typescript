@@ -6,11 +6,13 @@ import SaveCheck from '@assets/svg/saveCheck.svg';
 import { FORM_PLACEHOLDERS } from '@constants/auth/login';
 import { removeDataInCookie, setDataInCookie } from '@utils/cookie';
 import '@styles/auth/login/LoginForm.scss';
+import { ErrorType } from '@custom/types/global';
 
-const LoginForm: React.FC<{ mode: string; loggedId: string }> = ({
-  mode,
-  loggedId,
-}) => {
+const LoginForm: React.FC<{
+  errors: ErrorType | undefined;
+  mode: string;
+  loggedId: string;
+}> = ({ errors, mode, loggedId }) => {
   const [id, setId] = useState(loggedId);
   const [isSave, isSaveToggle] = useToggle(!!loggedId);
   const submit = useSubmit();
@@ -57,6 +59,7 @@ const LoginForm: React.FC<{ mode: string; loggedId: string }> = ({
         </button>
         <p className='id-save-message'>{FORM_PLACEHOLDERS[mode].save}</p>
       </div>
+      <p className='login-error-message'>{errors?.message}</p>
       <button type='submit' className='login-submit-btn'>
         로그인
       </button>
