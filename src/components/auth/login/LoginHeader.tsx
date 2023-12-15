@@ -1,3 +1,5 @@
+import React from 'react';
+
 import adminLogoImage from '@assets/admin_logo.png';
 import logoImage from '@assets/logo.png';
 import { LOGIN_MODE } from '@constants/auth/login';
@@ -21,4 +23,4 @@ const LoginHeader: React.FC<{ mode: string }> = ({ mode }) => {
   );
 };
 
-export default LoginHeader;
+export default React.memo(LoginHeader);

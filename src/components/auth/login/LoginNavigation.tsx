@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import '@styles/auth/login/LoginNavigation.scss';
@@ -15,4 +16,4 @@ const LoginNavigation = () => {
   );
 };
 
-export default LoginNavigation;
+export default React.memo(LoginNavigation);

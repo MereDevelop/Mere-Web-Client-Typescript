@@ -4,9 +4,9 @@ import { useSubmit } from 'react-router-dom';
 
 import SaveCheck from '@assets/svg/saveCheck.svg';
 import { FORM_PLACEHOLDERS } from '@constants/auth/login';
+import { ErrorType } from '@custom/types/global';
 import { removeDataInCookie, setDataInCookie } from '@utils/cookie';
 import '@styles/auth/login/LoginForm.scss';
-import { ErrorType } from '@custom/types/global';
 
 const LoginForm: React.FC<{
   errors: ErrorType | undefined;
