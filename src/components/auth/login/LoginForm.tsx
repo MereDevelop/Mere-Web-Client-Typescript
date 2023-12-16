@@ -4,12 +4,12 @@ import { useSubmit } from 'react-router-dom';
 
 import SaveCheck from '@assets/svg/saveCheck.svg';
 import { FORM_PLACEHOLDERS } from '@constants/auth/login';
-import { ErrorType } from '@custom/types/global';
+import { CustomError } from '@custom/types/response';
 import { removeDataInCookie, setDataInCookie } from '@utils/cookie';
 import '@styles/auth/login/LoginForm.scss';
 
 const LoginForm: React.FC<{
-  errors: ErrorType | undefined;
+  errors: CustomError | undefined;
   mode: string;
   loggedId: string;
 }> = ({ errors, mode, loggedId }) => {
@@ -23,7 +23,7 @@ const LoginForm: React.FC<{
     if (isSave) setDataInCookie(`${mode}LoggedId`, id);
     else removeDataInCookie(`${mode}LoggedId`);
 
-    submit(event.currentTarget);
+    submit(event.currentTarget, { method: 'post' });
   };
 
   return (
@@ -38,6 +38,7 @@ const LoginForm: React.FC<{
           placeholder={FORM_PLACEHOLDERS[mode].id}
           value={id}
           onChange={(e) => setId(e.target.value)}
+          aria-errormessage={errors?.errorCode}
         />
       </div>
       <div className='store-password-container'>
@@ -47,6 +48,7 @@ const LoginForm: React.FC<{
           id='password'
           type='password'
           placeholder='비밀번호'
+          aria-errormessage={errors?.errorCode}
         />
       </div>
       <div className='id-save-container'>
@@ -59,7 +61,7 @@ const LoginForm: React.FC<{
         </button>
         <p className='id-save-message'>{FORM_PLACEHOLDERS[mode].save}</p>
       </div>
-      <p className='login-error-message'>{errors?.message}</p>
+      <p className='login-error-message'>{errors?.errorMessage}</p>
       <button type='submit' className='login-submit-btn'>
         로그인
       </button>

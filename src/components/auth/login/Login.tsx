@@ -1,5 +1,5 @@
 import { LOGIN_MODE } from '@constants/auth/login';
-import { ErrorType } from '@custom/types/global';
+import { CustomError } from '@custom/types/response';
 import '@styles/auth/login/Login.scss';
 
 import LoginHeader from './LoginHeader';
@@ -7,7 +7,7 @@ import LoginForm from './LoginForm';
 import LoginNavigation from './LoginNavigation';
 
 const Login: React.FC<{
-  errors: ErrorType | undefined;
+  errors: CustomError | undefined;
   mode: string;
   loggedId: string;
 }> = ({ errors, mode, loggedId }) => {

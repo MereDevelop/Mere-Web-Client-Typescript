@@ -42,6 +42,14 @@
       &::placeholder {
         color: #898c9a;
       }
+
+      &[aria-errormessage='NF0004'] {
+        border-color: #ff5a69;
+      }
+    }
+
+    input[id='password'][aria-errormessage='NF0005'] {
+      border-color: #ff5a69;
     }
   }
 

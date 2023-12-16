@@ -3,13 +3,14 @@ import { LoaderData, useActionData } from 'react-router-typesafe';
 
 import Login from '@components/auth/login/Login';
 import { LOGIN_MODE } from '@constants/auth/login';
-import { LoginFormData } from '@custom/types/login/Login';
+import { CustomError } from '@custom/types/response';
+import { LoginFormData, LoginResponse } from '@custom/types/login/Login';
+import { requestSignIn } from '@services/auth/sign';
+import { isCustomError } from '@utils/check';
 import { getDataInCookie } from '@utils/cookie';
-import { EMPTY_DATA } from '@constants/global';
-import { ErrorType } from '@custom/types/global';
 
 const LoginPage = () => {
-  const errors: ErrorType | undefined = useActionData<typeof action>();
+  const errors: CustomError | undefined = useActionData<typeof action>();
   const { mode, loggedId } = useLoaderData() as LoaderData<typeof loader>;
 
   return <Login errors={errors} mode={mode} loggedId={loggedId} />;
@@ -26,24 +27,22 @@ export function loader({ request }: { request: Request }) {
   return { mode, loggedId };
 }
 
-export async function action({ request }: { request: Request }) {
+export async function action({
+  request,
+}: {
+  request: Request;
+}): Promise<CustomError | Response> {
   const data = await request.formData();
 
-  const authForm: LoginFormData = {
+  const loginFormData: LoginFormData = {
     id: data.get('id'),
     password: data.get('password'),
   };
 
-  if (isEmptyForm(authForm)) {
-    return {
-      status: 400,
-      message: '아이디 또는 비밀번호를 다시 확인해 주세요.',
-    };
-  }
+  const response: LoginResponse | CustomError = await requestSignIn(
+    loginFormData,
+  );
 
+  if (isCustomError(response)) return response;
   return redirect('/');
-}
-
-function isEmptyForm(authForm: LoginFormData): boolean {
-  return Object.values(authForm).every((authData) => authData === EMPTY_DATA);
 }
