@@ -10,7 +10,8 @@ const Login: React.FC<{
   errors: CustomError | undefined;
   mode: string;
   loggedId: string;
-}> = ({ errors, mode, loggedId }) => {
+  isSubmitting: boolean;
+}> = ({ errors, mode, loggedId, isSubmitting }) => {
   const loginView =
     mode === LOGIN_MODE.admin
       ? 'login-container admin-view'
@@ -19,7 +20,12 @@ const Login: React.FC<{
   return (
     <div className={loginView}>
       <LoginHeader mode={mode} />
-      <LoginForm errors={errors} mode={mode} loggedId={loggedId} />
+      <LoginForm
+        errors={errors}
+        mode={mode}
+        loggedId={loggedId}
+        isSubmitting={isSubmitting}
+      />
       {mode === LOGIN_MODE.owner && <LoginNavigation />}
     </div>
   );

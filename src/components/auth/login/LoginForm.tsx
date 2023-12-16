@@ -3,6 +3,7 @@ import { useToggle } from 'react-use';
 import { useSubmit } from 'react-router-dom';
 
 import SaveCheck from '@assets/svg/saveCheck.svg';
+import LoadingSpinner from '@commons/BeatLoader';
 import { FORM_PLACEHOLDERS } from '@constants/auth/login';
 import { CustomError } from '@custom/types/response';
 import { removeDataInCookie, setDataInCookie } from '@utils/cookie';
@@ -12,7 +13,8 @@ const LoginForm: React.FC<{
   errors: CustomError | undefined;
   mode: string;
   loggedId: string;
-}> = ({ errors, mode, loggedId }) => {
+  isSubmitting: boolean;
+}> = ({ errors, mode, loggedId, isSubmitting }) => {
   const [id, setId] = useState(loggedId);
   const [isSave, isSaveToggle] = useToggle(!!loggedId);
   const submit = useSubmit();
@@ -62,8 +64,12 @@ const LoginForm: React.FC<{
         <p className='id-save-message'>{FORM_PLACEHOLDERS[mode].save}</p>
       </div>
       <p className='login-error-message'>{errors?.errorMessage}</p>
-      <button type='submit' className='login-submit-btn'>
-        로그인
+      <button
+        type='submit'
+        className='login-submit-btn'
+        disabled={isSubmitting}
+      >
+        {isSubmitting ? <LoadingSpinner /> : '로그인'}
       </button>
     </form>
   );
