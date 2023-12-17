@@ -17,16 +17,18 @@ export interface LoginFormData {
   password: FormDataEntryValue | null;
 }
 
-export interface LoginResponse extends ApiResponse {
-  data: {
-    accessTokenDto: {
-      accessToken: string;
-      accessTokenExpiredTime: string;
-    };
-    refreshTokenDto: {
-      refreshToken: string;
-      refreshTokenExpiredTime: string;
-    };
+export interface TokenResponse {
+  accessTokenDto: {
+    accessToken: string;
+    accessTokenExpiredTime: string;
   };
+  refreshTokenDto: {
+    refreshToken: string;
+    refreshTokenExpiredTime: string;
+  };
+}
+
+export interface LoginResponse extends ApiResponse {
+  data: TokenResponse;
   status: number;
 }
