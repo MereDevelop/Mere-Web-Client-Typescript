@@ -5,6 +5,7 @@ import '@styles/auth/login/Login.scss';
 import LoginHeader from './LoginHeader';
 import LoginForm from './LoginForm';
 import LoginNavigation from './LoginNavigation';
+import ModeToggle from './ModeToggle';
 
 const Login: React.FC<{
   errors: CustomError | undefined;
@@ -20,6 +21,8 @@ const Login: React.FC<{
   return (
     <div className={loginView}>
       <LoginHeader mode={mode} />
+      <ModeToggle mode={mode} />
+
       <LoginForm
         errors={errors}
         mode={mode}
