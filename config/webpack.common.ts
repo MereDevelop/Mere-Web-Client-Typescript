@@ -2,6 +2,7 @@ import path from 'path';
 import webpack from 'webpack';
 
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import FaviconWebpackPlugin from 'favicons-webpack-plugin';
 
 const configuration: webpack.Configuration = {
   // 모듈 해석 방법 설정
@@ -55,6 +56,10 @@ const configuration: webpack.Configuration = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, '..', 'public', 'index.html'),
+    }),
+    new FaviconWebpackPlugin({
+      logo: path.join(__dirname, '..', 'public', 'favicon.ico'),
+      manifest: path.join(__dirname, '..', 'public', 'manifest.json'),
     }),
     new webpack.ProgressPlugin(),
     new webpack.ProvidePlugin({ React: 'react', process: 'process/browser' }),
