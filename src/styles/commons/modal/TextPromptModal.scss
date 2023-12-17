@@ -1,0 +1,59 @@
+@import '@styles/media/mixin';
+
+// desktop (1920px ~
+.prompt-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 814px;
+  height: 110px;
+
+  border-radius: 20px;
+
+  .confirm-text {
+    font-weight: 500;
+    font-size: 35px;
+    line-height: 42px;
+  }
+
+  &.basic-prompt-container {
+    border-radius: 15px;
+    background: rgba(62, 62, 62, 0.7); /* 배경색만 0.7의 투명도로 설정 */
+
+    .confirm-text {
+      color: #fff;
+    }
+  }
+
+  &.reverse-prompt-container {
+    background-color: #ffffffe6;
+    border: 1px solid #d9d9d9;
+  }
+}
+
+// pos (1024 ~ 1919px)
+@include pos {
+  .prompt-container {
+    width: 448px;
+    height: 54px;
+
+    .confirm-text {
+      font-size: 18px;
+      line-height: 21.5px;
+    }
+  }
+}
+
+// tablet (768 ~ 1023px)
+@include tablet {
+  .prompt-container {
+    width: 448px;
+    height: 54px;
+
+    .confirm-text {
+      font-size: 18px;
+      line-height: 21.5px;
+    }
+  }
+}

@@ -1,0 +1,142 @@
+@import '@styles/media/mixin';
+
+// desktop (1920px ~
+.change-mode-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 814px;
+
+  background-color: white;
+  border: 1px solid #d9d9d9;
+  border-radius: 25px;
+
+  padding: 60px 0 48px;
+
+  .icon-container {
+    margin-bottom: 30px;
+    width: 94px;
+    height: 94px;
+
+    .icon-image {
+      width: inherit;
+      height: inherit;
+    }
+  }
+
+  .change-mode-confirm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 54px;
+
+    .confirm-text {
+      font-weight: 500;
+      font-size: 28px;
+      line-height: 42px;
+    }
+
+    .change-mode-btns {
+      display: flex;
+      gap: 17.5px;
+
+      .no-btn,
+      .yes-btn {
+        width: 177px;
+        height: 64px;
+        border: 1px solid #d9d9d9;
+        border-radius: 50px;
+
+        font-weight: 500;
+        font-size: 28px;
+        line-height: 33px;
+
+        cursor: pointer;
+      }
+
+      .no-btn {
+        color: #3e3e3e;
+      }
+
+      .yes-btn {
+        color: #ffffff;
+        background-color: #4162ff;
+      }
+    }
+  }
+}
+
+// pos (1024 ~ 1919px)
+@include pos {
+  .change-mode-container {
+    width: 542px;
+
+    padding: 30px 0 32px;
+    border-radius: 10px;
+
+    .icon-container {
+      width: 52px;
+      height: 52px;
+    }
+
+    .change-mode-confirm {
+      gap: 41px;
+
+      .confirm-text {
+        font-size: 18px;
+        line-height: 21.5px;
+
+        .main-text {
+          font-weight: 600;
+        }
+      }
+
+      .change-mode-btns {
+        .no-btn,
+        .yes-btn {
+          width: 97.5px;
+          height: 35.5px;
+
+          font-size: 16px;
+          line-height: 19px;
+        }
+      }
+    }
+  }
+}
+
+// tablet (768 ~ 1023px)
+@include tablet {
+  .change-mode-container {
+    width: 507px;
+
+    padding: 30px 0 32px;
+    border-radius: 10px;
+
+    .icon-container {
+      width: 52px;
+      height: 52px;
+    }
+
+    .change-mode-confirm {
+      gap: 41px;
+
+      .confirm-text {
+        font-size: 18px;
+        line-height: 21.5px;
+      }
+
+      .change-mode-btns {
+        .no-btn,
+        .yes-btn {
+          width: 97.5px;
+          height: 35.5px;
+
+          font-size: 16px;
+          line-height: 19px;
+        }
+      }
+    }
+  }
+}
