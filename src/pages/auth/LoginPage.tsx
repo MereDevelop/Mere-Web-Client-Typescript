@@ -4,10 +4,15 @@ import { LoaderData, useActionData } from 'react-router-typesafe';
 import Login from '@components/auth/login/Login';
 import { LOGIN_MODE } from '@constants/auth/login';
 import { CustomError } from '@custom/types/response';
-import { LoginFormData, LoginResponse } from '@custom/types/login/Login';
+import {
+  LoginFormData,
+  LoginResponse,
+  TokenResponse,
+} from '@custom/types/login/Login';
 import { requestSignIn } from '@services/auth/sign';
+import { setAccessToken } from '@store/auth-store';
 import { isCustomError } from '@utils/check';
-import { getDataInCookie } from '@utils/cookie';
+import { getDataInCookie, setDataInCookie } from '@utils/cookie';
 
 const LoginPage = () => {
   const errors: CustomError | undefined = useActionData<typeof action>();
@@ -54,5 +59,16 @@ export async function action({
   );
 
   if (isCustomError(response)) return response;
+  await login(response.data);
+
   return redirect('/');
+}
+
+async function login(data: TokenResponse) {
+  const { accessTokenDto, refreshTokenDto } = data;
+  const { accessToken } = accessTokenDto;
+  const { refreshToken } = refreshTokenDto;
+
+  setAccessToken(accessToken);
+  setDataInCookie('refreshToken', refreshToken);
 }
