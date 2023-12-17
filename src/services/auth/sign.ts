@@ -22,7 +22,5 @@ export async function requestSignIn(
       return { success: false, errorCode, errorMessage, status };
     });
 
-  console.log(response);
-
   return response;
 }
