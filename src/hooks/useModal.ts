@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useToggle } from 'react-use';
 
 const useModal = () => {
@@ -13,9 +13,12 @@ const useModal = () => {
     }
   }, [isTextPrompt]);
 
-  const openConfirm = () => setIsConfirm(true);
-  const closeConfirm = () => setIsConfirm(false);
-  const onClickYes = () => setIsTextPrompt(true);
+  const openConfirm = useCallback(() => setIsConfirm(true), [setIsConfirm]);
+  const closeConfirm = useCallback(() => setIsConfirm(false), [setIsConfirm]);
+  const onClickYes = useCallback(
+    () => setIsTextPrompt(true),
+    [setIsTextPrompt],
+  );
 
   return {
     isConfirm,
