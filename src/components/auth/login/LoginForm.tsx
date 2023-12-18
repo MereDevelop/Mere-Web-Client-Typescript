@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useToggle } from 'react-use';
 import { useSubmit } from 'react-router-dom';
 
@@ -18,6 +18,11 @@ const LoginForm: React.FC<{
   const [id, setId] = useState(loggedId);
   const [isSave, isSaveToggle] = useToggle(!!loggedId);
   const submit = useSubmit();
+
+  useEffect(() => {
+    setId(loggedId);
+    isSaveToggle(!!loggedId);
+  }, [isSaveToggle, loggedId]);
 
   const onLogin: React.FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
