@@ -12,7 +12,7 @@ const configuration: webpack.Configuration = {
   mode: 'production',
   devtool: 'cheap-module-source-map',
   output: {
-    path: path.resolve(__dirname, '../dist'),
+    path: path.resolve(__dirname, '../build'),
     filename: '[name].[contenthash].js',
     clean: true,
   },
@@ -27,14 +27,14 @@ const configuration: webpack.Configuration = {
   plugins: [
     new MiniCssExtractPlugin(),
     new webpack.DefinePlugin({
-      'process.env.REACT_APP_KAKAO_REST_API': JSON.stringify(
-        process.env.REACT_APP_KAKAO_REST_API,
+      'process.env.REACT_APP_KAKAO_REST_TOKEN': JSON.stringify(
+        process.env.REACT_APP_KAKAO_REST_TOKEN,
       ),
-      'process.env.REACT_APP_KAKAO_MAP_API': JSON.stringify(
-        process.env.REACT_APP_KAKAO_MAP_API,
+      'process.env.REACT_APP_KAKAO_MAP_TOKEN': JSON.stringify(
+        process.env.REACT_APP_KAKAO_MAP_TOKEN,
       ),
-      'process.env.REACT_APP_SERVER_API': JSON.stringify(
-        process.env.REACT_APP_SERVER_API,
+      'process.env.REACT_APP_SERVER_URL': JSON.stringify(
+        process.env.REACT_APP_SERVER_URL,
       ),
     }),
   ],

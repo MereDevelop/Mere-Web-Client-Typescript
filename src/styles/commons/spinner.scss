@@ -1,0 +1,23 @@
+@import '@styles/media/mixin';
+
+// desktop (1920px ~
+.loading-spinner span {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+// pos (1024 ~ 1919px)
+@include pos {
+  .loading-spinner span {
+    width: 8px !important;
+    height: 8px !important;
+  }
+}
+
+// tablet (768 ~ 1023px)
+@include tablet {
+  .loading-spinner span {
+    width: 8px !important;
+    height: 8px !important;
+  }
+}

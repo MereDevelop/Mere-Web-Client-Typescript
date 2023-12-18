@@ -1,0 +1,167 @@
+@import '@styles/media/mixin';
+
+// desktop (1920px ~
+.toggle-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  .toggle-text {
+    font-size: 20px;
+    line-height: 24px;
+
+    color: #898c9a;
+  }
+
+  .switch {
+    overflow: hidden;
+
+    position: relative;
+    display: block;
+    width: 51px;
+    height: 23px;
+
+    background: #ffffff;
+
+    border-width: 1px;
+    border-style: solid;
+    border-color: #898c9a;
+    border-radius: 20px;
+
+    cursor: pointer;
+  }
+
+  .switch-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+  }
+
+  .switch-label {
+    position: relative;
+    display: block;
+    height: inherit;
+
+    text-transform: uppercase;
+    background: #ffffff;
+    border-radius: inherit;
+  }
+
+  .switch-label:before,
+  .switch-label:after {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+
+    width: 21px;
+    height: 13px;
+
+    font-size: 11px;
+    line-height: 13px;
+
+    -webkit-transition: inherit;
+    -moz-transition: inherit;
+    -o-transition: inherit;
+    transition: inherit;
+  }
+
+  .switch-label:before {
+    content: attr(data-off);
+    right: 4px;
+
+    color: #898c9a;
+  }
+
+  .switch-handle {
+    position: absolute;
+    top: 50%;
+    left: 4px;
+    transform: translate(0, -50%);
+
+    width: 18px;
+    height: 18px;
+    background-color: #898c9a;
+    border-radius: 100%;
+  }
+
+  // Animation
+  .switch-label,
+  .switch-handle {
+    transition: All 0.3s ease;
+    -webkit-transition: All 0.3s ease;
+    -moz-transition: All 0.3s ease;
+    -o-transition: All 0.3s ease;
+  }
+}
+
+// pos (1024 ~ 1919px)
+@include pos {
+  .toggle-btn {
+    .toggle-text {
+      font-size: 17px;
+      line-height: 20px;
+    }
+
+    .switch {
+      width: 47px;
+      height: 21px;
+    }
+
+    .switch-label:before,
+    .switch-label:after {
+      width: 19px;
+      height: 12px;
+
+      font-size: 10px;
+      line-height: 12px;
+    }
+
+    .switch-handle {
+      width: 16.5px;
+      height: 16.5px;
+    }
+  }
+}
+
+// tablet (768 ~ 1023px)
+@include tablet {
+  .toggle-btn {
+    .toggle-text {
+      font-size: 15px;
+      line-height: 18px;
+    }
+
+    .switch {
+      width: 38px;
+      height: 17px;
+    }
+
+    .switch-label:before,
+    .switch-label:after {
+      width: 15px;
+      height: 10px;
+
+      font-size: 8px;
+      line-height: 9.5px;
+    }
+
+    .switch-label:before {
+      right: 6px;
+    }
+
+    .switch-handle {
+      width: 13.5px;
+      height: 13.5px;
+
+      left: 2px;
+    }
+  }
+}

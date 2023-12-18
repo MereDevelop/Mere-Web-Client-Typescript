@@ -2,6 +2,7 @@ import path from 'path';
 import webpack from 'webpack';
 
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import FaviconWebpackPlugin from 'favicons-webpack-plugin';
 
 const configuration: webpack.Configuration = {
   // 모듈 해석 방법 설정
@@ -21,6 +22,7 @@ const configuration: webpack.Configuration = {
       '@styles': path.resolve(__dirname, '../src/styles'),
       '@custom/types': path.resolve(__dirname, '../src/custom/types'),
       '@utils': path.resolve(__dirname, '../src/utils'),
+      '@routes': path.resolve(__dirname, '../src/routes'),
     },
   },
 
@@ -31,7 +33,7 @@ const configuration: webpack.Configuration = {
   module: {
     rules: [
       {
-        test: /\.(png|jpe?g|gif|svg)$/i,
+        test: /\.(png|jpe?g|gif)$/i,
         type: 'asset/resource',
       },
       {
@@ -43,6 +45,10 @@ const configuration: webpack.Configuration = {
         test: /\.(scss|css)$/,
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
+      {
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
+      },
     ],
   },
 
@@ -50,6 +56,10 @@ const configuration: webpack.Configuration = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, '..', 'public', 'index.html'),
+    }),
+    new FaviconWebpackPlugin({
+      logo: path.join(__dirname, '..', 'public', 'favicon.ico'),
+      manifest: path.join(__dirname, '..', 'public', 'manifest.json'),
     }),
     new webpack.ProgressPlugin(),
     new webpack.ProvidePlugin({ React: 'react', process: 'process/browser' }),
