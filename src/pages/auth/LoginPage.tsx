@@ -49,19 +49,21 @@ export async function action({
 }): Promise<CustomError | Response> {
   const data = await request.formData();
 
+  const mode = data.get('mode') as string;
   const loginFormData: LoginFormData = {
     id: data.get('id'),
     password: data.get('password'),
   };
 
   const response: LoginResponse | CustomError = await requestSignIn(
+    mode,
     loginFormData,
   );
 
   if (isCustomError(response)) return response;
   await login(response.data);
 
-  return redirect('/');
+  return redirect(`/${mode}`);
 }
 
 async function login(data: TokenResponse) {
