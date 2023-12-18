@@ -2,15 +2,16 @@ import { useNavigate } from 'react-router-dom';
 
 import warningRedIcon from '@assets/warning_red_icon.png';
 import ConfirmModal from '@commons/modal/ConfirmModal';
-import '@styles/auth/login/ModeToggle.scss';
-import useModal from '@hooks/useModal';
 import TextPromptModal from '@commons/modal/TextPromptModal';
+import { LOGIN_MODE } from '@constants/auth/login';
+import useModal from '@hooks/useModal';
+import '@styles/auth/login/ModeToggle.scss';
 
 const ModeToggle: React.FC<{ mode: string }> = ({ mode }) => {
   const { isConfirm, isTextPrompt, onClickYes, openConfirm, closeConfirm } =
     useModal();
   const navigate = useNavigate();
-  const isAdminView = mode === 'admin';
+  const isAdminView = mode === LOGIN_MODE.admin;
 
   const onClickToggle = () => {
     if (isAdminView) {
@@ -22,8 +23,8 @@ const ModeToggle: React.FC<{ mode: string }> = ({ mode }) => {
 
   const onChangeMode = () => {
     closeConfirm();
-    navigate('?mode=admin');
     onClickYes();
+    navigate('?mode=admin');
   };
 
   return (
