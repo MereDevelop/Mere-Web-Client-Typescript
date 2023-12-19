@@ -6,8 +6,8 @@ import '@styles/auth/account/AccountStatus.scss';
 const AccountStatus: React.FC<{ currentStatus: string }> = ({
   currentStatus,
 }) => {
-  const isVerify = currentStatus === 'account' && 'proceed-state_selected';
-  const isReset = currentStatus === 'reset' && 'proceed-state_selected';
+  const isVerify = currentStatus === 'account' ? 'proceed-state_selected' : '';
+  const isReset = currentStatus === 'reset' ? 'proceed-state_selected' : '';
 
   return (
     <>
