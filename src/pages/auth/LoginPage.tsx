@@ -16,7 +16,7 @@ import { isCustomError } from '@utils/check';
 import { getDataInCookie, setDataInCookie } from '@utils/cookie';
 
 const LoginPage = () => {
-  const errors: CustomError | undefined = useActionData<typeof action>();
+  const errors: CustomError | undefined = useActionData<typeof loginAction>();
   const { userType, loggedId } = useLoaderData() as LoaderData<
     typeof loadUserLoginData
   >;
