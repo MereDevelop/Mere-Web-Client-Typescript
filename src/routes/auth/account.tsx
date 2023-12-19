@@ -1,6 +1,7 @@
 import { RouteObject } from 'react-router-dom';
 
 import AccountPage, { loadCurrentStatus } from '@pages/auth/AccountPage';
+import AccountVerificationPage from '@pages/auth/AccountVerificationPage';
 
 const accountRoute: RouteObject = {
   path: 'account',
@@ -9,6 +10,7 @@ const accountRoute: RouteObject = {
   children: [
     {
       index: true,
+      element: <AccountVerificationPage />,
     },
     {
       path: 'reset',
