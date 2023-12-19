@@ -2,7 +2,7 @@ import { RouteObject } from 'react-router-dom';
 
 import LoginPage, {
   loadUserLoginData,
-  action as loginAction,
+  loginAction,
 } from '@pages/auth/LoginPage';
 
 const loginRoute: RouteObject = {

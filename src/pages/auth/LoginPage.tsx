@@ -53,7 +53,7 @@ function assertionUserType(userType: string): userType is UserType {
   return userType === 'owner' || userType === 'admin';
 }
 
-export async function action({
+export async function loginAction({
   request,
 }: {
   request: Request;
