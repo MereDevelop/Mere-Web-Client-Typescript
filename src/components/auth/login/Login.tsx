@@ -4,7 +4,7 @@ import '@styles/auth/login/Login.scss';
 import LoginHeader from './LoginHeader';
 import LoginForm, { LoginFormProps } from './LoginForm';
 import LoginNavigation from './LoginNavigation';
-import ModeToggle from './ModeToggle';
+import LoginToggle from './LoginToggle';
 
 const Login: React.FC<LoginFormProps> = ({
   errors,
@@ -20,7 +20,7 @@ const Login: React.FC<LoginFormProps> = ({
   return (
     <div className={loginView}>
       <LoginHeader userType={userType} />
-      <ModeToggle userType={userType} />
+      <LoginToggle userType={userType} />
 
       <LoginForm
         errors={errors}
