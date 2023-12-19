@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { useTimer } from 'use-timer';
 
+import { VERIFICATION } from '@constants/auth/account';
 import { requestVerifyNumber } from '@services/auth/verification';
 import { isCustomError } from '@utils/check';
-import { VERIFICATION } from '@constants/auth/account';
+import { converterTime } from '@utils/converter';
 
 const useVerifyPhone = () => {
   const {
@@ -17,52 +18,48 @@ const useVerifyPhone = () => {
     timerType: 'DECREMENTAL',
   });
 
-  const [transmissionCount, setTransmissionCount] = useState<number>(
-    VERIFICATION.initTransmissionCount,
-  );
+  const [transmissionCount, setTransmissionCount] = useState<number>(0);
   const [isSend, setIsSend] = useState(false);
   const [isVerificationError, setIsVerificationError] = useState<string>('');
 
-  const timer = `${Math.floor(time / 60)
-    .toString()
-    .padStart(2, '0')}
-    :${(time % 60).toString().padStart(2, '0')}`;
+  const timer = converterTime(time);
 
-  const sendVerifyNumber = async (storeId: string, ownerPhone: string) => {
-    setTransmissionCount(transmissionCount + 1); // 인증 횟수 추가
-    if (isValidateTransmissionCount()) {
-      const data = {
-        storeAccountId: storeId,
-        phoneNumber: ownerPhone,
-      };
+  const sendVerificationNumber = async (
+    storeId: string,
+    ownerPhone: string,
+  ) => {
+    if (validateTransmissionCount()) {
+      setTransmissionCount(transmissionCount + 1); // 인증 횟수 추가
 
-      const response = await requestVerifyNumber(data);
+      const response = await requestVerifyNumber(storeId, ownerPhone);
       if (isCustomError(response)) {
         setIsVerificationError(response.errorCode);
         return;
       }
 
-      alert('인증번호를 전송하였습니다.');
-      reSendVerifyNumber();
+      handleVerificationResend();
     }
   };
 
-  const isValidateTransmissionCount = (): boolean => {
-    if (transmissionCount > VERIFICATION.maxTransmissionCount) {
+  const validateTransmissionCount = (): boolean => {
+    if (transmissionCount > VERIFICATION.maxCount) {
       alert('인증 횟수가 초과되어 3분동안 접근이 제한됩니다.');
       setTimeout(() => {
-        setTransmissionCount(VERIFICATION.initTransmissionCount);
+        setTransmissionCount(VERIFICATION.initCount);
       }, VERIFICATION.lockTime); // 3분
     }
 
-    return transmissionCount <= VERIFICATION.maxTransmissionCount;
+    return transmissionCount <= VERIFICATION.maxCount;
   };
 
-  const reSendVerifyNumber = () => {
-    resetTimer();
-    start();
+  const handleVerificationResend = () => {
+    alert('인증번호를 전송하였습니다.');
+
     setIsSend(true);
     setIsVerificationError('');
+
+    resetTimer();
+    start();
   };
 
   return {
@@ -70,7 +67,7 @@ const useVerifyPhone = () => {
     isSend,
     isVerificationError,
     timerStatus,
-    sendVerifyNumber,
+    sendVerificationNumber,
   };
 };
 

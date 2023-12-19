@@ -1,18 +1,14 @@
 import { CustomError } from '@custom/types/response';
 import axios from '@services/config';
 
-type ResetPasswordSMSVerificationType = {
-  storeAccountId: string;
-  phoneNumber: string;
-};
-
-export async function requestVerifyNumber(
-  data: ResetPasswordSMSVerificationType,
-) {
+export async function requestVerifyNumber(storeId: string, ownerPhone: string) {
   const response = await axios({
     method: 'post',
     url: '/owner/sign/reset-password/phone-verification-request',
-    data,
+    data: {
+      storeAccountId: storeId,
+      phoneNumber: ownerPhone,
+    },
   })
     .then((resData) => {
       const { data, status } = resData;

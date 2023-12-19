@@ -17,19 +17,24 @@ const AccountVerification = () => {
       ownerPhone: '',
       verificationNumber: '',
     });
-  const { timer, isSend, timerStatus, isVerificationError, sendVerifyNumber } =
-    useVerifyPhone();
+  const {
+    timer,
+    isSend,
+    timerStatus,
+    isVerificationError,
+    sendVerificationNumber,
+  } = useVerifyPhone();
   const { isSubmitting } = useOutletContext<NavigationState>();
 
   const disablePhoneBtn =
     errors.ownerPhone !== undefined || getValues('ownerPhone').length === 0;
   const isErrorVisible = touchedFields.ownerPhone && errors.ownerPhone;
 
-  const sendVerificationNumber = () => {
+  const onClickVerification = () => {
     const storeID = getValues('storeID');
     const ownerPhone = getValues('ownerPhone');
 
-    sendVerifyNumber(storeID, ownerPhone);
+    sendVerificationNumber(storeID, ownerPhone);
   };
 
   return (
@@ -59,7 +64,7 @@ const AccountVerification = () => {
             <button
               type='button'
               className='phone-check-btn'
-              onClick={sendVerificationNumber}
+              onClick={onClickVerification}
               disabled={disablePhoneBtn}
             >
               {isSend ? '재인증 요청' : '인증번호 받기'}
