@@ -4,7 +4,7 @@ import { useTimer } from 'use-timer';
 import { VERIFICATION } from '@constants/auth/account';
 import { requestVerifyNumber } from '@services/auth/verification';
 import { isCustomError } from '@utils/check';
-import { converterTime } from '@utils/converter';
+import { convertNumberToClockFormat } from '@utils/converter';
 
 const useVerifyPhone = () => {
   const {
@@ -22,7 +22,7 @@ const useVerifyPhone = () => {
   const [isSend, setIsSend] = useState(false);
   const [isVerificationError, setIsVerificationError] = useState<string>('');
 
-  const timer = converterTime(time);
+  const timer = convertNumberToClockFormat(time);
 
   const sendVerificationNumber = async (
     storeId: string,
