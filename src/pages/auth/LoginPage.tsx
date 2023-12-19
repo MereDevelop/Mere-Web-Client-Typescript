@@ -2,9 +2,10 @@ import { redirect, useLoaderData, useNavigation } from 'react-router-dom';
 import { LoaderData, useActionData } from 'react-router-typesafe';
 
 import Login from '@components/auth/login/Login';
-import { LOGIN_MODE } from '@constants/auth/login';
+import { USER_TYPE } from '@constants/auth/login';
 import { CustomError } from '@custom/types/response';
 import {
+  UserType,
   LoginFormData,
   LoginResponse,
   TokenResponse,
@@ -16,15 +17,16 @@ import { getDataInCookie, setDataInCookie } from '@utils/cookie';
 
 const LoginPage = () => {
   const errors: CustomError | undefined = useActionData<typeof action>();
-  const { mode, loggedId } = useLoaderData() as LoaderData<typeof loader>;
+  const { userType, loggedId } = useLoaderData() as LoaderData<
+    typeof loadUserLoginData
+  >;
   const navigation = useNavigation();
-
   const isSubmitting = navigation.state === 'submitting';
 
   return (
     <Login
       errors={errors}
-      mode={mode}
+      userType={userType}
       loggedId={loggedId}
       isSubmitting={isSubmitting}
     />
@@ -33,13 +35,22 @@ const LoginPage = () => {
 
 export default LoginPage;
 
-export function loader({ request }: { request: Request }) {
+export function loadUserLoginData({ request }: { request: Request }) {
   const params = new URL(request.url);
   const { searchParams } = params;
-  const mode: string = searchParams.get('mode') || LOGIN_MODE.owner;
-  const loggedId = getDataInCookie(`${mode}LoggedId`);
+  const userType: string = searchParams.get('type') || USER_TYPE.owner;
 
-  return { mode, loggedId };
+  if (assertionUserType(userType)) {
+    const loggedId = getDataInCookie(`${userType}LoggedId`);
+    return { userType, loggedId };
+  }
+
+  // 해당 모드를 임의로 조작하는 경우 / 이동
+  return redirect('/');
+}
+
+function assertionUserType(userType: string): userType is UserType {
+  return userType === 'owner' || userType === 'admin';
 }
 
 export async function action({
@@ -49,21 +60,21 @@ export async function action({
 }): Promise<CustomError | Response> {
   const data = await request.formData();
 
-  const mode = data.get('mode') as string;
+  const userType = data.get('userType') as string;
   const loginFormData: LoginFormData = {
     id: data.get('id'),
     password: data.get('password'),
   };
 
   const response: LoginResponse | CustomError = await requestSignIn(
-    mode,
+    userType,
     loginFormData,
   );
 
   if (isCustomError(response)) return response;
   await login(response.data);
 
-  return redirect(`/${mode}`);
+  return redirect(`/${userType}`);
 }
 
 async function login(data: TokenResponse) {

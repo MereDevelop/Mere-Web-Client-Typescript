@@ -1,11 +1,9 @@
-import { FormPlaceHolders } from '@custom/types/login/Login';
-
-export const LOGIN_MODE = Object.freeze({
+export const USER_TYPE = Object.freeze({
   owner: 'owner',
   admin: 'admin',
 });
 
-export const FORM_PLACEHOLDERS: FormPlaceHolders = Object.freeze({
+export const FORM_PLACEHOLDERS = Object.freeze({
   owner: {
     id: '아이디',
     save: '아이디 저장',
