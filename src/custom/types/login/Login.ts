@@ -1,18 +1,18 @@
 import { ApiResponse } from '../response';
 
-interface LoginPlaceHolders {
+export type UserType = 'owner' | 'admin';
+
+interface UserPlaceHolders {
   id: string;
   save: string;
 }
 
 export interface FormPlaceHolders {
-  [key: string]: LoginPlaceHolders;
-  admin: LoginPlaceHolders;
-  owner: LoginPlaceHolders;
+  admin: UserPlaceHolders;
+  owner: UserPlaceHolders;
 }
 
 export interface LoginFormData {
-  [key: string]: FormDataEntryValue | null;
   id: FormDataEntryValue | null;
   password: FormDataEntryValue | null;
 }

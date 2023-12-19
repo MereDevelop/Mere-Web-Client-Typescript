@@ -1,35 +1,34 @@
-import { LOGIN_MODE } from '@constants/auth/login';
-import { CustomError } from '@custom/types/response';
+import { USER_TYPE } from '@constants/auth/login';
 import '@styles/auth/login/Login.scss';
 
 import LoginHeader from './LoginHeader';
-import LoginForm from './LoginForm';
+import LoginForm, { LoginFormProps } from './LoginForm';
 import LoginNavigation from './LoginNavigation';
-import ModeToggle from './ModeToggle';
+import LoginToggle from './LoginToggle';
 
-const Login: React.FC<{
-  errors: CustomError | undefined;
-  mode: string;
-  loggedId: string;
-  isSubmitting: boolean;
-}> = ({ errors, mode, loggedId, isSubmitting }) => {
+const Login: React.FC<LoginFormProps> = ({
+  errors,
+  userType,
+  loggedId,
+  isSubmitting,
+}) => {
   const loginView =
-    mode === LOGIN_MODE.admin
+    userType === USER_TYPE.admin
       ? 'login-container admin-view'
       : 'login-container';
 
   return (
     <div className={loginView}>
-      <LoginHeader mode={mode} />
-      <ModeToggle mode={mode} />
+      <LoginHeader userType={userType} />
+      <LoginToggle userType={userType} />
 
       <LoginForm
         errors={errors}
-        mode={mode}
+        userType={userType}
         loggedId={loggedId}
         isSubmitting={isSubmitting}
       />
-      {mode === LOGIN_MODE.owner && <LoginNavigation />}
+      {userType === USER_TYPE.owner && <LoginNavigation />}
     </div>
   );
 };

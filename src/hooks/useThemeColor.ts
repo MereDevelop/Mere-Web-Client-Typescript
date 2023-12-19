@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 
 const useThemeColor = () => {
   const [searchParams] = useSearchParams();
-  const isDarkMode = searchParams.get('mode') === 'admin';
+  const isDarkMode = searchParams.get('type') === 'admin';
 
   useEffect(() => {
     if (isDarkMode) {

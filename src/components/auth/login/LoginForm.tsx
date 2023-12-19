@@ -5,17 +5,25 @@ import { useSubmit } from 'react-router-dom';
 import SaveCheck from '@assets/svg/saveCheck.svg';
 import LoadingSpinner from '@commons/BeatLoader';
 import { FORM_PLACEHOLDERS } from '@constants/auth/login';
+import { UserType } from '@custom/types/login/Login';
 import { CustomError } from '@custom/types/response';
 import { removeDataInCookie, setDataInCookie } from '@utils/cookie';
 import '@styles/auth/login/LoginForm.scss';
 
-const LoginForm: React.FC<{
+export type LoginFormProps = {
   errors: CustomError | undefined;
-  mode: string;
+  userType: UserType;
   loggedId: string;
   isSubmitting: boolean;
-}> = ({ errors, mode, loggedId, isSubmitting }) => {
-  const [id, setId] = useState(loggedId);
+};
+
+const LoginForm: React.FC<LoginFormProps> = ({
+  errors,
+  userType,
+  loggedId,
+  isSubmitting,
+}) => {
+  const [id, setId] = useState<string>(loggedId);
   const [isSave, isSaveToggle] = useToggle(!!loggedId);
   const submit = useSubmit();
 
@@ -27,22 +35,22 @@ const LoginForm: React.FC<{
   const onLogin: React.FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
 
-    if (isSave) setDataInCookie(`${mode}LoggedId`, id);
-    else removeDataInCookie(`${mode}LoggedId`);
+    if (isSave) setDataInCookie(`${userType}LoggedId`, id);
+    else removeDataInCookie(`${userType}LoggedId`);
 
     submit(event.currentTarget, { method: 'post' });
   };
 
   return (
     <form className='login-form' method='post' onSubmit={onLogin}>
-      <input type='hidden' name='mode' defaultValue={mode} />
+      <input type='hidden' name='userType' defaultValue={userType} />
       <div className='store-id-container'>
         <label className='label-invisible' htmlFor='id' />
         <input
           name='id'
           id='id'
           type='text'
-          placeholder={FORM_PLACEHOLDERS[mode].id}
+          placeholder={FORM_PLACEHOLDERS[userType].id}
           value={id}
           onChange={(e) => setId(e.target.value)}
           aria-errormessage={errors?.errorCode}
@@ -66,7 +74,7 @@ const LoginForm: React.FC<{
         >
           {isSave && <SaveCheck />}
         </button>
-        <p className='id-save-message'>{FORM_PLACEHOLDERS[mode].save}</p>
+        <p className='id-save-message'>{FORM_PLACEHOLDERS[userType].save}</p>
       </div>
       <p className='login-error-message'>{errors?.errorMessage}</p>
       <button

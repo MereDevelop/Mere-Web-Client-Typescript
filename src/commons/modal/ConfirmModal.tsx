@@ -22,7 +22,7 @@ const ConfirmModal: React.FC<ConfirmModalProps> = ({
   onCloseConfirm,
   onClickYes,
 }) => {
-  const [beforeMsg, afterMsg] = textMsg.split(mainMsg);
+  const [beforeMsg, afterMsg]: string[] = textMsg.split(mainMsg);
 
   return (
     <Modal className='change-mode-container' onClose={onCloseConfirm}>

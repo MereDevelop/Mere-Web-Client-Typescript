@@ -2,13 +2,17 @@ import Modal from './Modal';
 
 import '@styles/commons/modal/TextPromptModal.scss';
 
-type PromptType = 'basic' | 'reverse';
+type TextPromptModalProps = {
+  textMsg: string;
+  type: 'basic' | 'reverse';
+};
+
 const PROMPT_TYPE = Object.freeze({
   basic: 'basic-prompt-container',
   reverse: 'reverse-prompt-container',
 });
 
-const TextPromptModal: React.FC<{ textMsg: string; type: PromptType }> = ({
+const TextPromptModal: React.FC<TextPromptModalProps> = ({
   textMsg,
   type = 'basic',
 }) => {

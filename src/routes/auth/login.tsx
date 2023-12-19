@@ -1,14 +1,14 @@
 import { RouteObject } from 'react-router-dom';
 
 import LoginPage, {
-  loader as confirmLoginMode,
-  action as loginAction,
+  loadUserLoginData,
+  loginAction,
 } from '@pages/auth/LoginPage';
 
 const loginRoute: RouteObject = {
   index: true,
   element: <LoginPage />,
-  loader: confirmLoginMode,
+  loader: loadUserLoginData,
   action: loginAction,
 };
 
