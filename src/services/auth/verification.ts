@@ -1,7 +1,10 @@
 import { CustomError } from '@custom/types/response';
 import axios from '@services/config';
 
-export async function requestVerifyNumber(storeId: string, ownerPhone: string) {
+export async function requestVerificationNumber(
+  storeId: string,
+  ownerPhone: string,
+) {
   const response = await axios({
     method: 'post',
     url: '/owner/sign/reset-password/phone-verification-request',

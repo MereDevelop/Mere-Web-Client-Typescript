@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useTimer } from 'use-timer';
 
 import { VERIFICATION } from '@constants/auth/account';
-import { requestVerifyNumber } from '@services/auth/verification';
+import { requestVerificationNumber } from '@services/auth/verification';
 import { isCustomError } from '@utils/check';
 import { convertNumberToClockFormat } from '@utils/converter';
 
@@ -31,7 +31,7 @@ const useVerifyPhone = () => {
     if (validateTransmissionCount()) {
       setTransmissionCount(transmissionCount + 1); // 인증 횟수 추가
 
-      const response = await requestVerifyNumber(storeId, ownerPhone);
+      const response = await requestVerificationNumber(storeId, ownerPhone);
       if (isCustomError(response)) {
         setIsVerificationError(response.errorCode);
         return;
