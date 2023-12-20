@@ -16,12 +16,7 @@ export async function requestSignIn(
 
       return { success: true, data, status };
     })
-    .catch((error): CustomError => {
-      const { status, data } = error.response;
-      const { errorCode, errorMessage } = data;
-
-      return { success: false, errorCode, errorMessage, status };
-    });
+    .catch((error): CustomError => error);
 
   return response;
 }

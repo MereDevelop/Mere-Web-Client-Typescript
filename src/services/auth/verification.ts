@@ -19,12 +19,7 @@ export async function requestVerificationNumber(
 
       return { success: true, requestId, status };
     })
-    .catch((error): CustomError => {
-      const { status, data } = error.response;
-      const { errorCode, errorMessage } = data;
-
-      return { success: false, errorCode, errorMessage, status };
-    });
+    .catch((error): CustomError => error);
 
   return response;
 }
