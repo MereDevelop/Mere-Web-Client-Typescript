@@ -1,7 +1,9 @@
 import { RouteObject } from 'react-router-dom';
 
-import AccountPage, { loadCurrentStatus } from '@pages/auth/AccountPage';
-import AccountVerificationPage from '@pages/auth/AccountVerificationPage';
+import AccountPage, {
+  loadCurrentStatus,
+} from '@pages/auth/account/AccountPage';
+import AccountVerificationPage from '@pages/auth/account/AccountVerificationPage';
 
 const accountRoute: RouteObject = {
   path: 'account',
