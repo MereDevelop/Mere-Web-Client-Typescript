@@ -1,16 +1,16 @@
-import { Form, useOutletContext } from 'react-router-dom';
+import { Form } from 'react-router-dom';
 import { ErrorMessage } from '@hookform/error-message';
 
 import BeatLoader from '@commons/BeatLoader';
 import useFormValidation from '@hooks/useFormValidation';
 import useVerifyPhone from '@hooks/useVerifyPhone';
 import '@styles/auth/account/AccountVerification.scss';
+import { AccountVerificationProps } from '@custom/types/account/Account';
 
-type NavigationState = {
-  isSubmitting: boolean;
-};
-
-const AccountVerification = () => {
+const AccountVerification: React.FC<AccountVerificationProps> = ({
+  isSubmitting,
+  apiErrors,
+}) => {
   const { register, isValid, errors, touchedFields, getValues } =
     useFormValidation({
       storeID: '',
@@ -24,7 +24,6 @@ const AccountVerification = () => {
     isVerificationError,
     sendVerificationNumber,
   } = useVerifyPhone();
-  const { isSubmitting } = useOutletContext<NavigationState>();
 
   const disablePhoneBtn =
     errors.ownerPhone !== undefined || getValues('ownerPhone').length === 0;
@@ -83,7 +82,11 @@ const AccountVerification = () => {
         </div>
       </div>
       <div className='verification-error-container'>
-        {isErrorVisible ? (
+        {apiErrors ? (
+          <p className='verification-error-message'>
+            잘못된 정보가 없는지 확인해주세요.
+          </p>
+        ) : isErrorVisible ? (
           <ErrorMessage
             errors={errors}
             name='ownerPhone'
