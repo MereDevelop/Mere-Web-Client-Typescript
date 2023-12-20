@@ -1,5 +1,5 @@
-import { redirect, useLoaderData, useNavigation } from 'react-router-dom';
-import { LoaderData, useActionData } from 'react-router-typesafe';
+import { redirect, useNavigation } from 'react-router-dom';
+import { useLoaderData, useActionData } from 'react-router-typesafe';
 
 import Login from '@components/auth/login/Login';
 import { USER_TYPE } from '@constants/auth/login';
@@ -17,9 +17,8 @@ import { getDataInCookie, setDataInCookie } from '@utils/cookie';
 
 const LoginPage = () => {
   const errors: CustomError | undefined = useActionData<typeof loginAction>();
-  const { userType, loggedId } = useLoaderData() as LoaderData<
-    typeof loadUserLoginData
-  >;
+  const { userType, loggedId } = useLoaderData<typeof loadUserLoginData>();
+
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
 
