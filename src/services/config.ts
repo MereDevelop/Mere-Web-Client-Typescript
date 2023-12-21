@@ -1,5 +1,4 @@
 import axios from 'axios';
-import Cookies from 'js-cookie';
 
 import { SERVER_URL } from '@constants/api';
 import { CustomError } from '@custom/types/response';
@@ -8,7 +7,6 @@ const axiosInstance = axios.create({
   baseURL: SERVER_URL,
   timeout: 20000,
   headers: {
-    'Authorization-Access': Cookies.get('accesstoken'),
     'Content-Type': 'application/json',
     accept: 'application/json',
   },
