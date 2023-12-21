@@ -6,6 +6,10 @@ import AccountPage, {
 import AccountVerificationPage, {
   verificationUser,
 } from '@pages/auth/account/AccountVerificationPage';
+import AccountPasswordResetPage, {
+  checkAuthenticatedToken,
+  changePassword,
+} from '@pages/auth/account/AccountPasswordResetPage';
 
 const accountRoute: RouteObject = {
   path: 'account',
@@ -19,6 +23,9 @@ const accountRoute: RouteObject = {
     },
     {
       path: 'reset',
+      element: <AccountPasswordResetPage />,
+      loader: checkAuthenticatedToken,
+      action: changePassword,
     },
   ],
 };
