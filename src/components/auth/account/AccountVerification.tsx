@@ -9,7 +9,7 @@ import { AccountVerificationProps } from '@custom/types/account/Account';
 
 const AccountVerification: React.FC<AccountVerificationProps> = ({
   isSubmitting,
-  apiErrors,
+  responseError,
 }) => {
   const { register, isValid, errors, touchedFields, getValues } =
     useFormValidation({
@@ -82,7 +82,7 @@ const AccountVerification: React.FC<AccountVerificationProps> = ({
         </div>
       </div>
       <div className='verification-error-container'>
-        {apiErrors ? (
+        {responseError ? (
           <p className='verification-error-message'>
             잘못된 정보가 없는지 확인해주세요.
           </p>

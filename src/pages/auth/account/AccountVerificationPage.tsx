@@ -7,11 +7,14 @@ import { isCustomError } from '@utils/check';
 import { AccountVerificationProps } from '@custom/types/account/Account';
 
 const AccountVerificationPage = () => {
-  const { isSubmitting, apiErrors } =
+  const { isSubmitting, responseError } =
     useOutletContext<AccountVerificationProps>();
 
   return (
-    <AccountVerification isSubmitting={isSubmitting} apiErrors={apiErrors} />
+    <AccountVerification
+      isSubmitting={isSubmitting}
+      responseError={responseError}
+    />
   );
 };
 

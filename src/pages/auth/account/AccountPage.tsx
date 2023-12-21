@@ -9,7 +9,7 @@ import { verificationUser } from './AccountVerificationPage';
 const AccountPage = () => {
   const currentStatus = useLoaderData<typeof loadCurrentStatus>();
 
-  const apiErrors: CustomError | undefined =
+  const responseError: CustomError | undefined =
     useActionData<typeof verificationUser>();
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
@@ -17,7 +17,7 @@ const AccountPage = () => {
   return (
     <div className='account-container'>
       <AccountStatus currentStatus={currentStatus} />
-      <Outlet context={{ isSubmitting, apiErrors }} />
+      <Outlet context={{ isSubmitting, responseError }} />
     </div>
   );
 };
