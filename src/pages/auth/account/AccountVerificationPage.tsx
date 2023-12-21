@@ -2,7 +2,7 @@ import { redirect, useOutletContext } from 'react-router-dom';
 
 import AccountVerification from '@components/auth/account/AccountVerification';
 import { requestVerificationUser } from '@services/auth/verification';
-import { setAuthenticatedToken } from '@store/authenticatedToken-store';
+import { setUserVerification } from '@store/userVerification-store';
 import { isCustomError } from '@utils/check';
 import { AccountVerificationProps } from '@custom/types/account/Account';
 
@@ -29,7 +29,7 @@ export async function verificationUser({ request }: { request: Request }) {
   const response = await requestVerificationUser(verificationUserForm);
 
   if (isCustomError(response)) return response;
-  setAuthenticatedToken(response.smsAuthenticatedToken);
+  setUserVerification(response.smsAuthenticatedToken, response.ownerId);
 
   return redirect('./reset');
 }

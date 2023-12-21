@@ -40,9 +40,9 @@ export async function requestVerificationUser(
   })
     .then((resData) => {
       const { data, status } = resData;
-      const { smsAuthenticatedToken } = data;
+      const { smsAuthenticatedToken, ownerId } = data;
 
-      return { success: true, smsAuthenticatedToken, status };
+      return { success: true, smsAuthenticatedToken, ownerId, status };
     })
     .catch((error): CustomError => error);
 
