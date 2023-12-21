@@ -6,9 +6,9 @@ import BeatLoader from '@commons/BeatLoader';
 import { passwordFormSchema } from '@constants/validation/schema';
 import { AUTHENTICATE_ERROR } from '@constants/error/token';
 import { AuthenticateErrorCodeType } from '@custom/types/error/errorCode';
-import '@styles/auth/account/AccountPasswordReset.scss';
+import '@styles/auth/account/PasswordReset.scss';
 
-const AccountPasswordReset: React.FC<{
+const PasswordReset: React.FC<{
   isSubmitting: boolean;
   errorCode: AuthenticateErrorCodeType;
 }> = ({ isSubmitting, errorCode }) => {
@@ -60,4 +60,4 @@ const AccountPasswordReset: React.FC<{
   );
 };
 
-export default AccountPasswordReset;
+export default PasswordReset;

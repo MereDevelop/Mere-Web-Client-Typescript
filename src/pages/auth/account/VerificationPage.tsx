@@ -1,24 +1,20 @@
 import { redirect, useOutletContext } from 'react-router-dom';
 
-import AccountVerification from '@components/auth/account/AccountVerification';
+import Verification from '@components/auth/account/Verification';
 import { requestVerificationUser } from '@services/auth/verification';
 import { setUserVerification } from '@store/userVerification-store';
 import { isCustomError } from '@utils/check';
-import { AccountVerificationProps } from '@custom/types/account/Account';
+import { VerificationProps } from '@custom/types/account/Account';
 
-const AccountVerificationPage = () => {
-  const { isSubmitting, responseError } =
-    useOutletContext<AccountVerificationProps>();
+const VerificationPage = () => {
+  const { isSubmitting, responseError } = useOutletContext<VerificationProps>();
 
   return (
-    <AccountVerification
-      isSubmitting={isSubmitting}
-      responseError={responseError}
-    />
+    <Verification isSubmitting={isSubmitting} responseError={responseError} />
   );
 };
 
-export default AccountVerificationPage;
+export default VerificationPage;
 
 export async function verificationUser({ request }: { request: Request }) {
   const formData = await request.formData();

@@ -2,12 +2,12 @@ import { Form } from 'react-router-dom';
 import { ErrorMessage } from '@hookform/error-message';
 
 import BeatLoader from '@commons/BeatLoader';
+import { VerificationProps } from '@custom/types/account/Account';
 import useFormValidation from '@hooks/useFormValidation';
 import useVerifyPhone from '@hooks/useVerifyPhone';
-import '@styles/auth/account/AccountVerification.scss';
-import { AccountVerificationProps } from '@custom/types/account/Account';
+import '@styles/auth/account/Verification.scss';
 
-const AccountVerification: React.FC<AccountVerificationProps> = ({
+const Verification: React.FC<VerificationProps> = ({
   isSubmitting,
   responseError,
 }) => {
@@ -113,4 +113,4 @@ const AccountVerification: React.FC<AccountVerificationProps> = ({
   );
 };
 
-export default AccountVerification;
+export default Verification;

@@ -3,13 +3,13 @@ import { RouteObject } from 'react-router-dom';
 import AccountPage, {
   loadCurrentStatus,
 } from '@pages/auth/account/AccountPage';
-import AccountVerificationPage, {
+import VerificationPage, {
   verificationUser,
-} from '@pages/auth/account/AccountVerificationPage';
-import AccountPasswordResetPage, {
+} from '@pages/auth/account/VerificationPage';
+import PasswordReset, {
   checkAuthenticatedToken,
   changePassword,
-} from '@pages/auth/account/AccountPasswordResetPage';
+} from '@pages/auth/account/PasswordResetPage';
 
 const accountRoute: RouteObject = {
   path: 'account',
@@ -19,11 +19,11 @@ const accountRoute: RouteObject = {
   children: [
     {
       index: true,
-      element: <AccountVerificationPage />,
+      element: <VerificationPage />,
     },
     {
       path: 'reset',
-      element: <AccountPasswordResetPage />,
+      element: <PasswordReset />,
       loader: checkAuthenticatedToken,
       action: changePassword,
     },

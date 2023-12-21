@@ -1,24 +1,22 @@
 import { redirect, useNavigation } from 'react-router-dom';
 import { useActionData } from 'react-router-typesafe';
 
-import AccountPasswordReset from '@components/auth/account/AccountPasswordReset';
+import PasswordReset from '@components/auth/account/PasswordReset';
 import { AUTHENTICATE_ERROR } from '@constants/error/token';
 import { AuthenticateErrorCodeType } from '@custom/types/error/errorCode';
 import { requestChangePassword } from '@services/auth/sign';
 import { getUserVerification } from '@store/userVerification-store';
 import { isCustomError } from '@utils/check';
 
-const AccountPasswordResetPage = () => {
+const PasswordResetPage = () => {
   const errorCode = useActionData<typeof changePassword>();
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
 
-  return (
-    <AccountPasswordReset isSubmitting={isSubmitting} errorCode={errorCode} />
-  );
+  return <PasswordReset isSubmitting={isSubmitting} errorCode={errorCode} />;
 };
 
-export default AccountPasswordResetPage;
+export default PasswordResetPage;
 
 export async function checkAuthenticatedToken() {
   const { authenticateCode } = getUserVerification();

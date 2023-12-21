@@ -4,7 +4,7 @@ import { useActionData, useLoaderData } from 'react-router-typesafe';
 import AccountStatus from '@components/auth/account/AccountStatus';
 import { AccountStatusType } from '@custom/types/account/Account';
 import { CustomError } from '@custom/types/response';
-import { verificationUser } from './AccountVerificationPage';
+import { verificationUser } from './VerificationPage';
 
 const AccountPage = () => {
   const currentStatus = useLoaderData<typeof loadCurrentStatus>();
