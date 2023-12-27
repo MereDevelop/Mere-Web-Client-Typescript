@@ -6,7 +6,7 @@ import { USER_TYPE } from '@constants/auth/login';
 import { CustomError } from '@custom/types/response';
 import {
   UserType,
-  LoginFormData,
+  LoginForm,
   LoginResponse,
   TokenResponse,
 } from '@custom/types/login/Login';
@@ -60,7 +60,7 @@ export async function loginAction({
   const data = await request.formData();
 
   const userType = data.get('userType') as string;
-  const loginFormData: LoginFormData = {
+  const loginFormData: LoginForm = {
     id: data.get('id'),
     password: data.get('password'),
   };
