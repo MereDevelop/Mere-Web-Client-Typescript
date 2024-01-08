@@ -18,6 +18,7 @@ const Verification: React.FC<VerificationProps> = ({
       verificationNumber: '',
     });
   const {
+    isVerifing,
     timer,
     isSend,
     timerStatus,
@@ -30,6 +31,7 @@ const Verification: React.FC<VerificationProps> = ({
   const isErrorVisible = touchedFields.ownerPhone && errors.ownerPhone;
 
   const onClickVerification = () => {
+    if (isVerifing) return;
     const storeID = getValues('storeID');
     const ownerPhone = getValues('ownerPhone');
 

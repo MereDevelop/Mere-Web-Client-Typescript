@@ -18,6 +18,7 @@ const useVerifyPhone = () => {
     timerType: 'DECREMENTAL',
   });
 
+  const [isVerifing, setIsVerifing] = useState(false);
   const [transmissionCount, setTransmissionCount] = useState<number>(0);
   const [isSend, setIsSend] = useState(false);
   const [isVerificationError, setIsVerificationError] = useState<string>('');
@@ -29,6 +30,7 @@ const useVerifyPhone = () => {
     ownerPhone: string,
   ) => {
     if (validateTransmissionCount()) {
+      setIsVerifing(true);
       const response = await requestVerificationNumber(storeId, ownerPhone);
       if (isCustomError(response)) {
         setIsVerificationError(response.errorCode);
@@ -38,6 +40,8 @@ const useVerifyPhone = () => {
       setTransmissionCount(transmissionCount + 1); // 인증 횟수 추가
       handleVerificationResend();
     }
+
+    setIsVerifing(false);
   };
 
   const validateTransmissionCount = (): boolean => {
@@ -62,6 +66,7 @@ const useVerifyPhone = () => {
   };
 
   return {
+    isVerifing,
     timer,
     isSend,
     isVerificationError,
