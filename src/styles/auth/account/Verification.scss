@@ -1,0 +1,331 @@
+@import '@styles/media/mixin';
+
+// desktop (1920px ~
+.verification-form {
+  width: 100%;
+  margin-top: 55px;
+
+  display: flex;
+  flex-direction: column;
+
+  .verification-input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 28.5px;
+
+    .store-id-container,
+    .owner-phone-container {
+      display: flex;
+      flex-direction: column;
+
+      width: 100%;
+
+      label {
+        font-weight: 600;
+        font-size: 25px;
+        line-height: 30px;
+        margin-bottom: 20px;
+      }
+
+      .label-inivisible {
+        display: none;
+      }
+
+      input[id='storeID'],
+      input[id='ownerPhone'],
+      input[id='verificationNumber'] {
+        height: 77px;
+        background-color: #ffffff;
+
+        border-width: 1.5px;
+        border-style: solid;
+        border-color: #e6e9ee;
+        border-radius: 10px;
+
+        padding-inline-start: 20px;
+        font-size: 25px;
+
+        &::placeholder {
+          color: #898c9a;
+        }
+
+        &:focus,
+        &:active {
+          outline: none;
+          border-color: #4162ff;
+        }
+
+        &[aria-errormessage='NF0000'] {
+          border-color: #ff5a69;
+        }
+
+        &.error-border {
+          border-color: #ff5a69;
+        }
+      }
+
+      input[id='verificationNumber']:disabled {
+        background: #d3d5de;
+      }
+
+      .phone-check-container {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 18px;
+
+        input[id='ownerPhone'] {
+          width: 236px;
+        }
+
+        .phone-check-btn {
+          width: 185px;
+          height: 77px;
+
+          font-size: 25px;
+          line-height: 30px;
+
+          color: #4162ff;
+          background-color: #ffffff;
+
+          border: 1.5px;
+          border-style: solid;
+          border-color: #4162ff;
+          border-radius: 10px;
+
+          cursor: pointer;
+
+          &:focus {
+            outline: none;
+          }
+
+          &:hover {
+            background-color: #cde2ff;
+          }
+
+          &:disabled {
+            cursor: initial;
+            color: #ffffff;
+            border-color: #d9d9d9;
+            background-color: #898c9a;
+          }
+        }
+      }
+
+      .verification-check-container {
+        position: relative;
+        display: flex;
+
+        input[id='verificationNumber'] {
+          flex: 1;
+        }
+
+        .verification-timer {
+          position: absolute;
+          top: 50%;
+          right: 25.5px;
+
+          transform: translate(0, -50%);
+
+          font-size: 20px;
+          line-height: 24px;
+          color: #ff5a69;
+        }
+      }
+    }
+  }
+
+  .verification-error-container {
+    height: 99.5px;
+
+    .verification-error-message {
+      margin-top: 16px;
+
+      font-size: 20px;
+      line-height: 24px;
+      color: #ff5a69;
+    }
+  }
+
+  .verification-submit-btn {
+    width: 100%;
+    height: 77px;
+
+    color: #ffffff;
+    background-color: #4162ff;
+
+    border-radius: 10px;
+
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 36px;
+
+    cursor: pointer;
+
+    &:disabled {
+      background-color: #898c9a;
+      cursor: initial;
+    }
+  }
+}
+
+// pos (1024 ~ 1919px)
+@include pos {
+  .verification-form {
+    margin-top: 50.5px;
+
+    .verification-input-container {
+      gap: 16.5px;
+
+      .store-id-container,
+      .owner-phone-container {
+        label {
+          font-size: 18px;
+          line-height: 21.5px;
+
+          margin-bottom: 10px;
+        }
+
+        input[id='storeID'],
+        input[id='ownerPhone'],
+        input[id='verificationNumber'] {
+          height: 49px;
+
+          font-size: 18px;
+          line-height: 21.5px;
+
+          &::placeholder {
+            font-size: 18px;
+            line-height: 21.5px;
+          }
+        }
+
+        .phone-check-container {
+          margin-bottom: 13.6px;
+
+          input[id='ownerPhone'] {
+            width: 144px;
+          }
+
+          .phone-check-btn {
+            width: 114px;
+            height: 54px;
+
+            font-size: 17px;
+            line-height: 20px;
+
+            border-radius: 7px;
+          }
+        }
+
+        .verification-check-container {
+          .verification-timer {
+            right: 20.5px;
+
+            font-size: 16px;
+            line-height: 19px;
+          }
+        }
+      }
+    }
+
+    .verification-error-container {
+      height: 52.5px;
+
+      .verification-error-message {
+        margin-top: 8.5px;
+
+        font-size: 16px;
+        line-height: 19px;
+      }
+    }
+
+    .verification-submit-btn {
+      margin-top: 36px;
+
+      height: 49px;
+      border-radius: 7px;
+
+      font-size: 18px;
+    }
+  }
+}
+
+// tablet (768 ~ 1023px)
+@include tablet {
+  .verification-form {
+    margin-top: 74.7px;
+
+    .verification-input-container {
+      gap: 13.5px;
+
+      .store-id-container,
+      .owner-phone-container {
+        label {
+          font-size: 16px;
+          line-height: 19px;
+
+          margin-bottom: 7px;
+        }
+
+        input[id='storeID'],
+        input[id='ownerPhone'],
+        input[id='verificationNumber'] {
+          height: 49px;
+
+          font-size: 16px;
+          line-height: 19px;
+
+          &::placeholder {
+            font-size: 16px;
+            line-height: 19px;
+          }
+        }
+
+        .phone-check-container {
+          margin-bottom: 12.5px;
+
+          input[id='ownerPhone'] {
+            width: 148px;
+          }
+
+          .phone-check-btn {
+            width: 111px;
+            height: 54px;
+
+            font-size: 16px;
+            line-height: 19px;
+
+            border-radius: 7px;
+          }
+        }
+
+        .verification-check-container {
+          .verification-timer {
+            right: 20.5px;
+
+            font-size: 16px;
+            line-height: 19px;
+          }
+        }
+      }
+    }
+
+    .verification-error-container {
+      height: 54.5px;
+
+      .verification-error-message {
+        margin-top: 9.5px;
+
+        font-size: 16px;
+        line-height: 19px;
+      }
+    }
+
+    .verification-submit-btn {
+      margin-top: 41.5px;
+
+      height: 49px;
+      font-size: 18px;
+    }
+  }
+}

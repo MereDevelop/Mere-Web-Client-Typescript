@@ -1,10 +1,14 @@
 import { CustomError } from '@custom/types/response';
-import { LoginFormData, LoginResponse } from '@custom/types/login/Login';
+import {
+  LoginForm,
+  ChangePasswordForm,
+  LoginResponse,
+} from '@custom/types/login/Login';
 import axios from '@services/config';
 
 export async function requestSignIn(
   mode: string,
-  loginFormData: LoginFormData,
+  loginFormData: LoginForm,
 ): Promise<LoginResponse | CustomError> {
   const response = await axios({
     method: 'post',
@@ -16,12 +20,29 @@ export async function requestSignIn(
 
       return { success: true, data, status };
     })
-    .catch((error): CustomError => {
-      const { status, data } = error.response;
-      const { errorCode, errorMessage } = data;
+    .catch((error): CustomError => error);
 
-      return { success: false, errorCode, errorMessage, status };
-    });
+  return response;
+}
+
+export async function requestChangePassword(
+  authenticateCode: string | undefined,
+  changePasswordForm: ChangePasswordForm,
+) {
+  const response = await axios({
+    method: 'post',
+    url: '/owner/sign/reset-password',
+    data: changePasswordForm,
+    headers: {
+      'Authorization-Access': authenticateCode,
+    },
+  })
+    .then((resData) => {
+      const { data, status } = resData;
+
+      return { success: true, data, status };
+    })
+    .catch((error): CustomError => error);
 
   return response;
 }

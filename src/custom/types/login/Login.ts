@@ -12,9 +12,16 @@ export interface FormPlaceHolders {
   owner: UserPlaceHolders;
 }
 
-export interface LoginFormData {
-  id: FormDataEntryValue | null;
+interface BasicSignForm {
   password: FormDataEntryValue | null;
+}
+
+export interface LoginForm extends BasicSignForm {
+  id: FormDataEntryValue | null;
+}
+
+export interface ChangePasswordForm extends BasicSignForm {
+  id: string | undefined;
 }
 
 export interface TokenResponse {
