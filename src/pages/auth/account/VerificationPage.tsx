@@ -28,7 +28,10 @@ export async function verificationUser({ request }: { request: Request }) {
   const response = await requestVerificationUser(verificationUserForm);
 
   if (isCustomError(response)) return response;
-  setUserVerification(response.smsAuthenticatedToken, response.ownerId);
+  setUserVerification(
+    response.smsAuthenticatedToken,
+    verificationUserForm.storeAccountId as string,
+  );
 
   return redirect('./reset');
 }

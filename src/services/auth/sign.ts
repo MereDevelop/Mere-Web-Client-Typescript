@@ -34,7 +34,7 @@ export async function requestChangePassword(
     url: '/owner/sign/reset-password',
     data: changePasswordForm,
     headers: {
-      'Authorization-Access': 'asdfasdfsa',
+      'Authorization-Access': authenticateCode,
     },
   })
     .then((resData) => {

@@ -29,14 +29,13 @@ const useVerifyPhone = () => {
     ownerPhone: string,
   ) => {
     if (validateTransmissionCount()) {
-      setTransmissionCount(transmissionCount + 1); // 인증 횟수 추가
-
       const response = await requestVerificationNumber(storeId, ownerPhone);
       if (isCustomError(response)) {
         setIsVerificationError(response.errorCode);
         return;
       }
 
+      setTransmissionCount(transmissionCount + 1); // 인증 횟수 추가
       handleVerificationResend();
     }
   };
