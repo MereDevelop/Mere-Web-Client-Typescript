@@ -17,6 +17,8 @@ export async function requestSignIn(
   })
     .then((resData): LoginResponse => {
       const { data, status } = resData;
+      axios.defaults.headers['Authorization-Access'] =
+        data.accessTokenDto.accessToken;
 
       return { success: true, data, status };
     })
