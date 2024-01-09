@@ -1,0 +1,124 @@
+@import '@styles/media/mixin';
+
+// desktop (1920px ~
+.signup-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 607px;
+  height: 546px;
+
+  margin: 0 auto;
+  padding-top: 163.5px;
+
+  .home-navigation-logo {
+    position: absolute;
+    top: 64px;
+    left: 60px;
+
+    width: 116px;
+    height: 30px;
+
+    .logo-image {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .signup-title {
+    font-size: 35px;
+    font-weight: 600;
+    line-height: 42px;
+
+    padding-bottom: 38px;
+  }
+
+  .proceed-container {
+    display: flex; // ?
+    justify-content: space-between; // ?
+    width: 535px;
+
+    .proceed-state,
+    .proceed-state-divider {
+      font-size: 22px;
+      line-height: 26.25px;
+      color: #898c9a;
+    }
+
+    .proceed-state_selected {
+      color: #4162ff;
+      border-bottom: 1px solid #4162ff;
+    }
+  }
+}
+
+// pos (1024 ~ 1919px)
+@include pos {
+  .signup-container {
+    width: 375px;
+    height: 342px;
+
+    padding-top: 130px;
+
+    .home-navigation-logo {
+      top: 58px;
+      left: 44px;
+
+      width: 87.5px;
+      height: 22px;
+    }
+
+    .signup-title {
+      font-size: 22px;
+      line-height: 26.25px;
+
+      padding-bottom: 16px;
+    }
+
+    .proceed-container {
+      width: 391px;
+
+      .proceed-state,
+      .proceed-state-divider {
+        font-size: 16px;
+        line-height: 19px;
+      }
+    }
+  }
+}
+
+// tablet (768 ~ 1023px)
+@include tablet {
+  .signup-container {
+    width: 318px;
+    height: 293px;
+
+    padding-top: 157.75px;
+
+    .home-navigation-logo {
+      top: 59px;
+      left: 44px;
+
+      width: 60px;
+      height: 15px;
+    }
+
+    .signup-title {
+      font-size: 20px;
+      line-height: 24px;
+
+      padding-bottom: 11.5px;
+    }
+
+    .proceed-container {
+      width: 353px;
+
+      .proceed-state,
+      .proceed-state-divider {
+        font-size: 14px;
+        line-height: 17px;
+      }
+    }
+  }
+}
