@@ -1,0 +1,79 @@
+@import '@styles/media/mixin';
+
+// desktop (1920px ~
+.home-layout-container {
+  display: flex;
+  position: relative;
+
+  width: 100%;
+  height: 100vh;
+
+  .home-main-container {
+    flex: 1;
+
+    display: flex;
+    height: 100%;
+
+    .panel-list-container {
+      position: relative;
+      left: -52px;
+
+      z-index: 1;
+      width: 415px;
+      height: 100%;
+
+      background-color: #ffffff;
+      box-shadow: 6px 0px 6px rgba(0, 0, 0, 0.07);
+      border-radius: 30px;
+    }
+
+    .order-content-container {
+      flex: 1;
+
+      display: flex;
+      flex-direction: column;
+
+      padding: 21.5px 88.5px 0 25.5px;
+    }
+  }
+}
+
+// pos (1024 ~ 1919px)
+@include pos {
+  .home-layout-container {
+    .home-main-container {
+      .panel-list-container {
+        left: -19.5px;
+
+        width: 248px;
+
+        box-shadow: 6px 0px 6px 0px rgba(0, 0, 0, 0.07);
+        border-radius: 15px;
+      }
+
+      .order-content-container {
+        padding: 14px 28px 0 11px;
+      }
+    }
+  }
+}
+
+// tablet (768 ~ 1023px)
+@include tablet {
+  .home-layout-container {
+    .home-main-container {
+      .panel-list-container {
+        left: -15px;
+
+        width: 183px;
+
+        border-radius: 10px;
+        box-shadow: 6px 0px 6px 0px rgba(0, 0, 0, 0.07);
+      }
+
+      .order-content-container {
+        padding: 28px 21px 0 11px;
+      }
+    }
+  }
+}
