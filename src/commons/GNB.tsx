@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import warningRedIcon from '@assets/warning_red_icon.png';
 import warningBlueIcon from '@assets/warning_blue_icon.png';
 import GNBItems from '@constants/gnb';
+import useErrorMessage from '@hooks/useErrorMessage';
 import useModal from '@hooks/useModal';
 import {
   requestOpenOperationStatus,
@@ -21,22 +21,12 @@ import TextPromptModal from './modal/TextPromptModal';
 
 const GNB = () => {
   const isOpen = getOperationStatus();
-  const [errorMessage, setErrorMessage] = useState('');
-
+  const [errorMessage, setErrorMessage] = useErrorMessage();
   const { isConfirm, isTextPrompt, onClickYes, openConfirm, closeConfirm } =
     useModal();
 
-  useEffect(() => {
-    if (errorMessage) {
-      setTimeout(() => {
-        setErrorMessage('');
-      }, 1500);
-    }
-  }, [errorMessage]);
-
   const openOperationStatus = async () => {
     const response = await requestOpenOperationStatus();
-
     if (response.status !== 200) {
       setErrorMessage(response.message);
       return;
