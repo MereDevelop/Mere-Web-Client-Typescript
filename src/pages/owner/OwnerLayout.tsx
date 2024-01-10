@@ -1,14 +1,17 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, redirect } from 'react-router-dom';
 
 import GNB from '@commons/GNB';
-import { getStoreOperationStatus } from '@services/owner/store';
-import { setOperationStatus } from '@store/operation-status-store';
+import { requestStoreOperationStatus } from '@services/owner/store';
 import '@styles/owner/OwnerLayout.scss';
+import { isFailureResponse } from '@utils/check';
+import { useLoaderData } from 'react-router-typesafe';
 
 const HomeLayout = () => {
+  const operationStatus = useLoaderData<typeof getOperationStatusLoader>();
+
   return (
     <div className='home-layout-container'>
-      <GNB />
+      <GNB operationStatus={operationStatus} />
 
       <div className='home-main-container'>
         <Outlet />
@@ -20,11 +23,8 @@ const HomeLayout = () => {
 export default HomeLayout;
 
 export async function getOperationStatusLoader() {
-  // 영업 상태를 받아오는 API 연결 필요
-  const response = await getStoreOperationStatus();
-  const { data: status } = response;
+  const response = await requestStoreOperationStatus();
 
-  setOperationStatus(status);
-
-  return null;
+  if (isFailureResponse(response)) return redirect('/');
+  return response.data;
 }

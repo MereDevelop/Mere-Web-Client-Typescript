@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import warningRedIcon from '@assets/warning_red_icon.png';
@@ -5,52 +6,30 @@ import warningBlueIcon from '@assets/warning_blue_icon.png';
 import GNBItems from '@constants/gnb';
 import useErrorMessage from '@hooks/useErrorMessage';
 import useModal from '@hooks/useModal';
-import {
-  requestOpenOperationStatus,
-  requestCloseOperationStatus,
-} from '@services/owner/store';
-import {
-  getOperationStatus,
-  setOperationStatus,
-} from '@store/operation-status-store';
-
+import { requestChangeOperationStatus } from '@services/owner/store';
 import '@styles/commons/GNB.scss';
+import { isFailureResponse } from '@utils/check';
 
 import ConfirmModal from './modal/ConfirmModal';
 import TextPromptModal from './modal/TextPromptModal';
 
-const GNB = () => {
-  const isOpen = getOperationStatus();
+const GNB: React.FC<{ operationStatus: boolean }> = ({ operationStatus }) => {
+  const [isOpen, setIsOpen] = useState(operationStatus);
   const [errorMessage, setErrorMessage] = useErrorMessage();
   const { isConfirm, isTextPrompt, onClickYes, openConfirm, closeConfirm } =
     useModal();
-
-  const openOperationStatus = async () => {
-    const response = await requestOpenOperationStatus();
-    if (response.status !== 200) {
-      setErrorMessage(response.message);
-      return;
-    }
-
-    setOperationStatus(true);
-  };
-
-  const closeOperationStatus = async () => {
-    const response = await requestCloseOperationStatus();
-    if (response.status !== 200) {
-      setErrorMessage(response.message);
-      return;
-    }
-
-    setOperationStatus(false);
-  };
 
   const onClickChangeOperationStatus = async () => {
     closeConfirm();
     onClickYes();
 
-    if (isOpen) await closeOperationStatus();
-    else await openOperationStatus();
+    const response = await requestChangeOperationStatus(isOpen);
+    if (isFailureResponse(response)) {
+      setErrorMessage(response.errorMessage);
+      return;
+    }
+
+    setIsOpen(!isOpen);
   };
 
   return (
@@ -112,9 +91,7 @@ const GNB = () => {
       )}
       {!errorMessage && isTextPrompt && (
         <TextPromptModal
-          textMsg={
-            !isOpen ? '영업이 시작되었습니다.' : '영업이 종료되었습니다.'
-          }
+          textMsg={isOpen ? '영업이 시작되었습니다.' : '영업이 종료되었습니다.'}
           type='basic'
         />
       )}
