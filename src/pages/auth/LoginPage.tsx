@@ -3,7 +3,7 @@ import { useLoaderData, useActionData } from 'react-router-typesafe';
 
 import Login from '@components/auth/login/Login';
 import { USER_TYPE } from '@constants/auth/login';
-import { CustomError } from '@custom/types/response';
+import { FailureResponse } from '@services/crud';
 import {
   UserType,
   LoginForm,
@@ -12,11 +12,12 @@ import {
 } from '@custom/types/login/Login';
 import { requestSignIn } from '@services/auth/sign';
 import { setAccessToken } from '@store/auth-store';
-import { isCustomError } from '@utils/check';
+import { isFailureResponse } from '@utils/check';
 import { getDataInCookie, setDataInCookie } from '@utils/cookie';
 
 const LoginPage = () => {
-  const errors: CustomError | undefined = useActionData<typeof loginAction>();
+  const errors: FailureResponse | undefined =
+    useActionData<typeof loginAction>();
   const { userType, loggedId } = useLoaderData<typeof loadUserLoginData>();
 
   const navigation = useNavigation();
@@ -56,7 +57,7 @@ export async function loginAction({
   request,
 }: {
   request: Request;
-}): Promise<CustomError | Response> {
+}): Promise<FailureResponse | Response> {
   const data = await request.formData();
 
   const userType = data.get('userType') as string;
@@ -65,12 +66,12 @@ export async function loginAction({
     password: data.get('password'),
   };
 
-  const response: LoginResponse | CustomError = await requestSignIn(
+  const response: LoginResponse | FailureResponse = await requestSignIn(
     userType,
     loginFormData,
   );
 
-  if (isCustomError(response)) return response;
+  if (isFailureResponse(response)) return response;
   await login(response.data);
 
   return redirect(`/${userType}`);

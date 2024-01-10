@@ -3,7 +3,7 @@ import { redirect, useOutletContext } from 'react-router-dom';
 import Verification from '@components/auth/account/Verification';
 import { requestVerificationUser } from '@services/auth/verification';
 import { setUserVerification } from '@store/userVerification-store';
-import { isCustomError } from '@utils/check';
+import { isFailureResponse } from '@utils/check';
 import { VerificationProps } from '@custom/types/account/Account';
 
 const VerificationPage = () => {
@@ -27,7 +27,7 @@ export async function verificationUser({ request }: { request: Request }) {
 
   const response = await requestVerificationUser(verificationUserForm);
 
-  if (isCustomError(response)) return response;
+  if (isFailureResponse(response)) return response;
   setUserVerification(
     response.smsAuthenticatedToken,
     verificationUserForm.storeAccountId as string,

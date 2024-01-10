@@ -1,7 +1,7 @@
-import { ApiResponse, CustomError } from '@custom/types/response';
+import { SuccessResponse, FailureResponse } from '@services/crud';
 
-export function isCustomError(
-  response: ApiResponse | CustomError,
-): response is CustomError {
-  return !response.success;
+export function isFailureResponse<T>(
+  response: SuccessResponse<T> | FailureResponse,
+): response is FailureResponse {
+  return !response.isSuccess;
 }

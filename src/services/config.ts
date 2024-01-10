@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import { SERVER_URL } from '@constants/api';
-import { CustomError } from '@custom/types/response';
+import { FailureResponse } from '@services/crud';
 import {
   TokenExpirationErrorCodeType,
   UserTokenErrorCodeType,
@@ -47,14 +47,13 @@ axiosInstance.interceptors.response.use(
       return error;
     }
 
-    const { status, data } = error.response;
+    const { data } = error.response;
     const { errorCode, errorMessage } = data;
 
-    const customError: CustomError = {
-      success: false,
+    const customError: FailureResponse = {
+      isSuccess: false,
       errorCode,
       errorMessage,
-      status,
     };
 
     return Promise.reject(customError);

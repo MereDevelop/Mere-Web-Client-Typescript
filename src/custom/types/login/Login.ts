@@ -1,5 +1,3 @@
-import { ApiResponse } from '../response';
-
 export type UserType = 'owner' | 'admin';
 
 interface UserPlaceHolders {
@@ -22,20 +20,4 @@ export interface LoginForm extends BasicSignForm {
 
 export interface ChangePasswordForm extends BasicSignForm {
   id: string | undefined;
-}
-
-export interface TokenResponse {
-  accessTokenDto: {
-    accessToken: string;
-    accessTokenExpiredTime: string;
-  };
-  refreshTokenDto: {
-    refreshToken: string;
-    refreshTokenExpiredTime: string;
-  };
-}
-
-export interface LoginResponse extends ApiResponse {
-  data: TokenResponse;
-  status: number;
 }

@@ -6,12 +6,12 @@ import SaveCheck from '@assets/svg/saveCheck.svg';
 import LoadingSpinner from '@commons/BeatLoader';
 import { FORM_PLACEHOLDERS } from '@constants/auth/login';
 import { UserType } from '@custom/types/login/Login';
-import { CustomError } from '@custom/types/response';
+import { FailureResponse } from '@services/crud';
 import { removeDataInCookie, setDataInCookie } from '@utils/cookie';
 import '@styles/auth/login/LoginForm.scss';
 
 export type LoginFormProps = {
-  errors: CustomError | undefined;
+  errors: FailureResponse | undefined;
   userType: UserType;
   loggedId: string;
   isSubmitting: boolean;

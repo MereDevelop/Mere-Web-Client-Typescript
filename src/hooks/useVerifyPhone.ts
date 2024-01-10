@@ -3,7 +3,7 @@ import { useTimer } from 'use-timer';
 
 import { VERIFICATION } from '@constants/auth/account';
 import { requestVerificationNumber } from '@services/auth/verification';
-import { isCustomError } from '@utils/check';
+import { isFailureResponse } from '@utils/check';
 import { convertNumberToClockFormat } from '@utils/converter';
 
 const useVerifyPhone = () => {
@@ -32,7 +32,7 @@ const useVerifyPhone = () => {
     if (validateTransmissionCount()) {
       setIsVerifing(true);
       const response = await requestVerificationNumber(storeId, ownerPhone);
-      if (isCustomError(response)) {
+      if (isFailureResponse(response)) {
         setIsVerificationError(response.errorCode);
         return;
       }
