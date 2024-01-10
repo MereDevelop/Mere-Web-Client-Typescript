@@ -3,7 +3,7 @@ import BeatLoader from '@commons/BeatLoader';
 import '@styles/auth/account/Verification.scss';
 import { StoreInfoProps } from '@custom/types/signup/Signup';
 import { useState } from 'react';
-import '@styles/auth/signup/OwnerInfoForm.scss';
+import '@styles/auth/signup/StoreInfoForm.scss';
 
 const StoreInfo: React.FC<StoreInfoProps> = ({ isSubmitting }) => {
   const [storeName, setStoreName] = useState<string | undefined>();

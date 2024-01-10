@@ -1,0 +1,235 @@
+@import '@styles/media/mixin';
+
+// desktop (1920px ~
+.store-info-form {
+  width: 100%;
+  margin-top: 55px;
+
+  display: flex;
+  flex-direction: column;
+
+  .store-info-input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 28.5px;
+
+    .store-name-container,
+    .store-phone-container,
+    .store-address-container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      label {
+        font-weight: 600;
+        font-size: 25px;
+        line-height: 30px;
+        margin-bottom: 20px;
+      }
+
+      .label-inivisible {
+        display: none;
+      }
+
+      input[id='storeName'],
+      input[id='storePhone'],
+      input[id='storeAddress'],
+      input[id='storeAddressDetail'] {
+        height: 77px;
+        background-color: #ffffff;
+
+        border-width: 1.5px;
+        border-style: solid;
+        border-color: #e6e9ee;
+        border-radius: 10px;
+
+        padding-inline-start: 20px;
+        font-size: 25px;
+
+        &::placeholder {
+          color: #898c9a;
+        }
+
+        &:focus,
+        &:active {
+          outline: none;
+          border-color: #4162ff;
+        }
+      }
+
+      .store-address-search-container {
+        display: flex;
+        margin-bottom: 15px;
+        input[id='storeAddress'] {
+          width: 100%;
+          margin-right: 10px;
+        }
+      }
+
+      .store-address-search-btn {
+        width: 185px;
+        height: 77px;
+
+        font-size: 25px;
+        line-height: 30px;
+
+        color: #4162ff;
+        background-color: #ffffff;
+
+        border: 1.5px;
+        border-style: solid;
+        border-color: #4162ff;
+        border-radius: 10px;
+      }
+    }
+  }
+
+  .store-info-submit-btn {
+    width: 80%;
+
+    height: 77px;
+    margin-left: 10%;
+    margin-top: 65px;
+    color: #ffffff;
+    background-color: #4162ff;
+
+    border-radius: 10px;
+
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 36px;
+
+    cursor: pointer;
+
+    &:disabled {
+      background-color: #898c9a;
+      cursor: initial;
+    }
+  }
+}
+
+// pos (1024 ~ 1919px)
+@include pos {
+  .store-info-form {
+    margin-top: 50.5px;
+
+    .store-info-input-container {
+      gap: 16.5px;
+
+      .store-name-container,
+      .store-phone-container,
+      .store-address-container {
+        label {
+          font-size: 18px;
+          line-height: 21.5px;
+
+          margin-bottom: 10px;
+        }
+
+        input[id='storeName'],
+        input[id='storePhone'],
+        input[id='storeAddress'],
+        input[id='storeAddressDetail'] {
+          height: 49px;
+
+          font-size: 18px;
+          line-height: 21.5px;
+
+          &::placeholder {
+            font-size: 18px;
+            line-height: 21.5px;
+          }
+        }
+
+        .store-address-search-container {
+          margin-bottom: 13.6px;
+
+          input[id='storePhone'] {
+            width: 144px;
+          }
+
+          .store-address-search-btn {
+            width: 114px;
+            height: 54px;
+
+            font-size: 17px;
+            line-height: 20px;
+
+            border-radius: 7px;
+          }
+        }
+      }
+    }
+
+    .store-info-submit-btn {
+      margin-top: 36px;
+
+      height: 49px;
+      border-radius: 7px;
+
+      font-size: 18px;
+    }
+  }
+}
+
+// tablet (768 ~ 1023px)
+@include tablet {
+  .store-info-form {
+    margin-top: 74.7px;
+
+    .store-info-input-container {
+      gap: 13.5px;
+
+      .store-name-container,
+      .store-phone-container,
+      .store-address-container {
+        label {
+          font-size: 16px;
+          line-height: 19px;
+
+          margin-bottom: 7px;
+        }
+
+        input[id='storeName'],
+        input[id='storePhone'],
+        input[id='storeAddress'],
+        input[id='storeAddressDetail'] {
+          height: 49px;
+
+          font-size: 16px;
+          line-height: 19px;
+
+          &::placeholder {
+            font-size: 16px;
+            line-height: 19px;
+          }
+        }
+
+        .store-address-search-container {
+          margin-bottom: 12.5px;
+
+          input[id='storePhone'] {
+            width: 148px;
+          }
+
+          .store-address-search-btn {
+            width: 111px;
+            height: 54px;
+
+            font-size: 16px;
+            line-height: 19px;
+
+            border-radius: 7px;
+          }
+        }
+      }
+    }
+
+    .store-info-submit-btn {
+      margin-top: 41.5px;
+
+      height: 49px;
+      font-size: 18px;
+    }
+  }
+}
