@@ -1,4 +1,4 @@
-interface AccessTokenDTO {
+export interface AccessTokenDTO {
   accessToken: string;
   accessTokenExpiredTime: string;
 }
