@@ -1,8 +1,7 @@
 import { redirect, useOutletContext } from 'react-router-dom';
-import { isCustomError } from '@utils/check';
 import StoreInfo from '@components/auth/signup/StoreInfo';
 import { StoreInfoProps } from '@custom/types/signup/Signup';
-import { requestVerifyStoreInfo } from '@services/auth/signup';
+import { signupForm } from '@store/signup-dto';
 
 const OwnerInfoPage = () => {
   const { isSubmitting } = useOutletContext<StoreInfoProps>();
@@ -17,14 +16,14 @@ export async function ownerInfoSubmit({ request }: { request: Request }) {
 
   // 수정 필요
   const storeInfoForm = {
-    storeName: formData.get('store-name'),
-    storePhoneNumber: formData.get('store-phone-number'),
-    storeAddress: formData.get('store-address'),
+    storeName: formData.get('storeName'),
+    storeTel: formData.get('storePhone'),
+    jibunAddress: formData.get('storeAddress'),
+    detailAddress: formData.get('storeAddressDetail'),
   };
 
-  const response = await requestVerifyStoreInfo(storeInfoForm);
+  const { setStoreInfo } = signupForm.getState();
+  setStoreInfo(storeInfoForm);
 
-  if (isCustomError(response)) return response;
-
-  return redirect('./ownerInfo');
+  return redirect('./ownerinfo');
 }
