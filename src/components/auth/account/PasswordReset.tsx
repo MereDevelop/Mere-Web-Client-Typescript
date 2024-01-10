@@ -4,14 +4,11 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 import BeatLoader from '@commons/BeatLoader';
 import { passwordFormSchema } from '@constants/validation/schema';
-import { AUTHENTICATE_ERROR } from '@constants/error/token';
-import { AuthenticateErrorCodeType } from '@custom/types/error/errorCode';
 import '@styles/auth/account/PasswordReset.scss';
 
 const PasswordReset: React.FC<{
   isSubmitting: boolean;
-  errorCode: AuthenticateErrorCodeType;
-}> = ({ isSubmitting, errorCode }) => {
+}> = ({ isSubmitting }) => {
   const {
     register,
     formState: { isValid },
@@ -47,7 +44,6 @@ const PasswordReset: React.FC<{
           {...register('confirmPassword')}
         />
       </div>
-      <p className='error-message'>{AUTHENTICATE_ERROR[errorCode]}</p>
 
       <button
         type='submit'

@@ -1,8 +1,8 @@
-import { CustomError } from '../response';
+import { FailureResponse } from '../common/Response';
 
 export type AccountStatusType = 'account' | 'reset';
 
 export type VerificationProps = {
   isSubmitting: boolean;
-  responseError: CustomError | undefined;
+  responseError: FailureResponse | undefined;
 };

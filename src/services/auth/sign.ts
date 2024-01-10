@@ -1,50 +1,41 @@
-import { CustomError } from '@custom/types/response';
-import {
-  LoginForm,
-  ChangePasswordForm,
-  LoginResponse,
-} from '@custom/types/login/Login';
-import axios from '@services/config';
+import client from '@services/client';
+import { TokenResponse } from '@custom/types/common/Token';
 
-export async function requestSignIn(
-  mode: string,
-  loginFormData: LoginForm,
-): Promise<LoginResponse | CustomError> {
-  const response = await axios({
-    method: 'post',
-    url: `/${mode}/sign/in`,
-    data: loginFormData,
-  })
-    .then((resData): LoginResponse => {
-      const { data, status } = resData;
-      axios.defaults.headers['Authorization-Access'] =
-        data.accessTokenDto.accessToken;
+interface LoginForm {
+  id: FormDataEntryValue | null;
+  password: FormDataEntryValue | null;
+}
 
-      return { success: true, data, status };
-    })
-    .catch((error): CustomError => error);
+export async function requestSignIn(mode: string, loginFormData: LoginForm) {
+  const response = await client
+    .post<TokenResponse>(`/${mode}/sign/in`, loginFormData)
+    .then((resData) => resData);
 
   return response;
+}
+
+interface ChangePasswordForm {
+  id: string | undefined;
+  password: FormDataEntryValue | null;
+}
+
+interface RequestChangePassword {
+  data: boolean;
 }
 
 export async function requestChangePassword(
   authenticateCode: string | undefined,
   changePasswordForm: ChangePasswordForm,
 ) {
-  const response = await axios({
-    method: 'post',
-    url: '/owner/sign/reset-password',
-    data: changePasswordForm,
-    headers: {
-      'Authorization-Access': authenticateCode,
-    },
-  })
-    .then((resData) => {
-      const { data, status } = resData;
-
-      return { success: true, data, status };
-    })
-    .catch((error): CustomError => error);
+  const response = await client
+    .post<RequestChangePassword>(
+      '/owner/sign/reset-password',
+      changePasswordForm,
+      {
+        headers: { 'Authorization-Access': authenticateCode },
+      },
+    )
+    .then((resData) => resData);
 
   return response;
 }

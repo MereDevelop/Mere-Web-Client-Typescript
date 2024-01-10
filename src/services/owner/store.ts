@@ -1,35 +1,18 @@
-import { CustomError } from '@custom/types/response';
-import axios from '@services/config';
+import client from '@services/client';
 
-export async function getStoreOperationStatus() {
-  const response = await axios({
-    method: 'get',
-    url: '/owner/store/status',
-  })
-    .then((resData) => resData)
-    .catch((error): CustomError => error);
+export async function requestStoreOperationStatus() {
+  const response = await client
+    .get<boolean>('/owner/store/status')
+    .then((resData) => resData);
 
   return response;
 }
 
-export async function requestOpenOperationStatus() {
-  const response = await axios({
-    method: 'post',
-    url: '/owner/store/close',
-  })
-    .then((resData) => resData)
-    .catch((error): CustomError => error);
-
-  return response;
-}
-
-export async function requestCloseOperationStatus() {
-  const response = await axios({
-    method: 'post',
-    url: '/owner/store/close',
-  })
-    .then((resData) => resData)
-    .catch((error): CustomError => error);
+export async function requestChangeOperationStatus(isOpen: boolean) {
+  console.log(`/owner/store/${isOpen ? 'close' : 'open'}`);
+  const response = await client
+    .post<boolean>(`/owner/store/${isOpen ? 'close' : 'open'}`)
+    .then((resData) => resData);
 
   return response;
 }

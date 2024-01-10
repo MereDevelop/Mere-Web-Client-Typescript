@@ -1,14 +1,17 @@
-import axios from 'axios';
+import axios, { AxiosResponse, InternalAxiosRequestConfig } from 'axios';
 
 import { SERVER_URL } from '@constants/api';
-import { CustomError } from '@custom/types/response';
+import { FailureResponse } from '@custom/types/common/Response';
 import {
-  TokenExpirationErrorCodeType,
-  UserTokenErrorCodeType,
-} from '@custom/types/error/errorCode';
-import { getRefreshToken } from '@utils/token';
+  isTokenExpirationErrorCode,
+  isUserTokenErrorCode,
+} from '@utils/checker/token';
 
-const axiosInstance = axios.create({
+import { isSuccessResponse } from '@utils/checker/common';
+import { getAccessToken, setAccessToken } from '@store/auth-store';
+import { reIssueAccessToken } from './auth/token';
+
+export const axiosInstance = axios.create({
   baseURL: SERVER_URL,
   timeout: 20000,
   headers: {
@@ -17,83 +20,56 @@ const axiosInstance = axios.create({
   },
 });
 
-axiosInstance.interceptors.response.use(
-  async (response) => {
-    const { data, request } = response;
-    const originalRequest = request.responseURL;
+axiosInstance.interceptors.request.use(onRequest);
+axiosInstance.interceptors.response.use(onResponse, onError);
 
-    // 토큰 체크 후 재발급하는 로직 추가
-    if (isUserTokenErrorCode(data.errorCode)) {
-      window.location.href = '/';
-    }
+function onRequest(
+  config: InternalAxiosRequestConfig,
+): InternalAxiosRequestConfig {
+  const { method, url } = config;
+  console.log(`🛫 [Request - ${method}] ${url}`);
 
-    if (isTokenExpirationErrorCode(data.errorCode)) {
-      const tokenResponse = await reIssueAccessTokenForOwner();
+  const accessToken = getAccessToken();
+  axiosInstance.defaults.headers.common['Authorization-Access'] = accessToken;
 
-      if (tokenResponse.data) {
-        const { accessToken } = tokenResponse.data;
-        axiosInstance.defaults.headers.common['Authorization-Access'] =
-          accessToken;
-
-        const originalResponse = await axiosInstance(originalRequest);
-        return originalResponse;
-      }
-    }
-
-    return response;
-  },
-  async (error) => {
-    if (error.errorCode === 'XX0000') {
-      return error;
-    }
-
-    const { status, data } = error.response;
-    const { errorCode, errorMessage } = data;
-
-    const customError: CustomError = {
-      success: false,
-      errorCode,
-      errorMessage,
-      status,
-    };
-
-    return Promise.reject(customError);
-  },
-);
-
-function isUserTokenErrorCode(
-  errorCode: string,
-): errorCode is UserTokenErrorCodeType {
-  if (errorCode === 'FT0000') return true;
-  if (errorCode === 'FT0002') return true;
-  if (errorCode === 'FT0005') return true;
-
-  return false;
+  return config;
 }
 
-function isTokenExpirationErrorCode(
-  errorCode: string,
-): errorCode is TokenExpirationErrorCodeType {
-  if (errorCode === 'FT0001') return true;
-  if (errorCode === 'FT0003') return true;
-  if (errorCode === 'FT0004') return true;
+async function onResponse(response: AxiosResponse): Promise<AxiosResponse> {
+  const { data, request } = response;
+  const originalRequest = request.responseURL;
 
-  return false;
-}
+  if (isUserTokenErrorCode(data.errorCode)) {
+    window.location.href = '/';
+  }
 
-export async function reIssueAccessTokenForOwner() {
-  const refreshToken = getRefreshToken();
-  if (!refreshToken) return null;
+  if (isTokenExpirationErrorCode(data.errorCode)) {
+    const response = await reIssueAccessToken();
 
-  const response = await axiosInstance({
-    method: 'get',
-    url: '/owner/update/access-token',
-    headers: {
-      'Authorization-Refresh': refreshToken,
-    },
-  });
+    if (isSuccessResponse(response)) {
+      setAccessToken(response.data.accessToken);
+
+      const originalResponse = await axiosInstance(originalRequest);
+      return originalResponse;
+    }
+  }
 
   return response;
 }
 
-export default axiosInstance;
+function onError(error: any) {
+  if (error.errorCode === 'XX0000') {
+    return error;
+  }
+
+  const { data } = error.response;
+  const { errorCode, errorMessage } = data;
+
+  const customError: FailureResponse = {
+    isSuccess: false,
+    errorCode,
+    errorMessage,
+  };
+
+  return Promise.reject(customError);
+}

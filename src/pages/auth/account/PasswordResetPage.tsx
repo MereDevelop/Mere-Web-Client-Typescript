@@ -1,19 +1,15 @@
 import { redirect, useNavigation } from 'react-router-dom';
-import { useActionData } from 'react-router-typesafe';
 
 import PasswordReset from '@components/auth/account/PasswordReset';
-import { AUTHENTICATE_ERROR } from '@constants/error/token';
-import { AuthenticateErrorCodeType } from '@custom/types/error/errorCode';
 import { requestChangePassword } from '@services/auth/sign';
 import { getUserVerification } from '@store/userVerification-store';
-import { isCustomError } from '@utils/check';
+import { isFailureResponse } from '@utils/checker/common';
 
 const PasswordResetPage = () => {
-  const errorCode = useActionData<typeof changePassword>();
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
 
-  return <PasswordReset isSubmitting={isSubmitting} errorCode={errorCode} />;
+  return <PasswordReset isSubmitting={isSubmitting} />;
 };
 
 export default PasswordResetPage;
@@ -44,16 +40,7 @@ export async function changePassword({ request }: { request: Request }) {
     changePasswordForm,
   );
 
-  if (isCustomError(response)) return response;
-  if (isAuthenticateError(response.data.errorCode))
-    return response.data.errorCode;
+  if (isFailureResponse(response)) return response;
 
   return redirect('/');
-}
-
-export function isAuthenticateError(
-  errorCode: string,
-): errorCode is AuthenticateErrorCodeType {
-  if (errorCode in AUTHENTICATE_ERROR) return true;
-  return false;
 }
