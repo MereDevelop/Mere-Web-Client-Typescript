@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 
-const useErrorMessage = () => {
+const useErrorMessage = (): [
+  string,
+  React.Dispatch<React.SetStateAction<string>>,
+] => {
   const [errorMessage, setErrorMessage] = useState<string>('');
 
   useEffect(() => {
