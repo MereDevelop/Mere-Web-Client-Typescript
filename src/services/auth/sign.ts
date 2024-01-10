@@ -1,30 +1,30 @@
-import { CustomError } from '@custom/types/response';
-import {
-  LoginForm,
-  ChangePasswordForm,
-  LoginResponse,
-} from '@custom/types/login/Login';
+import client from '@services/crud';
+import { TokenResponse } from '@custom/types/common/Token';
 import axios from '@services/config';
 
-export async function requestSignIn(
-  mode: string,
-  loginFormData: LoginForm,
-): Promise<LoginResponse | CustomError> {
-  const response = await axios({
-    method: 'post',
-    url: `/${mode}/sign/in`,
-    data: loginFormData,
-  })
-    .then((resData): LoginResponse => {
-      const { data, status } = resData;
-      axios.defaults.headers['Authorization-Access'] =
-        data.accessTokenDto.accessToken;
+interface LoginForm {
+  id: FormDataEntryValue | null;
+  password: FormDataEntryValue | null;
+}
 
-      return { success: true, data, status };
-    })
-    .catch((error): CustomError => error);
+export async function requestSignIn(mode: string, loginFormData: LoginForm) {
+  const response = await client
+    .post<TokenResponse>(`/${mode}/sign/in`, loginFormData)
+    .then((resData) => resData);
 
   return response;
+}
+
+// export async function requestChangePassword(
+//   authenticateCode: string | undefined,
+//   changePasswordForm: ChangePasswordForm,
+// ) {
+//   const response = await axios({})
+// };
+
+interface ChangePasswordForm {
+  id: string | undefined;
+  password: FormDataEntryValue | null;
 }
 
 export async function requestChangePassword(
@@ -38,13 +38,11 @@ export async function requestChangePassword(
     headers: {
       'Authorization-Access': authenticateCode,
     },
-  })
-    .then((resData) => {
-      const { data, status } = resData;
+  }).then((resData) => {
+    const { data, status } = resData;
 
-      return { success: true, data, status };
-    })
-    .catch((error): CustomError => error);
+    return { success: true, data, status };
+  });
 
   return response;
 }

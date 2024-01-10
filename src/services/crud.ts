@@ -32,7 +32,7 @@ const client = {
    * GET 요청
    * @param url Request URI
    * @param config Request Config (Headers, ...)
-   * @returns SuccessResponse | FailureResponse
+   * @returns SuccessResponse<T> | FailureResponse
    */
   get: async <T>(
     url: string,
@@ -55,7 +55,7 @@ const client = {
    * @param url Request URI
    * @param data Request Data
    * @param config Request Config (Headers, ...)
-   * @returns SuccessResponse | FailureResponse
+   * @returns SuccessResponse<T> | FailureResponse
    */
   post: async <T>(
     url: string,
@@ -79,7 +79,7 @@ const client = {
    * @param url Request URI
    * @param data Request Data
    * @param config Request Config (Headers, ...)
-   * @returns SuccessResponse | FailureResponse
+   * @returns SuccessResponse<T> | FailureResponse
    */
   put: async <T>(
     url: string,
@@ -102,7 +102,7 @@ const client = {
    * DELETE 요청
    * @param url REQUEST URI
    * @param config Request Config (Headers, ...)
-   * @returns SuccessResponse | FailureResponse
+   * @returns SuccessResponse<T> | FailureResponse
    */
   delete: async <T>(
     url: string,
