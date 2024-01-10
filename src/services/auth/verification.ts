@@ -1,50 +1,51 @@
-import { CustomError } from '@custom/types/response';
-import axios from '@services/config';
+import client from '@services/config';
 
-type VerificationUserFormType = {
-  authenticateCode: FormDataEntryValue | null;
-  phoneNumber: FormDataEntryValue | null;
-  storeAccountId: FormDataEntryValue | null;
-};
+interface RequestVerificationNumber {
+  requestId: string;
+  requestTime: string;
+  statusCode: string;
+  statusName: string;
+}
 
 export async function requestVerificationNumber(
   storeId: string,
   ownerPhone: string,
 ) {
-  const response = await axios({
-    method: 'post',
-    url: '/owner/sign/reset-password/phone-verification-request',
-    data: {
-      storeAccountId: storeId,
-      phoneNumber: ownerPhone,
-    },
-  })
-    .then((resData) => {
-      const { data, status } = resData;
-      const { requestId } = data;
-
-      return { success: true, requestId, status };
-    })
-    .catch((error): CustomError => error);
+  const response = await client
+    .post<RequestVerificationNumber>(
+      '/owner/sign/reset-password/phone-verification-request',
+      {
+        storeAccountId: storeId,
+        phoneNumber: ownerPhone,
+      },
+    )
+    .then((resData) => resData);
 
   return response;
+}
+
+interface VerificationUserFormType {
+  authenticateCode: FormDataEntryValue | null;
+  phoneNumber: FormDataEntryValue | null;
+  storeAccountId: FormDataEntryValue | null;
+}
+
+interface RequestVerificationUser {
+  ownerId: number;
+  statusCode: string;
+  statusName: string;
+  smsAuthenticatedToken: string;
 }
 
 export async function requestVerificationUser(
   verificationUserForm: VerificationUserFormType,
 ) {
-  const response = await axios({
-    method: 'post',
-    url: '/owner/sign/reset-password/phone-number/verification',
-    data: verificationUserForm,
-  })
-    .then((resData) => {
-      const { data, status } = resData;
-      const { smsAuthenticatedToken, ownerId } = data;
-
-      return { success: true, smsAuthenticatedToken, ownerId, status };
-    })
-    .catch((error): CustomError => error);
+  const response = await client
+    .post<RequestVerificationUser>(
+      '/owner/sign/reset-password/phone-number/verification',
+      verificationUserForm,
+    )
+    .then((resData) => resData);
 
   return response;
 }

@@ -29,7 +29,7 @@ export async function verificationUser({ request }: { request: Request }) {
 
   if (isFailureResponse(response)) return response;
   setUserVerification(
-    response.smsAuthenticatedToken,
+    response.data.smsAuthenticatedToken,
     verificationUserForm.storeAccountId as string,
   );
 
