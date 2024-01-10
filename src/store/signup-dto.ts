@@ -8,13 +8,13 @@ interface StoreInfo {
 }
 
 interface OwnerInfo {
-  ownerName: string | undefined;
-  ownerTel: string | undefined;
-  representativeName: string | undefined;
-  registrationNo: string | undefined;
-  accountPW: string | undefined;
-  accountNum: string | undefined;
-  accountBank: number | undefined;
+  ownerName: FormDataEntryValue | null;
+  ownerTel: FormDataEntryValue | null;
+  representativeName: FormDataEntryValue | null;
+  registrationNo: FormDataEntryValue | null;
+  accountPW: FormDataEntryValue | null;
+  accountNum: FormDataEntryValue | null;
+  accountBank: FormDataEntryValue | null;
 }
 
 interface SignupFormState {
@@ -25,13 +25,13 @@ interface SignupFormState {
   detailAddress: FormDataEntryValue | null;
   latitude: number;
   longitude: number;
-  representativeName: string;
-  registrationNo: string;
-  ownerName: string;
-  ownerTel: string;
-  accountBank: number;
-  accountNum: string;
-  accountPW: string;
+  representativeName: FormDataEntryValue | null;
+  registrationNo: FormDataEntryValue | null;
+  ownerName: FormDataEntryValue | null;
+  ownerTel: FormDataEntryValue | null;
+  accountBank: FormDataEntryValue | number | null;
+  accountNum: FormDataEntryValue | null;
+  accountPW: FormDataEntryValue | null;
   setStoreInfo: (storeInfo: StoreInfo) => void;
   setOwnerInfo: (ownerInfo: OwnerInfo) => void;
 }
