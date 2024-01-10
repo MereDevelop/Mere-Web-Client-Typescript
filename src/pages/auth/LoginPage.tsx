@@ -3,7 +3,7 @@ import { useLoaderData, useActionData } from 'react-router-typesafe';
 
 import Login from '@components/auth/login/Login';
 import { USER_TYPE } from '@constants/auth/login';
-import { FailureResponse } from '@services/crud';
+import { FailureResponse } from '@custom/types/common/Response';
 import { TokenResponse } from '@custom/types/common/Token';
 import { requestSignIn } from '@services/auth/sign';
 import { setAccessToken } from '@store/auth-store';

@@ -6,7 +6,7 @@ import SaveCheck from '@assets/svg/saveCheck.svg';
 import LoadingSpinner from '@commons/BeatLoader';
 import { FORM_PLACEHOLDERS } from '@constants/auth/login';
 import { UserType } from '@custom/types/login/Login';
-import { FailureResponse } from '@services/crud';
+import { FailureResponse } from '@custom/types/common/Response';
 import { removeDataInCookie, setDataInCookie } from '@utils/cookie';
 import '@styles/auth/login/LoginForm.scss';
 

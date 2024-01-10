@@ -1,5 +1,8 @@
+import {
+  FailureResponse,
+  SuccessResponse,
+} from '@custom/types/common/Response';
 import { UserType } from '@custom/types/login/Login';
-import { SuccessResponse, FailureResponse } from '@services/crud';
 
 export function isFailureResponse<T>(
   response: SuccessResponse<T> | FailureResponse,

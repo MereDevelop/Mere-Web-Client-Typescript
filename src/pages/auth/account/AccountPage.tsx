@@ -3,7 +3,7 @@ import { useActionData, useLoaderData } from 'react-router-typesafe';
 
 import AccountStatus from '@components/auth/account/AccountStatus';
 import { AccountStatusType } from '@custom/types/account/Account';
-import { FailureResponse } from '@services/crud';
+import { FailureResponse } from '@custom/types/common/Response';
 import { verificationUser } from './VerificationPage';
 
 const AccountPage = () => {
