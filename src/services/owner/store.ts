@@ -1,4 +1,4 @@
-import client from '@services/config';
+import client from '@services/client';
 
 export async function requestStoreOperationStatus() {
   const response = await client

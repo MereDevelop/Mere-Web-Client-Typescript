@@ -1,4 +1,4 @@
-import client from '@services/config';
+import client from '@services/client';
 
 interface RequestVerificationNumber {
   requestId: string;

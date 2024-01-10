@@ -1,4 +1,4 @@
-import client from '@services/config';
+import client from '@services/client';
 import { TokenResponse } from '@custom/types/common/Token';
 
 interface LoginForm {
