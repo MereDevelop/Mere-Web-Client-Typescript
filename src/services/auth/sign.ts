@@ -1,6 +1,5 @@
-import client from '@services/crud';
+import client from '@services/config';
 import { TokenResponse } from '@custom/types/common/Token';
-import axios from '@services/config';
 
 interface LoginForm {
   id: FormDataEntryValue | null;
@@ -15,34 +14,28 @@ export async function requestSignIn(mode: string, loginFormData: LoginForm) {
   return response;
 }
 
-// export async function requestChangePassword(
-//   authenticateCode: string | undefined,
-//   changePasswordForm: ChangePasswordForm,
-// ) {
-//   const response = await axios({})
-// };
-
 interface ChangePasswordForm {
   id: string | undefined;
   password: FormDataEntryValue | null;
+}
+
+interface RequestChangePassword {
+  data: boolean;
 }
 
 export async function requestChangePassword(
   authenticateCode: string | undefined,
   changePasswordForm: ChangePasswordForm,
 ) {
-  const response = await axios({
-    method: 'post',
-    url: '/owner/sign/reset-password',
-    data: changePasswordForm,
-    headers: {
-      'Authorization-Access': authenticateCode,
-    },
-  }).then((resData) => {
-    const { data, status } = resData;
-
-    return { success: true, data, status };
-  });
+  const response = await client
+    .post<RequestChangePassword>(
+      '/owner/sign/reset-password',
+      changePasswordForm,
+      {
+        headers: { 'Authorization-Access': authenticateCode },
+      },
+    )
+    .then((resData) => resData);
 
   return response;
 }
