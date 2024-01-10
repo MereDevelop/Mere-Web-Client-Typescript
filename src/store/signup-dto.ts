@@ -1,10 +1,10 @@
 import { create } from 'zustand';
 
 interface StoreInfo {
-  storeName: string | undefined;
-  storeTel: string | undefined;
-  jibunAddress: string | undefined;
-  detailAddress: string | undefined;
+  storeName: FormDataEntryValue | null;
+  storeTel: FormDataEntryValue | null;
+  jibunAddress: FormDataEntryValue | null;
+  detailAddress: FormDataEntryValue | null;
 }
 
 interface OwnerInfo {
@@ -14,11 +14,29 @@ interface OwnerInfo {
   registrationNo: string | undefined;
   accountPW: string | undefined;
   accountNum: string | undefined;
-  accountBank: string | undefined;
+  accountBank: number | undefined;
 }
 
-// city, latitude, longitude 추가해야함
-export const signupForm = create((set) => ({
+interface SignupFormState {
+  storeName: FormDataEntryValue | null;
+  storeTel: FormDataEntryValue | null;
+  city: string;
+  jibunAddress: FormDataEntryValue | null;
+  detailAddress: FormDataEntryValue | null;
+  latitude: number;
+  longitude: number;
+  representativeName: string;
+  registrationNo: string;
+  ownerName: string;
+  ownerTel: string;
+  accountBank: number;
+  accountNum: string;
+  accountPW: string;
+  setStoreInfo: (storeInfo: StoreInfo) => void;
+  setOwnerInfo: (ownerInfo: OwnerInfo) => void;
+}
+
+export const signupForm = create<SignupFormState>((set) => ({
   storeName: '',
   storeTel: '',
   city: '',
