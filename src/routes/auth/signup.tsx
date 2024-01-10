@@ -1,22 +1,24 @@
 import { RouteObject } from 'react-router-dom';
 import SignupPage from '@pages/auth/signup/SignupPage';
-import OwnerInfoPage, {
-  ownerInfoSubmit,
-} from '@pages/auth/signup/OwnerInfoPage';
+import StoreInfoPage, {
+  storeInfoSubmit,
+} from '@pages/auth/signup/StoreInfoPage';
 import { loadCurrentStatus } from '@pages/auth/account/AccountPage';
+import OwnerInfoPage from '@pages/auth/signup/OwnerInfoPage';
 
 const signupRoute: RouteObject = {
   path: 'signup',
   element: <SignupPage />,
   loader: loadCurrentStatus,
-  action: ownerInfoSubmit,
+  action: storeInfoSubmit,
   children: [
     {
       index: true,
-      element: <OwnerInfoPage />,
+      element: <StoreInfoPage />,
     },
     {
       path: 'ownerinfo',
+      element: <OwnerInfoPage />,
     },
     {
       path: 'wait',
