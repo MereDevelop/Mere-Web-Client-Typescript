@@ -75,6 +75,7 @@ const Verification: React.FC<VerificationProps> = ({
           <div className='verification-check-container'>
             <input
               id='verificationNumber'
+              aria-errormessage={responseError?.errorCode}
               placeholder='인증번호 6자리 입력'
               {...register('verificationNumber')}
               disabled={!isSend}
@@ -84,9 +85,9 @@ const Verification: React.FC<VerificationProps> = ({
         </div>
       </div>
       <div className='verification-error-container'>
-        {responseError ? (
+        {responseError?.errorCode === 'SMS003' ? (
           <p className='verification-error-message'>
-            잘못된 정보가 없는지 확인해주세요.
+            인증 번호가 일치하지 않습니다.
           </p>
         ) : isErrorVisible ? (
           <ErrorMessage

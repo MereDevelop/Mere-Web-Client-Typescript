@@ -117,6 +117,10 @@
 
         input[id='verificationNumber'] {
           flex: 1;
+
+          &[aria-errormessage='SMS003'] {
+            border-color: #ff5a69;
+          }
         }
 
         .verification-timer {
