@@ -1,12 +1,12 @@
 import { redirect, useOutletContext } from 'react-router-dom';
-import StoreInfo from '@components/auth/signup/StoreInfo';
-import { StoreInfoProps } from '@custom/types/signup/Signup';
+import { OwnerInfoProps } from '@custom/types/signup/Signup';
 import { signupForm } from '@store/signup-dto';
+import OwnerInfo from '@components/auth/signup/OwnerInfo';
 
 const OwnerInfoPage = () => {
-  const { isSubmitting } = useOutletContext<StoreInfoProps>();
+  const { isSubmitting } = useOutletContext<OwnerInfoProps>();
 
-  return <StoreInfo isSubmitting={isSubmitting} />;
+  return <OwnerInfo isSubmitting={isSubmitting} />;
 };
 
 export default OwnerInfoPage;
@@ -15,15 +15,18 @@ export async function ownerInfoSubmit({ request }: { request: Request }) {
   const formData = await request.formData();
 
   // 수정 필요
-  const storeInfoForm = {
-    storeName: formData.get('storeName'),
-    storeTel: formData.get('storePhone'),
-    jibunAddress: formData.get('storeAddress'),
-    detailAddress: formData.get('storeAddressDetail'),
+  const ownerInfoForm = {
+    ownerName: formData.get('ownerName'),
+    ownerTel: formData.get('ownerTel'),
+    representativeName: formData.get('representativeName'),
+    registrationNo: formData.get('registrationNo'),
+    accountPW: formData.get('accountPW'),
+    accountNum: formData.get('accountNum'),
+    accountBank: formData.get('accountBank'),
   };
 
-  const { setStoreInfo } = signupForm.getState();
-  setStoreInfo(storeInfoForm);
+  const { setOwnerInfo } = signupForm.getState();
+  setOwnerInfo(ownerInfoForm);
 
   return redirect('./ownerinfo');
 }
