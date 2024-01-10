@@ -3,10 +3,10 @@ import { useActionData } from 'react-router-typesafe';
 
 import PasswordReset from '@components/auth/account/PasswordReset';
 import { AUTHENTICATE_ERROR } from '@constants/error/token';
-import { AuthenticateErrorCodeType } from '@custom/types/error/errorCode';
+import { AuthenticateErrorCodeType } from '@custom/types/error/ErrorCode';
 import { requestChangePassword } from '@services/auth/sign';
 import { getUserVerification } from '@store/userVerification-store';
-import { isCustomError } from '@utils/check';
+import { isFailureResponse } from '@utils/check';
 
 const PasswordResetPage = () => {
   const errorCode = useActionData<typeof changePassword>();
@@ -44,7 +44,7 @@ export async function changePassword({ request }: { request: Request }) {
     changePasswordForm,
   );
 
-  if (isCustomError(response)) return response;
+  if (isFailureResponse(response)) return response;
   if (isAuthenticateError(response.data.errorCode))
     return response.data.errorCode;
 

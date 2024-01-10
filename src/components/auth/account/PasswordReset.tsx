@@ -5,7 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import BeatLoader from '@commons/BeatLoader';
 import { passwordFormSchema } from '@constants/validation/schema';
 import { AUTHENTICATE_ERROR } from '@constants/error/token';
-import { AuthenticateErrorCodeType } from '@custom/types/error/errorCode';
+import { AuthenticateErrorCodeType } from '@custom/types/error/ErrorCode';
 import '@styles/auth/account/PasswordReset.scss';
 
 const PasswordReset: React.FC<{
