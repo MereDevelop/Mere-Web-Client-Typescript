@@ -3,8 +3,8 @@ import { redirect, useOutletContext } from 'react-router-dom';
 import Verification from '@components/auth/account/Verification';
 import { requestVerificationUser } from '@services/auth/verification';
 import { setUserVerification } from '@store/userVerification-store';
-import { isFailureResponse } from '@utils/check';
 import { VerificationProps } from '@custom/types/account/Account';
+import { isFailureResponse } from '@utils/checker/common';
 
 const VerificationPage = () => {
   const { isSubmitting, responseError } = useOutletContext<VerificationProps>();

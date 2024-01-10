@@ -8,7 +8,7 @@ import useErrorMessage from '@hooks/useErrorMessage';
 import useModal from '@hooks/useModal';
 import { requestChangeOperationStatus } from '@services/owner/store';
 import '@styles/commons/GNB.scss';
-import { isFailureResponse } from '@utils/check';
+import { isFailureResponse } from '@utils/checker/common';
 
 import ConfirmModal from './modal/ConfirmModal';
 import TextPromptModal from './modal/TextPromptModal';

@@ -1,10 +1,10 @@
 import { Outlet, redirect } from 'react-router-dom';
+import { useLoaderData } from 'react-router-typesafe';
 
 import GNB from '@commons/GNB';
 import { requestStoreOperationStatus } from '@services/owner/store';
 import '@styles/owner/OwnerLayout.scss';
-import { isFailureResponse } from '@utils/check';
-import { useLoaderData } from 'react-router-typesafe';
+import { isFailureResponse } from '@utils/checker/common';
 
 const HomeLayout = () => {
   const operationStatus = useLoaderData<typeof getOperationStatusLoader>();

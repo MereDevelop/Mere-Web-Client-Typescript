@@ -7,8 +7,9 @@ import { FailureResponse } from '@custom/types/common/Response';
 import { TokenResponse } from '@custom/types/common/Token';
 import { requestSignIn } from '@services/auth/sign';
 import { setAccessToken } from '@store/auth-store';
-import { isFailureResponse, isUserType } from '@utils/check';
 import { getDataInCookie, setDataInCookie } from '@utils/cookie';
+import { isFailureResponse } from '@utils/checker/common';
+import { isUserType } from '@utils/checker/user';
 
 const LoginPage = () => {
   const errors: FailureResponse | undefined =

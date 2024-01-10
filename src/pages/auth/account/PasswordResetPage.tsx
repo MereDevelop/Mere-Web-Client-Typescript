@@ -3,7 +3,7 @@ import { redirect, useNavigation } from 'react-router-dom';
 import PasswordReset from '@components/auth/account/PasswordReset';
 import { requestChangePassword } from '@services/auth/sign';
 import { getUserVerification } from '@store/userVerification-store';
-import { isFailureResponse } from '@utils/check';
+import { isFailureResponse } from '@utils/checker/common';
 
 const PasswordResetPage = () => {
   const navigation = useNavigation();

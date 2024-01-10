@@ -3,8 +3,8 @@ import { useTimer } from 'use-timer';
 
 import { VERIFICATION } from '@constants/auth/account';
 import { requestVerificationNumber } from '@services/auth/verification';
-import { isFailureResponse } from '@utils/check';
 import { convertNumberToClockFormat } from '@utils/converter';
+import { isFailureResponse } from '@utils/checker/common';
 
 const useVerifyPhone = () => {
   const {
