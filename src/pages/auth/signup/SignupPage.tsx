@@ -6,7 +6,6 @@ import '@styles/auth/signup/SignupStatus.scss';
 
 const SignupPage = () => {
   const currentStatus = useLoaderData<typeof loadCurrentStatus>(); // 현재 마지막 경로 반환
-  console.log(currentStatus);
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
 
