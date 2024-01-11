@@ -2,7 +2,7 @@ import { Form } from 'react-router-dom';
 import BeatLoader from '@commons/BeatLoader';
 import '@styles/auth/account/Verification.scss';
 import { StoreInfoProps } from '@custom/types/signup/Signup';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import '@styles/auth/signup/StoreInfoForm.scss';
 
 const StoreInfo: React.FC<StoreInfoProps> = ({ isSubmitting }) => {
@@ -12,21 +12,19 @@ const StoreInfo: React.FC<StoreInfoProps> = ({ isSubmitting }) => {
   const [storeAddressDetail, setStoreAddressDetail] = useState<
     string | undefined
   >();
+  const [isValid, setIsVaild] = useState<boolean>(false);
 
-  const isAllFilled = (e: { preventDefault: () => void }) => {
-    if (!storeName || !storePhone || !storeAddress || !storeAddressDetail) {
-      e.preventDefault();
-      alert('회원가입 양식을 모두 입력해주세요.');
-    }
-  };
+  useEffect(() => {
+    const isAllFilled = () => {
+      if (storeName && storePhone && storeAddress && storeAddressDetail) {
+        setIsVaild(true);
+      } else setIsVaild(false);
+    };
+    isAllFilled();
+  });
 
   return (
-    <Form
-      className='store-info-form'
-      method='post'
-      onSubmit={isAllFilled}
-      action='/signup'
-    >
+    <Form className='store-info-form' method='post' action='/signup'>
       <div className='store-info-input-container'>
         <div className='store-name-container'>
           <label htmlFor='storeName'>매장명(상호명)</label>
@@ -79,7 +77,11 @@ const StoreInfo: React.FC<StoreInfoProps> = ({ isSubmitting }) => {
           />
         </div>
       </div>
-      <button type='submit' className='store-info-submit-btn'>
+      <button
+        type='submit'
+        className='store-info-submit-btn'
+        disabled={!isValid}
+      >
         {isSubmitting ? <BeatLoader /> : '다음'}
       </button>
     </Form>
