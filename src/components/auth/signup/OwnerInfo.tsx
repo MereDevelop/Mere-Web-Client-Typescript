@@ -2,7 +2,7 @@ import { Form } from 'react-router-dom';
 import BeatLoader from '@commons/BeatLoader';
 import '@styles/auth/account/Verification.scss';
 import { OwnerInfoProps } from '@custom/types/signup/Signup';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import '@styles/auth/signup/OwnerInfoForm.scss';
 
 const OwnerInfo: React.FC<OwnerInfoProps> = ({ isSubmitting }) => {
@@ -14,30 +14,36 @@ const OwnerInfo: React.FC<OwnerInfoProps> = ({ isSubmitting }) => {
   const [registrationNo, setRegistrationNo] = useState<string | undefined>();
   const [accountPW, setAccountPW] = useState<string | undefined>();
   const [accountNum, setAccountNum] = useState<string | undefined>();
-  const [accountBank, setAccountBank] = useState<string | undefined>();
+  const [accountBank, setAccountBank] = useState<string | undefined>(
+    '은행선택',
+  );
+  const [verifyNum, setVerifyNum] = useState<string | undefined>();
+  const [isValid, setIsVaild] = useState<boolean>(false);
 
-  const isAllFilled = (e: { preventDefault: () => void }) => {
-    if (
-      !ownerName ||
-      !ownerTel ||
-      !representativeName ||
-      !registrationNo ||
-      !accountPW ||
-      !accountNum ||
-      !accountBank
-    ) {
-      e.preventDefault();
-      alert('회원가입 양식을 모두 입력해주세요.');
-    }
+  useEffect(() => {
+    const isAllFilled = () => {
+      if (
+        ownerName &&
+        ownerTel &&
+        representativeName &&
+        registrationNo &&
+        accountPW &&
+        accountNum &&
+        accountBank &&
+        verifyNum
+      ) {
+        setIsVaild(true);
+      } else setIsVaild(false);
+    };
+    isAllFilled();
+  });
+
+  const selectBank = () => {
+    setAccountBank('농협');
   };
 
   return (
-    <Form
-      className='owner-info-form'
-      method='post'
-      onSubmit={isAllFilled}
-      action='/signup'
-    >
+    <Form className='owner-info-form' method='post' action='/signup'>
       <div className='owner-info-input-container'>
         <div className='owner-info-container'>
           <div className='owner-name-container'>
@@ -68,6 +74,15 @@ const OwnerInfo: React.FC<OwnerInfoProps> = ({ isSubmitting }) => {
                 인증번호 받기
               </button>
             </div>
+            <input
+              id='verifyPhone'
+              name='verifyPhone'
+              type='number'
+              placeholder='인증번호 6자리 입력'
+              onChange={(e) => {
+                setVerifyNum(e.target.value);
+              }}
+            />
           </div>
         </div>
 
@@ -105,7 +120,7 @@ const OwnerInfo: React.FC<OwnerInfoProps> = ({ isSubmitting }) => {
               type='text'
               placeholder='비밀번호 입력'
               onChange={(e) => {
-                setRegistrationNo(e.target.value);
+                setAccountPW(e.target.value);
               }}
             />
             <input
@@ -123,8 +138,12 @@ const OwnerInfo: React.FC<OwnerInfoProps> = ({ isSubmitting }) => {
         <div className='account-number-container'>
           <label htmlFor='account-number'>입금 계좌번호</label>
           <div className='account-number-form'>
-            <button type='button' className='select-bank-btn'>
-              은행선택
+            <button
+              type='button'
+              className='select-bank-btn'
+              onClick={selectBank}
+            >
+              {accountBank}
             </button>
             <input
               id='account-number'
@@ -132,13 +151,17 @@ const OwnerInfo: React.FC<OwnerInfoProps> = ({ isSubmitting }) => {
               type='text'
               placeholder='‘-’빼고 숫자만 입력'
               onChange={(e) => {
-                setRegistrationNo(e.target.value);
+                setAccountNum(e.target.value);
               }}
             />
           </div>
         </div>
       </div>
-      <button type='submit' className='owner-info-submit-btn'>
+      <button
+        type='submit'
+        className='owner-info-submit-btn'
+        disabled={!isValid}
+      >
         {isSubmitting ? <BeatLoader /> : '다음'}
       </button>
     </Form>
