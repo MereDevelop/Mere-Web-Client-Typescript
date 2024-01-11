@@ -5,6 +5,7 @@ import StoreInfoPage, {
 } from '@pages/auth/signup/StoreInfoPage';
 import { loadCurrentStatus } from '@pages/auth/account/AccountPage';
 import OwnerInfoPage from '@pages/auth/signup/OwnerInfoPage';
+import WaitPage from '@pages/auth/signup/WaitPage';
 
 const signupRoute: RouteObject = {
   path: 'signup',
@@ -22,6 +23,7 @@ const signupRoute: RouteObject = {
     },
     {
       path: 'wait',
+      element: <WaitPage />,
     },
   ],
 };
