@@ -56,6 +56,7 @@
 
       input[id='ownerName'],
       input[id='ownerPhone'],
+      input[id='verifyPhone'],
       input[id='representative-name'],
       input[id='registrationNo'],
       input[id='account-number'],
@@ -106,6 +107,12 @@
         border-radius: 10px;
       }
     }
+  }
+
+  input[id='verifyPhone'] {
+    position: absolute;
+    width: 48%;
+    top: 20%;
   }
 
   .account-password-container {
@@ -166,6 +173,7 @@
 
         input[id='ownerName'],
         input[id='ownerPhone'],
+        input[id='verifyPhone'],
         input[id='representative-name'],
         input[id='registrationNo'],
         input[id='account-number'],
@@ -197,6 +205,9 @@
     input[id='ownerPhone'],
     input[id='account-number'] {
       width: 100%;
+    }
+    input[id='verifyPhone'] {
+      width: 46.5%;
     }
 
     .owner-info-submit-btn {
@@ -233,6 +244,7 @@
 
         input[id='ownerName'],
         input[id='ownerPhone'],
+        input[id='verifyPhone'],
         input[id='representative-name'],
         input[id='registrationNo'],
         input[id='account-number'],
@@ -264,6 +276,10 @@
     input[id='ownerPhone'],
     input[id='account-number'] {
       width: 100%;
+    }
+
+    input[id='verifyPhone'] {
+      width: 46%;
     }
 
     .owner-info-submit-btn {
