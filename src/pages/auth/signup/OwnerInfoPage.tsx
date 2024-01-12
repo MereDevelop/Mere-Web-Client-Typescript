@@ -13,20 +13,19 @@ export default OwnerInfoPage;
 
 export async function ownerInfoSubmit({ request }: { request: Request }) {
   const formData = await request.formData();
-
   // 수정 필요
   const ownerInfoForm = {
-    ownerName: formData.get('ownerName'),
-    ownerTel: formData.get('ownerTel'),
-    representativeName: formData.get('representativeName'),
-    registrationNo: formData.get('registrationNo'),
-    accountPW: formData.get('accountPW'),
-    accountNum: formData.get('accountNum'),
-    accountBank: formData.get('accountBank'),
+    ownerName: formData.get('ownerName') as string,
+    ownerTel: formData.get('ownerPhone') as string,
+    representativeName: formData.get('representative-name') as string,
+    registrationNo: formData.get('registrationNo') as string,
+    accountPW: formData.get('password') as string,
+    accountNum: formData.get('account-number') as string,
+    accountBank: formData.get('accountBank') as string,
   };
 
   const { setOwnerInfo } = signupForm.getState();
   setOwnerInfo(ownerInfoForm);
 
-  return redirect('./ownerinfo');
+  return redirect('/signup/checkinfo');
 }
