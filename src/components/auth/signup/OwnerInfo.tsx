@@ -43,7 +43,7 @@ const OwnerInfo: React.FC<OwnerInfoProps> = ({ isSubmitting }) => {
   };
 
   return (
-    <Form className='owner-info-form' method='post' action='/signup'>
+    <Form className='owner-info-form' method='post' action='./'>
       <div className='owner-info-input-container'>
         <div className='owner-info-container'>
           <div className='owner-name-container'>
@@ -157,6 +157,7 @@ const OwnerInfo: React.FC<OwnerInfoProps> = ({ isSubmitting }) => {
           </div>
         </div>
       </div>
+      <input type='hidden' name='accountBank' value={accountBank} />
       <button
         type='submit'
         className='owner-info-submit-btn'
