@@ -4,8 +4,13 @@ import StoreInfoPage, {
   storeInfoSubmit,
 } from '@pages/auth/signup/StoreInfoPage';
 import { loadCurrentStatus } from '@pages/auth/account/AccountPage';
-import OwnerInfoPage from '@pages/auth/signup/OwnerInfoPage';
+import OwnerInfoPage, {
+  ownerInfoSubmit,
+} from '@pages/auth/signup/OwnerInfoPage';
 import WaitPage from '@pages/auth/signup/WaitPage';
+import CheckInfoPage, {
+  loadSignupForm,
+} from '@pages/auth/signup/CheckInfoPage';
 
 const signupRoute: RouteObject = {
   path: 'signup',
@@ -20,6 +25,12 @@ const signupRoute: RouteObject = {
     {
       path: 'ownerinfo',
       element: <OwnerInfoPage />,
+      action: ownerInfoSubmit,
+    },
+    {
+      path: 'checkinfo',
+      element: <CheckInfoPage />,
+      loader: loadSignupForm,
     },
     {
       path: 'wait',
