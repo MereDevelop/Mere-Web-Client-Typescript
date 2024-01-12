@@ -19,16 +19,17 @@ const client = {
     url: string,
     config?: AxiosRequestConfig,
   ): Promise<Response<T>> => {
-    try {
-      const response = await axiosInstance.get<T>(url, config);
+    const response = await axiosInstance
+      .get<T>(url, config)
+      .then(
+        (resData): SuccessResponse<T> => ({
+          isSuccess: true,
+          data: resData.data,
+        }),
+      )
+      .catch((error): FailureResponse => error);
 
-      return {
-        isSuccess: true,
-        data: response.data,
-      };
-    } catch (error: any) {
-      return error;
-    }
+    return response;
   },
 
   /**
@@ -43,16 +44,17 @@ const client = {
     data?: any,
     config?: AxiosRequestConfig,
   ): Promise<Response<T>> => {
-    try {
-      const response = await axiosInstance.post<T>(url, data, config);
+    const response = await axiosInstance
+      .post<T>(url, data, config)
+      .then(
+        (resData): SuccessResponse<T> => ({
+          isSuccess: true,
+          data: resData.data,
+        }),
+      )
+      .catch((error): FailureResponse => error);
 
-      return {
-        isSuccess: true,
-        data: response.data,
-      };
-    } catch (error: any) {
-      return error;
-    }
+    return response;
   },
 
   /**
@@ -67,16 +69,17 @@ const client = {
     data?: any,
     config?: AxiosRequestConfig,
   ): Promise<Response<T>> => {
-    try {
-      const response = await axiosInstance.put<T>(url, data, config);
+    const response = await axiosInstance
+      .put<T>(url, data, config)
+      .then(
+        (resData): SuccessResponse<T> => ({
+          isSuccess: true,
+          data: resData.data,
+        }),
+      )
+      .catch((error): FailureResponse => error);
 
-      return {
-        isSuccess: true,
-        data: response.data,
-      };
-    } catch (error: any) {
-      return error;
-    }
+    return response;
   },
 
   /**
@@ -89,16 +92,17 @@ const client = {
     url: string,
     config?: AxiosRequestConfig,
   ): Promise<Response<T>> => {
-    try {
-      const response = await axiosInstance.delete<T>(url, config);
+    const response = await axiosInstance
+      .delete<T>(url, config)
+      .then(
+        (resData): SuccessResponse<T> => ({
+          isSuccess: true,
+          data: resData.data,
+        }),
+      )
+      .catch((error): FailureResponse => error);
 
-      return {
-        isSuccess: true,
-        data: response.data,
-      };
-    } catch (error: any) {
-      return error;
-    }
+    return response;
   },
 };
 
