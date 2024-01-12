@@ -1,71 +1,60 @@
 import { create } from 'zustand';
-
+// 각각의 인터페이스 정의
 interface StoreInfo {
-  storeName: FormDataEntryValue | null;
-  storeTel: FormDataEntryValue | null;
-  jibunAddress: FormDataEntryValue | null;
-  detailAddress: FormDataEntryValue | null;
+  storeName: string;
+  storeTel: string;
+  city: string;
+  jibunAddress: string;
+  detailAddress: string;
+  latitude: number;
+  longitude: number;
 }
 
 interface OwnerInfo {
-  ownerName: FormDataEntryValue | null;
-  ownerTel: FormDataEntryValue | null;
-  representativeName: FormDataEntryValue | null;
-  registrationNo: FormDataEntryValue | null;
-  accountPW: FormDataEntryValue | null;
-  accountNum: FormDataEntryValue | null;
-  accountBank: FormDataEntryValue | null;
+  representativeName: string;
+  registrationNo: string;
+  ownerName: string;
+  ownerTel: string;
+  accountBank: string | number;
+  accountNum: string;
+  accountPW: string;
 }
 
+export type SignupInfo = StoreInfo & OwnerInfo;
+
+// SignupFormState 인터페이스는 이제 StoreInfo와 OwnerInfo를 포함합니다.
 interface SignupFormState {
-  storeName: FormDataEntryValue | null;
-  storeTel: FormDataEntryValue | null;
-  city: string;
-  jibunAddress: FormDataEntryValue | null;
-  detailAddress: FormDataEntryValue | null;
-  latitude: number;
-  longitude: number;
-  representativeName: FormDataEntryValue | null;
-  registrationNo: FormDataEntryValue | null;
-  ownerName: FormDataEntryValue | null;
-  ownerTel: FormDataEntryValue | null;
-  accountBank: FormDataEntryValue | number | null;
-  accountNum: FormDataEntryValue | null;
-  accountPW: FormDataEntryValue | null;
+  storeInfo: StoreInfo;
+  ownerInfo: OwnerInfo;
   setStoreInfo: (storeInfo: StoreInfo) => void;
   setOwnerInfo: (ownerInfo: OwnerInfo) => void;
+  getSignupInfo: () => SignupInfo;
 }
 
-export const signupForm = create<SignupFormState>((set) => ({
-  storeName: '',
-  storeTel: '',
-  city: '',
-  detailAddress: '',
-  jibunAddress: '',
-  latitude: 0,
-  longitude: 0,
-  representativeName: '',
-  registrationNo: '',
-  ownerName: '',
-  ownerTel: '',
-  accountBank: 0,
-  accountNum: '',
-  accountPW: '',
-  setStoreInfo: (storeInfo: StoreInfo) =>
-    set({
-      storeName: storeInfo.storeName,
-      storeTel: storeInfo.storeTel,
-      jibunAddress: storeInfo.jibunAddress,
-      detailAddress: storeInfo.detailAddress,
-    }),
-  setOwnerInfo: (ownerInfo: OwnerInfo) =>
-    set({
-      ownerName: ownerInfo.ownerName,
-      ownerTel: ownerInfo.ownerTel,
-      representativeName: ownerInfo.representativeName,
-      registrationNo: ownerInfo.registrationNo,
-      accountPW: ownerInfo.accountPW,
-      accountNum: ownerInfo.accountNum,
-      accountBank: ownerInfo.accountBank,
-    }),
+// Zustand 스토어 생성
+export const signupForm = create<SignupFormState>((set, get) => ({
+  storeInfo: {
+    storeName: '',
+    storeTel: '',
+    city: '',
+    jibunAddress: '',
+    detailAddress: '',
+    latitude: 0,
+    longitude: 0,
+  },
+  ownerInfo: {
+    representativeName: '',
+    registrationNo: '',
+    ownerName: '',
+    ownerTel: '',
+    accountBank: 0,
+    accountNum: '',
+    accountPW: '',
+  },
+  setStoreInfo: (storeInfo: StoreInfo) => set({ storeInfo }),
+  setOwnerInfo: (ownerInfo: OwnerInfo) => set({ ownerInfo }),
+  getSignupInfo: () => ({
+    ...get().storeInfo,
+    ...get().ownerInfo,
+  }),
 }));
