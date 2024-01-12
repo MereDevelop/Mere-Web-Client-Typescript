@@ -16,11 +16,15 @@ export async function storeInfoSubmit({ request }: { request: Request }) {
 
   // 수정 필요
   const storeInfoForm = {
-    storeName: formData.get('storeName'),
-    storeTel: formData.get('storePhone'),
-    jibunAddress: formData.get('storeAddress'),
-    detailAddress: formData.get('storeAddressDetail'),
+    storeName: formData.get('storeName') as string,
+    storeTel: formData.get('storePhone') as string,
+    city: (formData.get('storeAddress') as string).split(' ')[0],
+    jibunAddress: formData.get('storeAddress') as string,
+    detailAddress: formData.get('storeAddressDetail') as string,
+    latitude: 0,
+    longitude: 0,
   };
+  console.log(storeInfoForm);
 
   const { setStoreInfo } = signupForm.getState();
   setStoreInfo(storeInfoForm);
