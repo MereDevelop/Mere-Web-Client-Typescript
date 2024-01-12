@@ -8,7 +8,9 @@ const SignupStatus: React.FC<{ currentStatus: string }> = ({
   const isStoreInfo =
     currentStatus === 'signup' ? 'proceed-state_selected' : '';
   const isOwnerInfo =
-    currentStatus === 'ownerinfo' ? 'proceed-state_selected' : '';
+    currentStatus === 'ownerinfo' || currentStatus === 'checkinfo'
+      ? 'proceed-state_selected'
+      : '';
   const isWait = currentStatus === 'wait' ? 'proceed-state_selected' : '';
   const isDone = currentStatus === 'done' ? 'proceed-state_selected' : '';
 
