@@ -1,0 +1,571 @@
+@import '@styles/media/mixin';
+
+// //desktop (1920px ~ 1080px)
+
+.checkinfo-form {
+  width: 1222.832px;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 66.79px;
+}
+
+.top-container {
+  align-items: center;
+  margin: 0 auto;
+  width: 1222.832px;
+  height: 394.462px;
+  border-radius: 10px;
+  border: 1px solid #d3d5de;
+  background-color: #e6e9ee;
+  margin-top: 66.79px;
+}
+.bottom-container {
+  align-items: center;
+  margin: 0 auto;
+  width: 1222.832px;
+  height: 583.803px;
+  border-radius: 10px;
+  border: 1px solid #d3d5de;
+  background-color: #e6e9ee;
+  margin-top: 22.09px;
+}
+
+.store-name-label {
+  font-size: 25px;
+  font-weight: 500;
+  line-height: normal;
+  text-align: left;
+  display: block;
+  margin-bottom: 22.6px;
+}
+
+.store-number-label,
+.store-name-label,
+.store-address-label,
+.store-password-label {
+  font-size: 25px;
+  font-weight: 500;
+  line-height: normal;
+  text-align: left;
+  display: block;
+  margin-bottom: 23.49px;
+}
+
+.store-name {
+  width: 432px;
+  height: 73px;
+  margin-bottom: 30px;
+  border: 1.5px solid #e6e9ee;
+  color: #898c9a;
+  font-weight: 400;
+  font-size: 25px;
+  border-radius: 10px;
+  outline: none;
+  text-align: left;
+  padding-inline-start: 20px;
+}
+
+.store-number {
+  width: 432px;
+  height: 73px;
+  border: 1.5px solid #e6e9ee;
+  color: #898c9a;
+  font-weight: 400;
+  font-size: 25px;
+  border-radius: 10px;
+  outline: none;
+  text-align: left;
+  padding-inline-start: 20px;
+}
+
+.bank-choice-btn-02 {
+  background-color: #898c9a;
+  color: #fff;
+  border: 1.5px solid #898c9a;
+  width: 172px;
+  height: 77px;
+  border-radius: 10px;
+  margin-right: 15.59px;
+  font-family: Pretendard;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 30.14px;
+}
+.bank-account-number-02 {
+  width: 244px;
+  height: 73px;
+  border: 1.5px solid #e6e9ee;
+  color: #898c9a;
+  font-weight: 400;
+  font-size: 25px;
+  border-radius: 10px;
+  padding-left: 5px;
+  outline: none;
+  text-align: left;
+  padding-inline-start: 20px;
+}
+.top-left-container {
+  width: 458px;
+  margin-top: 51.86px;
+  margin-bottom: 51.86px;
+  margin-left: 109.1px;
+  float: left;
+}
+
+.top-right-container {
+  width: 458px;
+  margin-left: 89.92px;
+  float: left;
+  margin-top: 51.86px;
+}
+.bottom-left-container {
+  width: 458px;
+  margin-top: 51.86px;
+  margin-bottom: 51.86px;
+  margin-left: 109.1px;
+  float: left;
+}
+
+.bottom-right-container {
+  width: 458px;
+  margin-left: 89.92px;
+  float: left;
+  margin-top: 51.86px;
+}
+.store-address {
+  width: 432px;
+  height: 73px;
+  margin-bottom: 17.79px;
+  border: 1.5px solid #e6e9ee;
+  color: #898c9a;
+  font-weight: 400;
+  font-size: 25px;
+  border-radius: 10px;
+  outline: none;
+  margin-right: 17.3px;
+  padding-inline-start: 20px;
+}
+
+.store-detail-address-02 {
+  width: 432px;
+  height: 73px;
+  margin-bottom: 30px;
+  border: 1.5px solid #e6e9ee;
+  color: #898c9a;
+  font-weight: 400;
+  font-size: 25px;
+  border-radius: 10px;
+  outline: none;
+  text-align: left;
+  padding-inline-start: 20px;
+}
+
+.store-name-03 {
+  width: 220px;
+  float: left;
+  margin-right: 17.67px;
+  .president-name-03 {
+    width: 194px;
+    height: 73px;
+    border: 1.5px solid #e6e9ee;
+    color: #898c9a;
+    font-weight: 400;
+    font-size: 25px;
+    border-radius: 10px;
+    outline: none;
+    text-align: left;
+    padding-inline-start: 20px;
+    float: left;
+  }
+}
+
+.store-name-04 {
+  width: 220px;
+  float: left;
+  .representative-name-02 {
+    width: 196px;
+    height: 73px;
+    margin-bottom: 44px;
+    border: 1px solid #e6e9ee;
+    color: #898c9a;
+    font-weight: 400;
+    font-size: 25px;
+    border-radius: 10px;
+    outline: none;
+    text-align: left;
+    padding-inline-start: 20px;
+    float: left;
+  }
+}
+
+.password-02 {
+  width: 432px;
+  height: 73px;
+  margin-bottom: 9.32px;
+  border: 1.5px solid #e6e9ee;
+  color: #898c9a;
+  font-weight: 400;
+  font-size: 25px;
+  border-radius: 10px;
+  padding-left: 5px;
+  outline: none;
+  text-align: left;
+  padding-inline-start: 20px;
+}
+
+.president-number-02,
+.business-registration-number-02 {
+  width: 432px;
+  height: 73px;
+  margin-bottom: 15.44px;
+  border: 1.5px solid #e6e9ee;
+  color: #898c9a;
+  font-weight: 400;
+  font-size: 25px;
+  border-radius: 10px;
+  outline: none;
+  text-align: left;
+  padding-inline-start: 20px;
+}
+
+.next-navigation-btn-03 {
+  width: 457.823px;
+  height: 77.112px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 30px;
+  font-weight: 600;
+  line-height: normal;
+  background-color: #898c9a;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.signup-navigation-container-03 {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 62.82px;
+  margin-bottom: 88.74px;
+}
+
+.bottom-container-02 {
+  margin-top: 51.86px;
+}
+
+//tablet
+
+@include tablet {
+  .checkinfo-form {
+    width: 595px;
+    margin-top: 33.5px;
+  }
+
+  .top-container {
+    width: 595px;
+    height: 215px;
+    margin-top: 33.5px;
+  }
+  .bottom-container {
+    width: 595px;
+    height: 306px;
+    margin-top: 11.46px;
+  }
+
+  .store-name-label {
+    font-size: 16px;
+    margin-bottom: 8.01px;
+  }
+
+  .store-number-label,
+  .store-name-label,
+  .store-address-label,
+  .store-password-label {
+    font-size: 16px;
+    margin-bottom: 8.57px;
+  }
+
+  .store-name {
+    width: 221px;
+    height: 39px;
+    margin-bottom: 18.75px;
+    font-size: 14px;
+    border-radius: 7px;
+  }
+
+  .store-number {
+    width: 221px;
+    height: 39px;
+    font-size: 14px;
+    border-radius: 7px;
+  }
+
+  .bank-choice-btn-02 {
+    width: 94px;
+    height: 41px;
+    border-radius: 7px;
+    margin-right: 5.86px;
+    font-size: 14px;
+    margin-bottom: 19.7px;
+  }
+  .bank-account-number-02 {
+    width: 122px;
+    height: 39px;
+    font-size: 14px;
+    border-radius: 7px;
+  }
+  .top-left-container {
+    width: 247px;
+    margin-top: 31.98px;
+    margin-bottom: 25.13px;
+    margin-left: 33.77px;
+  }
+
+  .top-right-container {
+    width: 247px;
+    margin-left: 34.78px;
+    margin-top: 31.98px;
+  }
+  .bottom-left-container {
+    width: 247px;
+    margin-top: 31.98px;
+    margin-bottom: 28.37px;
+    margin-left: 30.86px;
+  }
+
+  .bottom-right-container {
+    width: 247px;
+    margin-left: 37.17px;
+    margin-top: 31.98px;
+  }
+  .store-address {
+    width: 221px;
+    height: 39px;
+    margin-bottom: 4.69px;
+    font-size: 14px;
+    border-radius: 7px;
+    margin-right: 17.3px;
+  }
+
+  .store-detail-address-02 {
+    width: 221px;
+    height: 39px;
+    margin-bottom: 67.28px;
+    font-size: 14px;
+    border-radius: 7px;
+  }
+
+  .store-name-03 {
+    width: 120.5px;
+    margin-right: 6px;
+    .president-name-03 {
+      width: 94.5px;
+      height: 39px;
+      font-size: 14px;
+      border-radius: 7px;
+    }
+  }
+
+  .store-name-04 {
+    width: 120.5px;
+    .representative-name-02 {
+      margin-bottom: 19px;
+      width: 94.5px;
+      height: 39px;
+      // margin-bottom: 44px;
+      font-size: 14px;
+      border-radius: 7px;
+    }
+  }
+
+  .password-02 {
+    width: 221px;
+    height: 39px;
+    margin-bottom: 116.44px;
+    font-size: 14px;
+    border-radius: 7px;
+  }
+
+  .president-number-02,
+  .business-registration-number-02 {
+    width: 221px;
+    height: 39px;
+    // margin-bottom: 27.87px;
+    font-size: 14px;
+    border-radius: 7px;
+  }
+
+  .next-navigation-btn-03 {
+    width: 290px;
+    height: 49px;
+    border-radius: 10px;
+    font-size: 18px;
+  }
+  .signup-navigation-container-03 {
+    margin-top: 50.72px;
+    margin-bottom: 53.02px;
+  }
+
+  .bottom-container-02 {
+    margin-top: 51.86px;
+  }
+}
+
+// pos ()
+
+@include pos {
+  .checkinfo-form {
+    width: 775px;
+    margin-top: 47.83px;
+  }
+
+  .top-container {
+    width: 775px;
+    height: 250px;
+    margin-top: 33.5px;
+  }
+  .bottom-container {
+    width: 775px;
+    height: 365px;
+    margin-top: 11.46px;
+  }
+
+  .store-name-label {
+    font-size: 18px;
+    margin-bottom: 11.31px;
+  }
+
+  .store-number-label,
+  .store-name-label,
+  .store-address-label,
+  .store-password-label {
+    font-size: 18px;
+    margin-bottom: 11.31px;
+  }
+
+  .store-name {
+    width: 264px;
+    height: 46px;
+    margin-bottom: 21.91px;
+    font-size: 16px;
+    border-radius: 7px;
+  }
+
+  .store-number {
+    width: 264px;
+    height: 46px;
+    font-size: 16px;
+    border-radius: 7px;
+  }
+
+  .bank-choice-btn-02 {
+    width: 109px;
+    height: 49px;
+    border-radius: 7px;
+    margin-right: 6.62px;
+    font-size: 16px;
+    margin-bottom: 42.79px;
+  }
+  .bank-account-number-02 {
+    width: 149.381px;
+    height: 46px;
+    font-size: 16px;
+    border-radius: 7px;
+  }
+  .top-left-container {
+    width: 290px;
+    margin-top: 31.98px;
+    margin-bottom: 25.13px;
+    margin-left: 78.57px;
+  }
+
+  .top-right-container {
+    width: 290px;
+    margin-left: 37px;
+    margin-top: 35.05px;
+  }
+  .bottom-left-container {
+    width: 290px;
+    margin-top: 34.98px;
+    margin-bottom: 42.79px;
+    margin-left: 78.57px;
+  }
+
+  .bottom-right-container {
+    width: 290px;
+    margin-left: 69.84px;
+    margin-top: 26.69px;
+  }
+  .store-address {
+    width: 264px;
+    height: 46px;
+    margin-bottom: 4.69px;
+    font-size: 14px;
+    border-radius: 7px;
+    margin-right: 17.3px;
+  }
+
+  .store-detail-address-02 {
+    width: 264px;
+    height: 46px;
+    margin-bottom: 67.28px;
+    font-size: 14px;
+    border-radius: 7px;
+  }
+
+  .store-name-03 {
+    width: 141px;
+    margin-right: 7.55px;
+    .president-name-03 {
+      width: 115px;
+      height: 46px;
+      font-size: 16px;
+      border-radius: 7px;
+    }
+  }
+
+  .store-name-04 {
+    width: 141px;
+    .representative-name-02 {
+      margin-bottom: 22px;
+      width: 115px;
+      height: 46px;
+      // margin-bottom: 44px;
+      font-size: 16px;
+      border-radius: 7px;
+    }
+  }
+
+  .password-02 {
+    width: 264px;
+    height: 46px;
+    margin-bottom: 116.44px;
+    font-size: 14px;
+    border-radius: 7px;
+  }
+
+  .president-number-02,
+  .business-registration-number-02 {
+    width: 264px;
+    height: 46px;
+    // margin-bottom: 27.87px;
+    font-size: 14px;
+    border-radius: 7px;
+  }
+
+  .next-navigation-btn-03 {
+    width: 290px;
+    height: 49px;
+    border-radius: 10px;
+    font-size: 18px;
+  }
+  .signup-navigation-container-03 {
+    margin-top: 50.72px;
+    margin-bottom: 144.41px;
+  }
+
+  .bottom-container-02 {
+    margin-top: 51.86px;
+  }
+}
