@@ -8,7 +8,9 @@ import '@styles/auth/account/PasswordReset.scss';
 
 const PasswordReset: React.FC<{
   isSubmitting: boolean;
-}> = ({ isSubmitting }) => {
+  authenticateCode: string | undefined;
+  storeId: string | undefined;
+}> = ({ isSubmitting, authenticateCode, storeId }) => {
   const {
     register,
     formState: { isValid },
@@ -21,8 +23,17 @@ const PasswordReset: React.FC<{
     resolver: yupResolver(passwordFormSchema),
   });
 
+  // 페이지 벗어날 시, 경고창 표시
+  window.addEventListener('beforeunload', (e: BeforeUnloadEvent) => {
+    e.preventDefault();
+    e.returnValue = '';
+  });
+
   return (
     <Form className='new-password-form' method='post'>
+      <input type='hidden' name='authenticateCode' value={authenticateCode} />
+      <input type='hidden' name='storeId' value={storeId} />
+
       <div className='new-password-container'>
         <label htmlFor='password'>새 비밀번호</label>
         <input
