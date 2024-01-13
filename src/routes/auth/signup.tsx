@@ -9,6 +9,7 @@ import OwnerInfoPage, {
 } from '@pages/auth/signup/OwnerInfoPage';
 import WaitPage from '@pages/auth/signup/WaitPage';
 import CheckInfoPage, {
+  signupRequest,
   loadSignupForm,
 } from '@pages/auth/signup/CheckInfoPage';
 
@@ -31,6 +32,7 @@ const signupRoute: RouteObject = {
       path: 'checkinfo',
       element: <CheckInfoPage />,
       loader: loadSignupForm,
+      action: signupRequest,
     },
     {
       path: 'wait',
