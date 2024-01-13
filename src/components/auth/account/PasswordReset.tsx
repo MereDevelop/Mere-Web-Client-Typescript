@@ -23,6 +23,12 @@ const PasswordReset: React.FC<{
     resolver: yupResolver(passwordFormSchema),
   });
 
+  // 페이지 벗어날 시, 경고창 표시
+  window.addEventListener('beforeunload', (e: BeforeUnloadEvent) => {
+    e.preventDefault();
+    e.returnValue = '';
+  });
+
   return (
     <Form className='new-password-form' method='post'>
       <input type='hidden' name='authenticateCode' value={authenticateCode} />
