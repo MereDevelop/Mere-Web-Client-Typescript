@@ -6,6 +6,7 @@ interface StoreInfo {
   city: string;
   jibunAddress: string;
   detailAddress: string;
+  roadAddress: string;
   latitude: number;
   longitude: number;
 }
@@ -15,7 +16,7 @@ interface OwnerInfo {
   registrationNo: string;
   ownerName: string;
   ownerTel: string;
-  accountBank: string | number;
+  accountBank: number;
   accountNum: string;
   accountPW: string;
 }
@@ -39,6 +40,7 @@ export const signupForm = create<SignupFormState>((set, get) => ({
     city: '',
     jibunAddress: '',
     detailAddress: '',
+    roadAddress: '',
     latitude: 0,
     longitude: 0,
   },
