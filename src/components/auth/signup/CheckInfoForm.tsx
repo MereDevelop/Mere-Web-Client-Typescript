@@ -1,6 +1,6 @@
 import { SignupInfo } from '@store/signup-dto';
 import '@styles/auth/signup/CheckInfoForm.scss';
-import { Link } from 'react-router-dom';
+import { Form, Link } from 'react-router-dom';
 
 interface CheckInfoFormProps {
   signupInfo: SignupInfo;
@@ -21,7 +21,7 @@ const CheckInfoForm: React.FC<CheckInfoFormProps> = ({ signupInfo }) => {
   } = signupInfo;
 
   return (
-    <form className='check-info-form'>
+    <Form className='check-info-form' method='post'>
       <div className='top-container'>
         <div className='top-left-container'>
           <label htmlFor='store-name-label' className='store-name-label'>
@@ -172,13 +172,11 @@ const CheckInfoForm: React.FC<CheckInfoFormProps> = ({ signupInfo }) => {
         </div>
       </div>
       <div className='signup-navigation-container-03'>
-        <Link to='/wait'>
-          <button type='submit' className='next-navigation-btn-03'>
-            가입하기
-          </button>
-        </Link>
+        <button type='submit' className='next-navigation-btn-03'>
+          가입하기
+        </button>
       </div>
-    </form>
+    </Form>
   );
 };
 
