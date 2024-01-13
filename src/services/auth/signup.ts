@@ -1,25 +1,17 @@
+import { SERVER_URL } from '@constants/api';
 import { CustomError } from '@custom/types/response';
 import axios from '@services/config';
+import { SignupInfo } from '@store/signup-dto';
 
-// 수정 해야 함
-type StoreInfoForm = {
-  storeName: FormDataEntryValue | null;
-  storePhoneNumber: FormDataEntryValue | null;
-  storeAddress: FormDataEntryValue | null;
-};
-
-// 수정 예정
-export async function requestVerifyStoreInfo(storeInfo: StoreInfoForm) {
+export async function requestSignup(signupForm: SignupInfo) {
   const response = await axios({
     method: 'post',
-    url: '/owner/signup/', // 수정 예정
-    data: storeInfo,
-  }) // 수정 예정
+    url: `${SERVER_URL}/owner/sign/up`,
+    data: signupForm,
+  })
     .then((resData) => {
-      const { data, status } = resData;
-      const { smsAuthenticatedToken, ownerId } = data;
-
-      return { success: true, smsAuthenticatedToken, ownerId, status };
+      const { status } = resData;
+      return status;
     })
     .catch((error): CustomError => error);
 
