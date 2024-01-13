@@ -13,7 +13,7 @@ export default OwnerInfoPage;
 
 export async function ownerInfoSubmit({ request }: { request: Request }) {
   const formData = await request.formData();
-  // 수정 필요
+  // 수정 필요 ( account Banck 처리);
   const ownerInfoForm = {
     ownerName: formData.get('ownerName') as string,
     ownerTel: formData.get('ownerPhone') as string,
@@ -21,7 +21,7 @@ export async function ownerInfoSubmit({ request }: { request: Request }) {
     registrationNo: formData.get('registrationNo') as string,
     accountPW: formData.get('password') as string,
     accountNum: formData.get('account-number') as string,
-    accountBank: formData.get('accountBank') as string,
+    accountBank: 0,
   };
 
   const { setOwnerInfo } = signupForm.getState();
