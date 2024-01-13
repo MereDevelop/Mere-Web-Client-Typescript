@@ -15,7 +15,7 @@ export async function requestSignIn(mode: string, loginFormData: LoginForm) {
 }
 
 interface ChangePasswordForm {
-  id: string | undefined;
+  id: FormDataEntryValue | null;
   password: FormDataEntryValue | null;
 }
 

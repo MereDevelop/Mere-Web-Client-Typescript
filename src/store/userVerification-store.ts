@@ -16,7 +16,10 @@ const useUserVerificationStore = create<UserVerificationStore>()(
   ),
 );
 
-export function setUserVerification(authenticateCode: string, storeId: string) {
+export function setUserVerification(
+  authenticateCode: string | undefined,
+  storeId: string | undefined,
+) {
   useUserVerificationStore.setState(
     () => ({ authenticateCode, storeId }),
     false,
