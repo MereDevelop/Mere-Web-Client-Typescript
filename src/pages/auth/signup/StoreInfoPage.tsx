@@ -21,6 +21,7 @@ export async function storeInfoSubmit({ request }: { request: Request }) {
     city: (formData.get('storeAddress') as string).split(' ')[0],
     jibunAddress: formData.get('storeAddress') as string,
     detailAddress: formData.get('storeAddressDetail') as string,
+    roadAddress: formData.get('storeAddress') as string,
     latitude: 0,
     longitude: 0,
   };
