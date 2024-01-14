@@ -16,7 +16,7 @@ interface OwnerInfo {
   registrationNo: string;
   ownerName: string;
   ownerTel: string;
-  accountBank: number;
+  accountBank: number | string;
   accountNum: string;
   accountPW: string;
 }
@@ -49,7 +49,7 @@ export const signupForm = create<SignupFormState>((set, get) => ({
     registrationNo: '',
     ownerName: '',
     ownerTel: '',
-    accountBank: 0,
+    accountBank: '',
     accountNum: '',
     accountPW: '',
   },
