@@ -5,6 +5,8 @@ import { OwnerInfoProps } from '@custom/types/signup/Signup';
 import { useEffect, useState } from 'react';
 import '@styles/auth/signup/OwnerInfoForm.scss';
 import CheckBankModal from '@commons/modal/CheckBankModal';
+import { SignupInfo, signupForm } from '@store/signup-dto';
+import { requestVerifyNumber } from '@services/auth/signup';
 
 const OwnerInfo: React.FC<OwnerInfoProps> = ({ isSubmitting }) => {
   const [ownerName, setOwnerName] = useState<string | undefined>();
@@ -21,6 +23,7 @@ const OwnerInfo: React.FC<OwnerInfoProps> = ({ isSubmitting }) => {
   const [verifyNum, setVerifyNum] = useState<string | undefined>();
   const [isValid, setIsVaild] = useState<boolean>(false);
   const [isModal, setIsModal] = useState<boolean>(false);
+  const [isSend, setIsSend] = useState<boolean>(false);
 
   useEffect(() => {
     const isAllFilled = () => {
@@ -39,6 +42,23 @@ const OwnerInfo: React.FC<OwnerInfoProps> = ({ isSubmitting }) => {
     };
     isAllFilled();
   });
+
+  const onClickVerification = async () => {
+    const { getSignupInfo } = signupForm.getState();
+    const signupInfo: SignupInfo = getSignupInfo();
+    const verifyDto = {
+      phoneNumber: ownerTel as string,
+      storeName: signupInfo.storeName as string,
+    };
+
+    const res = await requestVerifyNumber(verifyDto);
+    if (res === 200) {
+      alert('인증번호를 발송하였습니다.');
+      setIsSend(true);
+    } else {
+      alert('인증번호 발송 오류');
+    }
+  };
 
   return (
     <Form className='owner-info-form' method='post' action='./'>
@@ -68,8 +88,12 @@ const OwnerInfo: React.FC<OwnerInfoProps> = ({ isSubmitting }) => {
                   setOwnerTel(e.target.value);
                 }}
               />
-              <button type='button' className='verification-owner-phone-btn'>
-                인증번호 받기
+              <button
+                type='button'
+                className='verification-owner-phone-btn'
+                onClick={onClickVerification}
+              >
+                {isSend ? '재인증 요청' : '인증번호 받기'}
               </button>
             </div>
             <input
@@ -77,6 +101,7 @@ const OwnerInfo: React.FC<OwnerInfoProps> = ({ isSubmitting }) => {
               name='verifyPhone'
               type='number'
               placeholder='인증번호 6자리 입력'
+              disabled={!isSend}
               onChange={(e) => {
                 setVerifyNum(e.target.value);
               }}
