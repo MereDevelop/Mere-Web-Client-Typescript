@@ -25,7 +25,6 @@ export async function storeInfoSubmit({ request }: { request: Request }) {
     latitude: 0,
     longitude: 0,
   };
-  console.log(storeInfoForm);
 
   const { setStoreInfo } = signupForm.getState();
   setStoreInfo(storeInfoForm);
