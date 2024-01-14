@@ -60,7 +60,11 @@ const CheckBankModal: React.FC<CheckBankModalProps> = ({
   ];
   return (
     <div className='modal-overlay' onClick={handleOutsideClick}>
-      <div className='modal' ref={modalRef} onClick={handleInsideClick}>
+      <div
+        className='check-bank-modal modal'
+        ref={modalRef}
+        onClick={handleInsideClick}
+      >
         <h1 className='bank-choice-comment'>은행을 선택해주세요.</h1>
         <div className='bank-list'>
           {banks.map((bank) => (
