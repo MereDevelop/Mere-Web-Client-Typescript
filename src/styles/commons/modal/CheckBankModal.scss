@@ -1,0 +1,113 @@
+@import '@styles/media/mixin';
+
+// //desktop (1920px ~ 1080px)
+
+.bank-choice-box {
+  float: left;
+  width: 144px;
+  height: 67px;
+  border-radius: 5px;
+  margin-top: 4px;
+  margin-right: 15px;
+  margin-bottom: 15px;
+  background-color: #fff;
+  text-align: center;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  border-radius: 10px;
+  border: 1.5px solid #e6e9ee;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  &:hover {
+    color: #4162ff;
+    border: 1.5px solid #4162ff;
+  }
+}
+
+.bank-list {
+  margin: 0 auto;
+  margin-top: 45.31px;
+  width: 974.99px;
+  height: 495px;
+}
+
+.modal {
+  width: 1128.89px;
+  height: 670px;
+  border-radius: 20px;
+  background-color: #fff;
+}
+
+.bank-choice-comment {
+  color: #000;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-top: 51.69px;
+  margin-left: 73.28px;
+}
+
+@include pos {
+  .bank-choice-box {
+    width: 85.969px;
+    height: 40.119px;
+    border-radius: 7px;
+    margin-right: 8.61px;
+    margin-bottom: 8.59px;
+    font-size: 16px;
+    border-radius: 7px;
+  }
+
+  .bank-list {
+    margin: 0 auto;
+    margin-top: 22.39px;
+    width: 568.8px;
+    height: 383.997px;
+  }
+
+  .modal {
+    width: 647px;
+    height: 383.997px;
+    border-radius: 20px;
+  }
+
+  .bank-choice-comment {
+    font-size: 20px;
+    margin-top: 32.07px;
+    margin-left: 42px;
+  }
+}
+
+@include tablet {
+  .bank-choice-box {
+    width: 76.403px;
+    height: 35.654px;
+    border-radius: 7px;
+    margin-right: 7.64px;
+    margin-bottom: 7.3px;
+    font-size: 14px;
+    border-radius: 7px;
+  }
+
+  .bank-list {
+    margin: 0 auto;
+    margin-top: 19.9px;
+    width: 506.62px;
+    height: 270.854px;
+  }
+
+  .modal {
+    width: 575px;
+    height: 341.264px;
+    border-radius: 20px;
+  }
+
+  .bank-choice-comment {
+    font-size: 20px;
+    margin-top: 32.07px;
+    margin-left: 42px;
+  }
+}
