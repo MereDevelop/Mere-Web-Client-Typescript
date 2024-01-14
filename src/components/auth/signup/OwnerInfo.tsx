@@ -4,6 +4,7 @@ import '@styles/auth/account/Verification.scss';
 import { OwnerInfoProps } from '@custom/types/signup/Signup';
 import { useEffect, useState } from 'react';
 import '@styles/auth/signup/OwnerInfoForm.scss';
+import CheckBankModal from '@commons/modal/CheckBankModal';
 
 const OwnerInfo: React.FC<OwnerInfoProps> = ({ isSubmitting }) => {
   const [ownerName, setOwnerName] = useState<string | undefined>();
@@ -19,6 +20,7 @@ const OwnerInfo: React.FC<OwnerInfoProps> = ({ isSubmitting }) => {
   );
   const [verifyNum, setVerifyNum] = useState<string | undefined>();
   const [isValid, setIsVaild] = useState<boolean>(false);
+  const [isModal, setIsModal] = useState<boolean>(false);
 
   useEffect(() => {
     const isAllFilled = () => {
@@ -37,10 +39,6 @@ const OwnerInfo: React.FC<OwnerInfoProps> = ({ isSubmitting }) => {
     };
     isAllFilled();
   });
-
-  const selectBank = () => {
-    setAccountBank('농협');
-  };
 
   return (
     <Form className='owner-info-form' method='post' action='./'>
@@ -141,7 +139,9 @@ const OwnerInfo: React.FC<OwnerInfoProps> = ({ isSubmitting }) => {
             <button
               type='button'
               className='select-bank-btn'
-              onClick={selectBank}
+              onClick={() => {
+                setIsModal(!isModal);
+              }}
             >
               {accountBank}
             </button>
@@ -165,6 +165,12 @@ const OwnerInfo: React.FC<OwnerInfoProps> = ({ isSubmitting }) => {
       >
         {isSubmitting ? <BeatLoader /> : '다음'}
       </button>
+      {isModal && (
+        <CheckBankModal
+          onClose={() => setIsModal(false)}
+          setAccountBank={setAccountBank}
+        />
+      )}
     </Form>
   );
 };
