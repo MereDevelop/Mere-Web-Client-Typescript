@@ -7,3 +7,13 @@ export type StoreInfoProps = {
 export type OwnerInfoProps = {
   isSubmitting: boolean;
 };
+
+export type verifyDto = {
+  phoneNumber: string;
+  storeName: string;
+};
+
+export type verifyCodeDto = {
+  authenticateCode: string;
+  storeName: string;
+};
