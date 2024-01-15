@@ -1,0 +1,292 @@
+@import '@styles/media/mixin';
+
+// desktop (1920px ~
+.owner-info-form {
+  width: 170%;
+  margin-top: 55px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-left: 10%;
+  .owner-info-input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 28.5px;
+
+    .owner-info-container {
+      display: flex;
+    }
+
+    .owner-phone-verify-container,
+    .account-number-form {
+      display: flex;
+    }
+
+    .flex-container {
+      display: flex;
+    }
+
+    .owner-name-container,
+    .owner-phone-container,
+    .owner-representative-name-container,
+    .registrationNo-container,
+    .account-number-container,
+    .account-password-container {
+      display: flex;
+      flex-direction: column;
+      width: 50%;
+
+      label {
+        font-weight: 600;
+        font-size: 25px;
+        line-height: 30px;
+        margin-bottom: 20px;
+      }
+
+      .label-inivisible {
+        display: none;
+      }
+
+      input[id='ownerName'],
+      input[id='representative-name'],
+      input[id='registrationNo'],
+      input[id='account-number'] {
+        margin-right: 10%;
+      }
+
+      input[id='ownerName'],
+      input[id='ownerPhone'],
+      input[id='verifyPhone'],
+      input[id='representative-name'],
+      input[id='registrationNo'],
+      input[id='account-number'],
+      input[id='password'],
+      input[id='passwordCheck'] {
+        height: 77px;
+
+        background-color: #ffffff;
+
+        border-width: 1.5px;
+        border-style: solid;
+        border-color: #e6e9ee;
+        border-radius: 10px;
+
+        padding-inline-start: 20px;
+        font-size: 25px;
+
+        &::placeholder {
+          color: #898c9a;
+        }
+
+        &:focus,
+        &:active {
+          outline: none;
+          border-color: #4162ff;
+        }
+      }
+      .owner-name-container,
+      .owner-phone-container {
+        display: flex;
+        width: 50px;
+      }
+
+      .verification-owner-phone-btn,
+      .select-bank-btn {
+        width: 185px;
+        height: 100%;
+        padding-right: 0;
+        font-size: 25px;
+        line-height: 30px;
+
+        color: #4162ff;
+        background-color: #ffffff;
+
+        border: 1.5px;
+        border-style: solid;
+        border-color: #4162ff;
+        border-radius: 10px;
+      }
+    }
+  }
+
+  input[id='verifyPhone'] {
+    position: absolute;
+    width: 48%;
+    top: 20%;
+  }
+
+  .account-password-container {
+    position: absolute;
+    width: 100%;
+    right: 0%;
+    margin-top: 1.5%;
+  }
+
+  input[id='passwordCheck'] {
+    margin-top: 3%;
+  }
+
+  .owner-info-submit-btn {
+    width: 50%;
+
+    height: 77px;
+    margin-left: 25%;
+    margin-top: 65px;
+    color: #ffffff;
+    background-color: #4162ff;
+
+    border-radius: 10px;
+
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 36px;
+
+    cursor: pointer;
+
+    &:disabled {
+      background-color: #898c9a;
+      cursor: initial;
+    }
+  }
+}
+
+// pos (1024 ~ 1919px)
+@include pos {
+  .owner-info-form {
+    margin-top: 50.5px;
+
+    .owner-info-input-container {
+      gap: 16.5px;
+
+      .owner-name-container,
+      .owner-phone-container,
+      .owner-representative-name-container,
+      .registrationNo-container,
+      .account-number-container,
+      .account-password-container {
+        label {
+          font-size: 18px;
+          line-height: 21.5px;
+
+          margin-bottom: 10px;
+        }
+
+        input[id='ownerName'],
+        input[id='ownerPhone'],
+        input[id='verifyPhone'],
+        input[id='representative-name'],
+        input[id='registrationNo'],
+        input[id='account-number'],
+        input[id='password'],
+        input[id='passwordCheck'] {
+          height: 49px;
+
+          font-size: 18px;
+          line-height: 21.5px;
+
+          &::placeholder {
+            font-size: 18px;
+            line-height: 21.5px;
+          }
+        }
+
+        .verification-owner-phone-btn,
+        .select-bank-btn {
+          width: 114px;
+          height: 54px;
+
+          font-size: 18px;
+          line-height: 20px;
+
+          border-radius: 7px;
+        }
+      }
+    }
+    input[id='ownerPhone'],
+    input[id='account-number'] {
+      width: 100%;
+    }
+    input[id='verifyPhone'] {
+      width: 46.5%;
+    }
+
+    .owner-info-submit-btn {
+      margin-top: 36px;
+
+      height: 49px;
+      border-radius: 7px;
+
+      font-size: 18px;
+    }
+  }
+}
+
+// tablet (768 ~ 1023px)
+@include tablet {
+  .owner-info-form {
+    margin-top: 74.7px;
+
+    .owner-info-input-container {
+      gap: 13.5px;
+
+      .owner-name-container,
+      .owner-phone-container,
+      .owner-representative-name-container,
+      .registrationNo-container,
+      .account-number-container,
+      .account-password-container {
+        label {
+          font-size: 16px;
+          line-height: 19px;
+
+          margin-bottom: 7px;
+        }
+
+        input[id='ownerName'],
+        input[id='ownerPhone'],
+        input[id='verifyPhone'],
+        input[id='representative-name'],
+        input[id='registrationNo'],
+        input[id='account-number'],
+        input[id='password'],
+        input[id='passwordCheck'] {
+          height: 49px;
+
+          font-size: 16px;
+          line-height: 19px;
+
+          &::placeholder {
+            font-size: 16px;
+            line-height: 19px;
+          }
+        }
+
+        .verification-owner-phone-btn,
+        .select-bank-btn {
+          width: 111px;
+          height: 54px;
+
+          font-size: 17px;
+          line-height: 19px;
+
+          border-radius: 7px;
+        }
+      }
+    }
+    input[id='ownerPhone'],
+    input[id='account-number'] {
+      width: 100%;
+    }
+
+    input[id='verifyPhone'] {
+      width: 46%;
+    }
+
+    .owner-info-submit-btn {
+      margin-top: 41.5px;
+
+      height: 49px;
+      font-size: 18px;
+    }
+  }
+}
