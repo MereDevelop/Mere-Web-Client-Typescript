@@ -14,31 +14,31 @@ type GNBItemType = {
 const GNBItems: GNBItemType[] = [
   {
     id: 1,
-    link: '/home',
+    link: '/owner',
     text: '주문접수',
     icon: <OrderIcon />,
   },
   {
     id: 2,
-    link: '/home/menu',
+    link: '/owner/menu',
     text: '메뉴관리',
     icon: <MenuIcon />,
   },
   {
     id: 3,
-    link: '/home/sales',
+    link: '/owner/sales',
     text: '매출관리',
     icon: <SalesIcon />,
   },
   {
     id: 4,
-    link: '/home/store',
+    link: '/owner/store',
     text: '매장관리',
     icon: <StoreIcon />,
   },
   {
     id: 5,
-    link: '/home/notice',
+    link: '/owner/notice',
     text: '공지사항',
     icon: <NoticeIcon />,
   },

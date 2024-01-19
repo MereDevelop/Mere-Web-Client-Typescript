@@ -49,7 +49,7 @@ const GNB: React.FC<{ operationStatus: boolean }> = ({ operationStatus }) => {
                       ? 'gnb-item-link gnb-item-link__active'
                       : 'gnb-item-link'
                   }
-                  end={item.link === '/home'}
+                  end={item.link === '/owner'}
                 >
                   <div className='gnb-icon-container'>
                     {item.icon}
