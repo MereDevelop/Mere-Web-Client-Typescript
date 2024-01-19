@@ -1,3 +1,5 @@
+import { v4 } from 'uuid';
+
 import { NoticeDetail as NoticeDetailType } from '@services/owner/notice';
 import '@styles/owner/notice/NoticeDetail.scss';
 import {
@@ -23,7 +25,7 @@ const NoticeDetail: React.FC<{ notice: NoticeDetailType }> = ({ notice }) => {
 
       <div className='notice-content'>
         {storeNoticeUrls.map((url: string) => (
-          <div key={url} className='content-element content-image-container'>
+          <div key={v4()} className='content-element content-image-container'>
             <img src={url} alt='notice 1' className='content-image' />
           </div>
         ))}
