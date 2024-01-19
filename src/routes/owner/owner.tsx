@@ -7,6 +7,23 @@ const owner: RouteObject[] = [
     path: 'owner',
     element: <HomeLayout />,
     loader: getOperationStatusLoader,
+    children: [
+      {
+        index: true,
+      },
+      {
+        path: 'menu',
+      },
+      {
+        path: 'sales',
+      },
+      {
+        path: 'store',
+      },
+      {
+        path: 'notice',
+      },
+    ],
   },
 ];
 
