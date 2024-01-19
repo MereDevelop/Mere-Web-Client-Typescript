@@ -3,14 +3,14 @@ import { useLoaderData } from 'react-router-typesafe';
 
 import NoticeDetail from '@components/owner/notice/NoticeDetail';
 import { requestNoticeDetail } from '@services/owner/notice';
-import '@styles/owner/notice/NoticeLayout.scss';
+import '@styles/owner/notice/NoticeDetailLayout.scss';
 import { isFailureResponse } from '@utils/checker/common';
 
 const NoticeDetailPage = () => {
   const { notice } = useLoaderData<typeof getNoticeDetail>();
 
   return (
-    <div className='notice-content-container'>
+    <div className='notice-detail-container'>
       <NoticeDetail notice={notice} />
     </div>
   );

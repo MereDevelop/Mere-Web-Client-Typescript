@@ -86,6 +86,17 @@
       line-height: 32.5px;
     }
   }
+
+  &::-webkit-scrollbar {
+    width: 5.75px;
+    background-color: transparent;
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    height: 41.5px;
+    border-radius: 10px;
+    background-color: #0000004d;
+  }
 }
 
 // pos (1024 ~ 1919px)
