@@ -1,6 +1,7 @@
 import { RouteObject } from 'react-router-dom';
 
 import HomeLayout, { getOperationStatusLoader } from '@pages/owner/OwnerLayout';
+import notice from './notice';
 
 const owner: RouteObject[] = [
   {
@@ -20,9 +21,7 @@ const owner: RouteObject[] = [
       {
         path: 'store',
       },
-      {
-        path: 'notice',
-      },
+      notice,
     ],
   },
 ];

@@ -1,0 +1,247 @@
+@import '@styles/media/mixin';
+
+// desktop (1920px ~
+.notice-list {
+  display: flex;
+  flex-direction: column;
+
+  border-radius: 15px;
+  overflow: hidden;
+
+  border: 1px solid #d3d5de;
+
+  .notice-header {
+    display: flex;
+    align-items: center;
+
+    height: 67px;
+    background: #cde2ff;
+
+    .notice-title,
+    .notice-date {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+
+      color: #000;
+      font-size: 25px;
+      font-weight: 600;
+      line-height: 25px;
+    }
+
+    .notice-title {
+      flex: 4;
+      padding-left: 44.5px;
+    }
+
+    .notice-date {
+      flex: 1;
+    }
+  }
+
+  .notice-content {
+    display: flex;
+    align-items: center;
+
+    height: 64px;
+    background: #fff;
+
+    border-top: 1px solid #d3d5de;
+
+    .notice-title-container {
+      padding-left: 44.5px;
+      flex: 4;
+
+      .notice-link {
+        display: flex;
+        gap: 12.5px;
+
+        .notice-title {
+          display: flex;
+          align-items: center;
+
+          color: #000;
+          font-size: 22px;
+          line-height: 25px;
+        }
+
+        .must-read-notice {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          width: 51px;
+          height: 27px;
+
+          border-radius: 50px;
+          background: #ff5a69;
+
+          color: #fff;
+          font-feature-settings: 'case' on;
+          font-size: 16px;
+          line-height: normal;
+        }
+      }
+    }
+
+    .notice-date {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      height: 100%;
+
+      color: #000;
+      font-size: 20px;
+      line-height: 25px;
+    }
+  }
+
+  .notice-date {
+    border-left: 1px solid #d3d5de;
+  }
+}
+
+.notice-page-container {
+  display: flex;
+  justify-content: center;
+  gap: 35.25px;
+
+  margin-top: 43px;
+
+  .notice-page {
+    color: #898c9a;
+    font-size: 20px;
+    line-height: 25px;
+
+    &.notice-page__active {
+      color: #000;
+      font-weight: 600;
+    }
+  }
+}
+
+// pos (1024 ~ 1919px)
+@include pos {
+  .notice-list {
+    border-radius: 7px;
+
+    .notice-header {
+      height: 35.5px;
+
+      .notice-title,
+      .notice-date {
+        font-size: 16px;
+        line-height: 25px;
+      }
+
+      .notice-title {
+        padding-left: 36px;
+      }
+    }
+
+    .notice-content {
+      height: 46px;
+
+      .notice-title-container {
+        padding-left: 36px;
+
+        .notice-link {
+          gap: 14px;
+          .notice-title {
+            font-size: 16px;
+            line-height: 25px;
+          }
+
+          .must-read-notice {
+            width: 46.25px;
+            height: 24px;
+
+            font-size: 14px;
+            line-height: normal;
+          }
+        }
+      }
+
+      .notice-date {
+        font-size: 14px;
+        line-height: 25px;
+      }
+    }
+  }
+
+  .notice-page-container {
+    gap: 26px;
+
+    margin-top: 27px;
+
+    .notice-page {
+      font-size: 14px;
+      line-height: 25px;
+    }
+  }
+}
+
+// tablet (768 ~ 1023px)
+@include tablet {
+  .notice-list {
+    border-radius: 7px;
+
+    .notice-header {
+      height: 35.5px;
+
+      .notice-title,
+      .notice-date {
+        font-size: 16px;
+        line-height: 25px;
+      }
+
+      .notice-title {
+        padding-left: 26.5px;
+      }
+    }
+
+    .notice-content {
+      height: 46px;
+
+      .notice-title-container {
+        padding-left: 26.5px;
+
+        .notice-link {
+          gap: 14px;
+
+          .notice-title {
+            font-size: 16px;
+            line-height: 25px;
+          }
+
+          .must-read-notice {
+            width: 44px;
+            height: 24px;
+
+            font-size: 14px;
+            line-height: normal;
+          }
+        }
+      }
+
+      .notice-date {
+        font-size: 14px;
+        line-height: 25px;
+      }
+    }
+  }
+
+  .notice-page-container {
+    gap: 26px;
+
+    margin-top: 27px;
+
+    .notice-page {
+      font-size: 14px;
+      line-height: 25px;
+    }
+  }
+}

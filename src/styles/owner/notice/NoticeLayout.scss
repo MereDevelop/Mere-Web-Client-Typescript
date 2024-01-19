@@ -1,0 +1,50 @@
+@import '@styles/media/mixin';
+
+// desktop (1920px ~
+.notice-content-container {
+  position: relative;
+  left: -53px;
+
+  padding: 0 26px 0 79px;
+
+  width: 100%;
+  background-color: #f3f4f6;
+
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+
+  .notice-container {
+    margin-top: 61px;
+  }
+}
+
+// pos (1024 ~ 1919px)
+@include pos {
+  .notice-content-container {
+    left: -22.5px;
+
+    padding: 0 17px 0 34.5px;
+
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+
+    .notice-container {
+      margin-top: 47px;
+    }
+  }
+}
+// tablet (768 ~ 1023px)
+@include tablet {
+  .notice-content-container {
+    left: -17px;
+
+    padding: 0 18.5px 0 35.5px;
+
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+
+    .notice-container {
+      margin-top: 70.25px;
+    }
+  }
+}
