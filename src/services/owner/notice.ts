@@ -19,3 +19,18 @@ export async function requestNoticeList(page: number) {
 
   return response;
 }
+
+export interface NoticeDetail extends PageData {
+  contents: string;
+  storeNoticeUrls: string[];
+  updatedAt: string;
+  views: number;
+}
+
+export async function requestNoticeDetail(noticeId: string | undefined) {
+  const response = await client
+    .get<NoticeDetail>(`/notice/store/information?storeNoticeId=${noticeId}`)
+    .then((resData) => resData);
+
+  return response;
+}

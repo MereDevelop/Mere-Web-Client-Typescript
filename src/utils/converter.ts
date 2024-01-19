@@ -13,3 +13,11 @@ export function convertStringToDate(date: string) {
 
   return `${year}.${month}.${day}`;
 }
+
+export function convertStringToClockTime(date: string) {
+  const dateTime = new Date(date);
+  const hour = String(dateTime.getHours()).padStart(2, '0');
+  const minute = String(dateTime.getMinutes()).padStart(2, '0');
+
+  return `${hour}:${minute}`;
+}

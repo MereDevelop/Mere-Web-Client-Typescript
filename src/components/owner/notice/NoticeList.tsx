@@ -15,7 +15,7 @@ const NoticeList: React.FC<{ pageData: PageData[] }> = ({ pageData }) => {
         <div key={data.storeNoticeId} className='notice-content'>
           <div className='notice-title-container'>
             <Link
-              to={`/home/notice/${data.storeNoticeId}`}
+              to={`/owner/notice/${data.storeNoticeId}`}
               className='notice-link'
             >
               {data.type && <p className='must-read-notice'>필독</p>}

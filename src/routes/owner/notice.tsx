@@ -1,6 +1,9 @@
 import { RouteObject } from 'react-router-dom';
 
 import NoticePage, { getNoticeList } from '@pages/owner/NoticePage';
+import NoticeDetailPage, {
+  getNoticeDetail,
+} from '@pages/owner/NoticeDetailPage';
 
 const notice: RouteObject = {
   path: 'notice',
@@ -9,6 +12,11 @@ const notice: RouteObject = {
       index: true,
       element: <NoticePage />,
       loader: getNoticeList,
+    },
+    {
+      path: ':noticeId',
+      element: <NoticeDetailPage />,
+      loader: getNoticeDetail,
     },
   ],
 };
