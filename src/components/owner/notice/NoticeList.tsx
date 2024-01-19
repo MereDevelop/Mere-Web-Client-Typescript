@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 
 import { PageData } from '@services/owner/notice';
 import '@styles/owner/notice/NoticeList.scss';
+import { convertStringToDate } from '@utils/converter';
 
 const NoticeList: React.FC<{ pageData: PageData[] }> = ({ pageData }) => {
   return (
@@ -21,7 +22,7 @@ const NoticeList: React.FC<{ pageData: PageData[] }> = ({ pageData }) => {
               <h3 className='notice-title'>{data.title}</h3>
             </Link>
           </div>
-          <h3 className='notice-date'>{data.createdAt}</h3>
+          <h3 className='notice-date'>{convertStringToDate(data.createdAt)}</h3>
         </div>
       ))}
     </div>
