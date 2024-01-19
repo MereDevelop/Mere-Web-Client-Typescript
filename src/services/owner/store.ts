@@ -9,7 +9,6 @@ export async function requestStoreOperationStatus() {
 }
 
 export async function requestChangeOperationStatus(isOpen: boolean) {
-  console.log(`/owner/store/${isOpen ? 'close' : 'open'}`);
   const response = await client
     .post<boolean>(`/owner/store/${isOpen ? 'close' : 'open'}`)
     .then((resData) => resData);
