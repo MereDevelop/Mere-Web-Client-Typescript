@@ -1,8 +1,9 @@
-import { redirect, useOutletContext } from 'react-router-dom';
-import { OwnerInfoProps } from '@custom/types/signup/Signup';
-import { signupForm } from '@store/signup-dto';
 import OwnerInfo from '@components/auth/signup/OwnerInfo';
+import { OwnerInfoProps } from '@custom/types/signup/Signup';
 import { verifyNumber } from '@services/auth/signup';
+import { signupForm } from '@store/signup-dto';
+import { isFailureResponse } from '@utils/checker/common';
+import { redirect, useOutletContext } from 'react-router-dom';
 
 const OwnerInfoPage = () => {
   const { isSubmitting } = useOutletContext<OwnerInfoProps>();
@@ -34,10 +35,10 @@ export async function ownerInfoSubmit({ request }: { request: Request }) {
   };
 
   const res = await verifyNumber(verifyCodeDto);
-  if (res === 200) {
-    alert('인증완료');
-    return redirect('/signup/checkinfo');
-  }
-  alert('인증번호 오류');
-  return null;
+  if (isFailureResponse(res)){
+    alert('인증번호 오류');
+    return null;
+  } 
+  alert('인증완료');
+  return redirect('/signup/checkinfo');
 }
