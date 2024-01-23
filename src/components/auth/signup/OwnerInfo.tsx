@@ -1,12 +1,13 @@
-import { Form } from 'react-router-dom';
 import BeatLoader from '@commons/BeatLoader';
-import '@styles/auth/account/Verification.scss';
-import { OwnerInfoProps } from '@custom/types/signup/Signup';
-import { useEffect, useState } from 'react';
-import '@styles/auth/signup/OwnerInfoForm.scss';
 import CheckBankModal from '@commons/modal/CheckBankModal';
-import { SignupInfo, signupForm } from '@store/signup-dto';
+import { OwnerInfoProps } from '@custom/types/signup/Signup';
 import { requestVerifyNumber } from '@services/auth/signup';
+import { SignupInfo, signupForm } from '@store/signup-dto';
+import '@styles/auth/account/Verification.scss';
+import '@styles/auth/signup/OwnerInfoForm.scss';
+import { isFailureResponse } from '@utils/checker/common';
+import { useEffect, useState } from 'react';
+import { Form } from 'react-router-dom';
 
 const OwnerInfo: React.FC<OwnerInfoProps> = ({ isSubmitting }) => {
   const [ownerName, setOwnerName] = useState<string | undefined>();
@@ -52,12 +53,12 @@ const OwnerInfo: React.FC<OwnerInfoProps> = ({ isSubmitting }) => {
     };
 
     const res = await requestVerifyNumber(verifyDto);
-    if (res === 200) {
-      alert('인증번호를 발송하였습니다.');
-      setIsSend(true);
-    } else {
+    if (isFailureResponse(res)){
       alert('인증번호 발송 오류');
-    }
+      return null;
+    } 
+    alert('인증번호를 발송하였습니다.');
+    setIsSend(true);
   };
 
   return (
