@@ -1,0 +1,174 @@
+@import '@styles/media/mixin';
+
+// desktop (1920px ~
+.sales-header-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  margin-top: 38.5px;
+
+  width: 100%;
+
+  .sales-title-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 36.5px 46px 35px 40.5px;
+
+    background: linear-gradient(90deg, #1b1938 0%, #4162ff 154.39%);
+
+    .sales-store-name {
+      color: #fff;
+      font-size: 35px;
+      font-weight: 500;
+      line-height: normal;
+    }
+
+    .sales-button {
+      color: #fff;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: normal;
+      text-decoration-line: underline;
+    }
+  }
+
+  .sales-total-container {
+    display: flex;
+    gap: 20px;
+
+    .sales-deposit-schedule,
+    .sales-deposit-completed,
+    .sales-deducted-schedule {
+      position: relative;
+
+      flex: 1;
+      height: 185px;
+
+      border-radius: 15px;
+      border: 1px solid #898c9a;
+      background: #d3d5de;
+
+      .total-message {
+        position: absolute;
+        top: 35.5px;
+        left: 42.25px;
+
+        color: #3e3e3e;
+        font-size: 25px;
+        line-height: normal;
+      }
+
+      .total-price {
+        position: absolute;
+        right: 48.25px;
+        bottom: 30px;
+
+        color: #000;
+        font-size: 45px;
+        font-weight: 500;
+        line-height: normal;
+      }
+    }
+  }
+}
+
+// pos (1024 ~ 1919px)
+@include pos {
+  .sales-header-container {
+    gap: 14px;
+    margin-top: 30px;
+
+    .sales-title-container {
+      padding: 19.5px 28px 19.5px 34.25px;
+
+      .sales-store-name {
+        font-size: 20px;
+        line-height: normal;
+      }
+
+      .sales-button {
+        font-size: 16px;
+        line-height: normal;
+      }
+    }
+
+    .sales-total-container {
+      gap: 11px;
+
+      .sales-deposit-schedule,
+      .sales-deposit-completed,
+      .sales-deducted-schedule {
+        height: 75px;
+
+        border-radius: 7px;
+
+        .total-message {
+          top: 13px;
+          left: 20px;
+
+          font-size: 16px;
+          line-height: normal;
+        }
+
+        .total-price {
+          right: 18.5px;
+          bottom: 10px;
+
+          font-size: 25px;
+          line-height: normal;
+        }
+      }
+    }
+  }
+}
+
+// tablet (768 ~ 1023px)
+@include tablet {
+  .sales-header-container {
+    gap: 13.25px;
+    margin-top: 28px;
+
+    .sales-title-container {
+      padding: 11px 20px 11px 25px;
+
+      .sales-store-name {
+        font-size: 22px;
+        line-height: normal;
+      }
+
+      .sales-button {
+        font-size: 10px;
+        line-height: normal;
+      }
+    }
+
+    .sales-total-container {
+      gap: 11px;
+
+      .sales-deposit-schedule,
+      .sales-deposit-completed,
+      .sales-deducted-schedule {
+        height: 89px;
+
+        border-radius: 7px;
+
+        .total-message {
+          top: 17px;
+          left: 17px;
+
+          font-size: 16px;
+          line-height: normal;
+        }
+
+        .total-price {
+          right: 20.5px;
+          bottom: 11px;
+
+          font-size: 22px;
+          line-height: normal;
+        }
+      }
+    }
+  }
+}

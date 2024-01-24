@@ -1,0 +1,63 @@
+@import '@styles/media/mixin';
+
+// desktop (1920px ~
+.sales-content-container {
+  position: relative;
+  left: -53px;
+
+  padding: 0 37px 0 69px;
+
+  width: 100%;
+  background-color: #f3f4f6;
+
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 37.5px;
+
+  .sales-table-container {
+    display: flex;
+    flex-direction: column;
+
+    gap: 31.5px;
+  }
+}
+
+// pos (1024 ~ 1919px)
+@include pos {
+  .sales-content-container {
+    left: -22.5px;
+
+    padding: 0 17px 0 34.5px;
+
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+
+    gap: 12px;
+
+    .sales-table-container {
+      gap: 8px;
+    }
+  }
+}
+
+// tablet (768 ~ 1023px)
+@include tablet {
+  .sales-content-container {
+    left: -17px;
+
+    padding: 0 15px 0 32px;
+
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+
+    gap: 27px;
+
+    .sales-table-container {
+      gap: 13px;
+    }
+  }
+}
