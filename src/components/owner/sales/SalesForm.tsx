@@ -1,5 +1,6 @@
-import '@styles/owner/sales/SalesForm.scss';
 import { v4 } from 'uuid';
+
+import '@styles/owner/sales/SalesForm.scss';
 
 const SalesForm = () => {
   return (
