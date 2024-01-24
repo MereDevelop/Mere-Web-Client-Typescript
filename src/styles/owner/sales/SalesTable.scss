@@ -1,0 +1,288 @@
+@import '@styles/media/mixin';
+
+// desktop (1920px ~
+.sales-main-table {
+  display: flex;
+  flex-direction: row;
+
+  .table-content-container {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+
+    .table-header-layout {
+      display: flex;
+
+      height: 87px;
+      background: #cde2ff;
+
+      h3 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        flex: 1;
+
+        color: #000;
+        font-size: 22px;
+        font-weight: 600;
+        line-height: 25px;
+
+        border: 0.5px solid #d3d5de;
+
+        .alpha {
+          color: #898c9a;
+        }
+      }
+
+      .row-2-layout {
+        width: 322px;
+        display: flex;
+        flex-direction: column;
+
+        .row-2-deducted-cost {
+          display: flex;
+
+          height: 43.5px;
+
+          h3 {
+            gap: 5px;
+            color: #000;
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 25px;
+
+            .alpha {
+              color: #898c9a;
+            }
+          }
+        }
+      }
+
+      .deposit-amount {
+        flex-direction: column;
+      }
+    }
+  }
+
+  .table-main-layout {
+    display: flex;
+
+    height: 80px;
+    background: #fff;
+
+    h3 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      flex: 1;
+
+      color: #000;
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 25px;
+
+      border: 0.5px solid #d3d5de;
+    }
+
+    .order-period {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+
+      border: 0.5px solid #d3d5de;
+
+      .start-period {
+        display: flex;
+        align-items: flex-end;
+
+        padding-right: 25px;
+      }
+
+      .end-period {
+        display: flex;
+        align-items: flex-start;
+      }
+
+      h3 {
+        border: none;
+      }
+    }
+
+    .col-2-layout {
+      display: flex;
+
+      width: 322px;
+    }
+
+    .detail-download {
+      font-size: 20px;
+      line-height: 25px;
+
+      color: #4162ff;
+      text-decoration-line: underline;
+    }
+  }
+}
+
+// pos (1024 ~ 1919px)
+@include pos {
+  .sales-main-table {
+    flex-direction: column;
+    gap: 14px;
+
+    .table-content-container {
+      .table-header-layout {
+        height: 40px;
+
+        h3 {
+          font-size: 13px;
+          line-height: 15.5px;
+        }
+
+        .order-period {
+          flex: 2;
+        }
+
+        .row-2-layout {
+          width: 377.5px;
+
+          .row-1-deducted-cost {
+            height: 20px;
+            font-size: 12px;
+          }
+
+          .row-2-deducted-cost {
+            height: 20px;
+
+            h3 {
+              gap: 3px;
+              font-size: 11px;
+            }
+          }
+        }
+      }
+    }
+
+    .table-main-layout {
+      height: 35px;
+
+      h3 {
+        font-size: 12px;
+        line-height: 15.5px;
+      }
+
+      .order-period {
+        flex: 2;
+
+        flex-direction: row;
+        align-items: center;
+
+        .start-period {
+          justify-content: flex-end;
+          padding-right: 3px;
+        }
+
+        .end-period {
+          justify-content: flex-start;
+          padding-right: 9px;
+        }
+
+        h3 {
+          border: none;
+        }
+      }
+
+      .col-2-layout {
+        width: 377.5px;
+      }
+
+      .detail-download {
+        font-size: 12px;
+        line-height: 15.5px;
+      }
+    }
+  }
+}
+
+// tablet (768 ~ 1023px)
+@include tablet {
+  .sales-main-table {
+    flex-direction: column;
+    gap: 20.5px;
+
+    .table-content-container {
+      .table-header-layout {
+        height: 38.5px;
+
+        h3 {
+          font-size: 13px;
+          line-height: 15.5px;
+        }
+
+        .order-period {
+          flex: 2;
+        }
+
+        .row-2-layout {
+          width: 279.5px;
+
+          .row-1-deducted-cost {
+            height: 19.75px;
+            font-size: 12px;
+          }
+
+          .row-2-deducted-cost {
+            height: 19.75px;
+
+            h3 {
+              gap: 3px;
+              font-size: 11px;
+            }
+          }
+        }
+      }
+    }
+
+    .table-main-layout {
+      height: 46.5px;
+
+      h3 {
+        font-size: 12px;
+        line-height: 15.5px;
+      }
+
+      .order-period {
+        flex: 2;
+
+        flex-direction: row;
+        align-items: center;
+
+        .start-period {
+          justify-content: flex-end;
+          padding-right: 3px;
+        }
+
+        .end-period {
+          justify-content: flex-start;
+          padding-right: 9px;
+        }
+
+        h3 {
+          border: none;
+        }
+      }
+
+      .col-2-layout {
+        width: 279.5px;
+      }
+
+      .detail-download {
+        font-size: 12px;
+        line-height: 15.5px;
+      }
+    }
+  }
+}

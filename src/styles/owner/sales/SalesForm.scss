@@ -1,0 +1,182 @@
+@import '@styles/media/mixin';
+
+// desktop (1920px ~
+.sales-date-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .sales-date-query {
+    display: flex;
+    gap: 34px;
+
+    .start-date,
+    .end-date {
+      display: flex;
+      align-items: center;
+
+      .start-year,
+      .start-month,
+      .end-year,
+      .end-month {
+        padding: 0 16px 0 21px;
+        height: 50px;
+        border-radius: 10px;
+
+        color: #000;
+        font-size: 22px;
+        line-height: normal;
+
+        border: 1px solid #d9d9d9;
+
+        // default arrow none
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+
+        background-image: url('@assets/arrow_down.png');
+        background-size: 12px;
+        background-repeat: no-repeat;
+        background-position: right 16px center;
+      }
+
+      .start-year,
+      .end-year {
+        width: 123.5px;
+      }
+
+      .start-month,
+      .end-month {
+        width: 85.5px;
+        margin-left: 4.5px;
+      }
+
+      .date-divider {
+        margin-left: 16px;
+
+        color: #000;
+        font-size: 25px;
+        font-weight: 500;
+        line-height: normal;
+      }
+    }
+  }
+
+  .sales-query-btn {
+    width: 131.75px;
+    height: 47px;
+
+    border-radius: 50px;
+    background: #4162ff;
+
+    color: #fff;
+    font-size: 22px;
+    line-height: normal;
+  }
+}
+
+// pos (1024 ~ 1919px)
+@include pos {
+  .sales-date-form {
+    .sales-date-query {
+      gap: 9px;
+
+      .start-date,
+      .end-date {
+        .start-year,
+        .start-month,
+        .end-year,
+        .end-month {
+          padding: 0 10px 0 13.5px;
+          height: 30px;
+          border-radius: 4px;
+
+          font-size: 12px;
+          line-height: normal;
+
+          background-position: right 10px center;
+          background-size: 7.75px;
+        }
+
+        .start-year,
+        .end-year {
+          width: 80.5px;
+        }
+
+        .start-month,
+        .end-month {
+          width: 55.5px;
+          margin-left: 3px;
+        }
+
+        .date-divider {
+          margin-left: 11px;
+
+          font-size: 14px;
+          line-height: normal;
+        }
+      }
+    }
+
+    .sales-query-btn {
+      width: 90px;
+      height: 36px;
+
+      font-size: 16px;
+      line-height: normal;
+    }
+  }
+}
+
+// tablet (768 ~ 1023px)
+@include tablet {
+  .sales-date-form {
+    .sales-date-query {
+      gap: 15.5px;
+
+      .start-date,
+      .end-date {
+        .start-year,
+        .start-month,
+        .end-year,
+        .end-month {
+          padding: 0 7.5px 0 10px;
+          height: 24px;
+          border-radius: 4px;
+
+          font-size: 11px;
+          line-height: normal;
+
+          background-position: right 7.5px center;
+          background-size: 5.75px;
+        }
+
+        .start-year,
+        .end-year {
+          width: 59.5px;
+        }
+
+        .start-month,
+        .end-month {
+          width: 41px;
+          margin-left: 2px;
+        }
+
+        .date-divider {
+          margin-left: 8px;
+
+          font-size: 12px;
+          line-height: normal;
+        }
+      }
+    }
+
+    .sales-query-btn {
+      width: 72.375px;
+      height: 27px;
+
+      font-size: 12px;
+      line-height: normal;
+    }
+  }
+}
